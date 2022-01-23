@@ -16,87 +16,39 @@ class UserController extends Controller
 
     public function index()
     {
-        if (FacadesRequest::is('*guru*')) {
-            return view('guru.index');
-        }
-        if (FacadesRequest::is('*ortu*')) {
-            return view('ortu.index');
-        }
+        return view('user.index');
     }
 
     public function datatable($level)
     {
-
-        if (FacadesRequest::is('*guru*')) {
-            $guru = User::where('level', 'guru')->get();
-            return UserDataTable::set($guru, 'guru');
+        if(isset($level)){
+            $user = User::all();
+        }else{
+            $user = User::where('level', $level)->get();
         }
-        if (FacadesRequest::is('*ortu*')) {
-            $ortu = User::where('level', 'ortu')->get();
-            return UserDataTable::set($ortu, 'ortu');
-        }
+        return UserDataTable::set($user);
     }
 
     public function create()
     {
-        if (FacadesRequest::is('*guru*')) {
-            return view('guru.create');
-        }
-        if (FacadesRequest::is('*ortu*')) {
-            return view('ortu.create');
-        }
+        return view('user.create');
     }
 
     public function store(Request $request)
     {
         try {
-            $user = new User;
-            $user->nama = $request->nama;
-            
-            if (FacadesRequest::is('*guru*')) {
-                $user->nip = $request->nip;
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->nip = 0;
-            } else {
-                throw new Exception('Error 500');
-            }
-
-            $user->alamat = $request->alamat;
-            $user->tempat_lahir = $request->tempat_lahir;
-            $user->tgl_lahir = $request->tgl_lahir;
-            $user->no_tlp = $request->no_tlp;
-            $user->pekerjaan = $request->pekerjaan;
-            
-            if (FacadesRequest::is('*guru*')) {
-                $user->status_guru = $request->status_guru;
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->status_guru = 'bukan_guru';
-            } else {
-                throw new Exception('Error 500');
-            }
-
-            if (FacadesRequest::is('*guru*')) {
-                $user->level = 'guru';
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->level = 'ortu';
-            } else {
-                throw new Exception('Error 500');
-            }
-
+            $data = $request->all();
             if($request['foto']){
                 $base_64_foto = json_decode($request['foto'], true);
                 $upload_image = uploadFile($base_64_foto, 'foto_profil');
                 if ($upload_image === 0) {
                     return redirect()->back()->withInput()->with('error', 'Gagal mengupload gambar!');
                 }
-                $user->foto = $upload_image;
+                $data['foto'] = $upload_image;
             }
 
-            $user->status = 'aktif';
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-
-            $user->save();
+            $data['password'] = bcrypt($request->password);
+            $user = User::create($data);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal menambahkan ' . $this->getFeedback($user->level) . ' !');
@@ -116,41 +68,11 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request,   $id)
+    public function update(Request $request, User $user)
     {
         try {
-            $user = User::find($id);
-            $user->nama = $request->nama;
-
-            if (FacadesRequest::is('*guru*')) {
-                $user->nip = $request->nip;
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->nip = 0;
-            } else {
-                throw new Exception('Error 500');
-            }
-
-            $user->alamat = $request->alamat;
-            $user->tempat_lahir = $request->tempat_lahir;
-            $user->tgl_lahir = $request->tgl_lahir;
-            $user->no_tlp = $request->no_tlp;
-            $user->pekerjaan = $request->pekerjaan;
-
-            if (FacadesRequest::is('*guru*')) {
-                $user->status_guru = $request->status_guru;
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->status_guru = 'bukan_guru';
-            } else {
-                throw new Exception('Error 500');
-            }
-
-            if (FacadesRequest::is('*guru*')) {
-                $user->level = 'guru';
-            } else if (FacadesRequest::is('*ortu*')) {
-                $user->level = 'ortu';
-            } else {
-                throw new Exception('Error 500');
-            }
+            $data = $request->all();
+            unset($data['level']);
 
             if($request['foto']){
                 $base_64_foto = json_decode($request['foto'], true);
@@ -160,14 +82,13 @@ class UserController extends Controller
                 }
                 $user->foto = $upload_image;
             }
-            
-            $user->status = $request->status;
-            $user->email = $request->email;
+
             if($request->password){
-                $user->password = bcrypt($request->password);
+                $data['password'] = bcrypt($request->password);
             }
 
-            $user->save();
+            $user->update($data);
+            $user = $user->refresh();
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal mengubah ' . $this->getFeedback($user->level) . ' !');
@@ -178,12 +99,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        if (FacadesRequest::is('*guru*')) {
-            return view('guru.show', compact('user'));
-        }
-        if (FacadesRequest::is('*ortu*')) {
-            return view('ortu.show', compact('user'));
-        }
+        return view('ortu.show', [$user]);
     }
 
     public function destroy(User $user)
@@ -218,7 +134,7 @@ class UserController extends Controller
 
     public function editProfile(User $user)
     {
-        return view('profile.edit', compact('user'));
+        return view('profile.edit', [$user]);
     }
 
     public function updateProfile(User $user, Request $request)
@@ -229,16 +145,16 @@ class UserController extends Controller
 
         try {
             $data = $request->all();
-            $user->nama = $request->nama;
+            unset($data['level']);
+
             if ($data['password']) {
                 $data['password'] = bcrypt($data['password']);
             } else {
                 unset($data['password']);
             }
 
-            unset($data['level']);
-
             $user->update($data);
+            $user = $user->refresh();
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal mengubah profil ' . $user->name);

@@ -13,8 +13,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     static $admin = 'admin';
-    static $guru = 'guru';
-    static $ortu = 'ortu';
+    static $penilai = 'penilai';
+    static $kontrak = 'kontrak';
 
     /**
      * The attributes that are mass assignable.
@@ -28,14 +28,15 @@ class User extends Authenticatable
         'tempat_lahir',
         'tgl_lahir',
         'no_tlp',
-        'pekerjaan',
         'jenis_kelamin',
-        'status_guru',
         'level',
         'status',
-        'email',	
+        'email',
         'password',
         'foto',
+        'id_unit_kerja',
+        'id_jabatan',
+        'id_pangkat_golongan',
     ];
 
     /**
@@ -57,9 +58,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function scopeOrtu($query)
+    public function scopePenilai($query)
     {
-        return $query->where('level', self::$ortu);
+        return $query->where('level', self::$penilai);
     }
 
     public function scopeAdmin($query)
@@ -67,9 +68,9 @@ class User extends Authenticatable
         return $query->where('level', self::$admin);
     }
 
-    public function scopeGuru($query)
+    public function scopeKontrak($query)
     {
-        return $query->where('level', self::$guru);
+        return $query->where('level', self::$kontrak);
     }
 
     public function siswa()
@@ -82,41 +83,14 @@ class User extends Authenticatable
         return $this->attributes['level'] == self::$admin ? true : false;    
     }
 
-    public function isOrtu()
+    public function isPenilai()
     {
-        return $this->attributes['level'] == self::$ortu ? true : false;    
+        return $this->attributes['level'] == self::$penilai ? true : false;    
     }
 
-    public function isGuru()
+    public function isKontrak()
     {
-        return $this->attributes['level'] == self::$guru ? true : false;    
-    }
-
-    public function isWali()
-    {
-        if($this->attributes['level'] == self::$guru){
-            $tahun_ajar_active = TahunAjar::where('status', 'aktif')->first();
-            if($this->wali_kelas->where('id_tahun_ajar', $tahun_ajar_active->id)->count() > 0){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public function anggota_kelas()
-    {
-        return $this->hasManyThrough(AnggotaKelas::class, Siswa::class, 'id_user', 'id_siswa');
-    }
-
-    public function wali_kelas()
-    {
-        return $this->hasMany(WaliKelas::class, 'id_user');
-    }
-
-    public function kelas()
-    {
-        return $this->hasManyThrough(Kelas::class, WaliKelas::class, 'id_user', 'id_user');
+        return $this->attributes['level'] == self::$kontrak ? true : false;    
     }
 
     public function getFoto()
@@ -128,5 +102,23 @@ class User extends Authenticatable
         } else {
             return asset('images/default/default_profil.png');
         }
+    }
+
+
+
+
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'id_jabatan');
+    }
+
+    public function unitKerja()
+    {
+        return $this->belongsTo(UnitKerja::class, 'id_unit_kerja');
+    }
+
+    public function pangkatGolongan()
+    {
+        return $this->belongsTo(PangkatGolongan::class, 'id_pangkat_golongan');
     }
 }
