@@ -20,22 +20,8 @@ class DashboardController extends Controller
 
     public function generateDashboardData()
     {
-        $siswa_count = Siswa::where('status', 'aktif')->count();
-        $guru_count = User::where('status', 'aktif')->where('level', 'guru')->count();
-        $ortu_count = User::where('status', 'aktif')->where('level', 'ortu')->count();
-        $mapel_count = Mapel::where('status', 'aktif')->count();
-        $ekskul_count = Ekskul::where('status', 'aktif')->count();
-        $pengumuman = Pengumuman::where('status', 'aktif')->get();
-
-
         $dashboard_data = [
-            'siswa_count' => $siswa_count,
-            'guru_count' => $guru_count,
-            'ortu_count' => $ortu_count,
-            'mapel_count' => $mapel_count,
-            'pengumuman' => $pengumuman,
-            'ekskul_count' => $ekskul_count
-
+            'pengumuman' => []
         ];
 
         return $dashboard_data;

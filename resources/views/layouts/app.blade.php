@@ -13,7 +13,7 @@
 
     <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <title>Sistem Informasi Akademik</title>
+    <title>Sistem Informasi Monitoring</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">

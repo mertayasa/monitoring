@@ -26,16 +26,6 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        view()->composer('*', function($view)
-        {
-            if (Auth::check()) {
-                if(Auth::user()->isOrtu()){
-                    $anak = Siswa::where('id_user', Auth::id())->get();
-                    $view->with('anak', $anak);
-                }
-            }
-        });
-        
+    {        
     }
 }
