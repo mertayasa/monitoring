@@ -23,6 +23,13 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">pengumuman</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ isActive('pangkat_golongan') }}">
+                <a class="sidebar-link" href="{{ route('pangkat_golongan.index') }}">
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Pangkat
+                        Golongan</span>
+                </a>
+            </li>
         </ul>
 
 
