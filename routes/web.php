@@ -4,28 +4,12 @@ use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PengumumanController;
-use App\Http\Controllers\SiswaController;
-use App\Http\Controllers\KelasController;
-use App\Http\Controllers\MapelController;
-use App\Http\Controllers\EkskulController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\WaliKelasController;
-use App\Http\Controllers\TahunAjarController;
-use App\Http\Controllers\JadwalController;
-use App\Http\Controllers\AnggotaKelasController;
-use App\Http\Controllers\NilaiController;
-use App\Http\Controllers\NilaiEkskulController;
-use App\Http\Controllers\NilaiSikapController;
-use App\Http\Controllers\NilaiKesehatanController;
-use App\Http\Controllers\NilaiProporsiController;
-use App\Http\Controllers\PrestasiController;
-
-use App\Http\Controllers\AkademikController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PangkatGolonganController;
 use App\Http\Controllers\UnitKerjaController;
 
+use App\Http\Controllers\PengumumanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -92,6 +76,16 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('update/{pangkat_golongan}', [PangkatGolonganController::class, 'update'])->name('update');
         Route::delete('destroy/{pangkat_golongan}', [PangkatGolonganController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [PangkatGolonganController::class, 'datatable'])->name('datatable');
+    });
+
+        Route::group(['prefix' => 'pengumuman', 'as' => 'pengumuman.'], function () {
+        Route::get('/', [PengumumanController::class, 'index'])->name('index');
+        Route::get('create', [PengumumanController::class, 'create'])->name('create');
+        Route::post('store', [PengumumanController::class, 'store'])->name('store');
+        Route::get('edit/{pengumuman}', [PengumumanController::class, 'edit'])->name('edit');
+        Route::patch('update/{pengumuman}', [PengumumanController::class, 'update'])->name('update');
+        Route::delete('destroy/{pengumuman}', [PengumumanController::class, 'destroy'])->name('destroy');
+        Route::get('datatable', [PengumumanController::class, 'datatable'])->name('datatable');
     });
 
 });
