@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
     <meta name="author" content="AdminKit">
@@ -15,27 +15,29 @@
 
     <title>Sistem Informasi Monitoring</title>
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href=" {{ asset('datatables/datatables.css') }}">
-	<style>
-		.select2{
-			width: 100% !important;
-		}
+    <style>
+        .select2 {
+            width: 100% !important;
+        }
 
-        .toast-error{
+        .toast-error {
             background-color: red !important;
         }
-        .toast-success{
+
+        .toast-success {
             background-color: green !important;
         }
 
-        .col-md-16-6{
+        .col-md-16-6 {
             flex: 0 0 auto;
             width: 16.6%;
         }
-	</style>
+
+    </style>
     @stack('styles')
 </head>
 
@@ -79,14 +81,15 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/manifest.js') }}"></script>
-    <script src="{{ asset('js/vendor.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/manifest.js') }}"></script>
+    <script src="{{ asset('js/vendor.js') }}"></script> --}}
+    <script src="{{ asset('admin/js/app.js') }}"></script>
     <script src="{{ asset('admin/js/app.js') }}"></script>
     <script src="{{ asset('datatables/datatables.js') }}"></script>
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css"> --}}
     <script>
         const baseUrl = "{{ url('/') }}"
+
         function deleteModel(deleteUrl, tableId, additionalMethod = null) {
             Swal.fire({
                 title: "Warning",
@@ -149,7 +152,7 @@
             }
         }
 
-        function clearErrorMessage(){
+        function clearErrorMessage() {
             const invalidFeedback = document.getElementsByClassName('invalid-feedback')
 
             for (let invalid = 0; invalid < invalidFeedback.length; invalid++) {
@@ -158,7 +161,7 @@
                 const inputElement = document.querySelectorAll(`[name="${targetField}"]`)
                 element.innerHTML = ''
                 for (let inputEl = 0; inputEl < inputElement.length; inputEl++) {
-                    if(inputElement[inputEl] != undefined){
+                    if (inputElement[inputEl] != undefined) {
                         inputElement[inputEl].classList.remove('is-invalid')
                     }
                 }
@@ -166,11 +169,11 @@
             }
         }
 
-        function showValidationMessage(errors){
+        function showValidationMessage(errors) {
             Object.keys(errors).forEach(function(key) {
                 let errorSpan = document.querySelectorAll(`[error-name="${key}"]`)
                 let errorInput = document.querySelectorAll(`[name="${key}"]`)
-                
+
                 for (let eInput = 0; eInput < errorInput.length; eInput++) {
                     const selectedErrorInput = errorInput[eInput];
                     selectedErrorInput.classList.add('is-invalid')
@@ -180,7 +183,7 @@
                     const selectedErrorSpan = errorSpan[eSpan];
                     if (selectedErrorSpan != undefined) {
                         selectedErrorSpan.innerHTML = errors[key][0]
-                    }else{
+                    } else {
                         showToast(0, 'Terjadi kesalahan pada sistem')
                     }
                 }
@@ -188,22 +191,24 @@
             })
         }
 
-        function isNull(value){
-            if(value == '' || value == undefined || value == null){
+        function isNull(value) {
+            if (value == '' || value == undefined || value == null) {
                 return true
             }
 
             return false;
         }
-        
     </script>
     <script>
         $(document).ready(function() {
-          $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
-              $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust().responsive.recalc().ajax.reload();
-          });
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+                $.fn.dataTable.tables({
+                    visible: true,
+                    api: true
+                }).columns.adjust().responsive.recalc().ajax.reload();
+            });
         })
-      </script>
+    </script>
 
     @stack('scripts')
 </body>

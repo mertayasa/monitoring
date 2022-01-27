@@ -12,8 +12,9 @@ class PengumumanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Pengumuman $pengumuman)
+  public function index(Pengumuman $pengumuman)
     {
+    //    dd($pengumuman);
         return view('pengumuman.index', compact('pengumuman'));
     }
 
