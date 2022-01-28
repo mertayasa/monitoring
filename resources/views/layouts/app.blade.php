@@ -16,7 +16,7 @@
     <title>Sistem Informasi Monitoring</title>
 
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href=" {{ asset('datatables/datatables.css') }}">
     <style>
@@ -81,9 +81,9 @@
         </div>
     </div>
 
-    {{-- <script src="{{ asset('js/manifest.js') }}"></script>
-    <script src="{{ asset('js/vendor.js') }}"></script> --}}
-    <script src="{{ asset('admin/js/app.js') }}"></script>
+    <script src="{{ asset('js/manifest.js') }}"></script>
+    <script src="{{ asset('js/vendor.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('admin/js/app.js') }}"></script>
     <script src="{{ asset('datatables/datatables.js') }}"></script>
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css"> --}}
