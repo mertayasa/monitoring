@@ -30,6 +30,12 @@
                         Golongan</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ isActive('unit_kerja') }}">
+                <a class="sidebar-link" href="{{ route('unit_kerja.index') }}">
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Unit Kerja</span>
+                </a>
+            </li>
         </ul>
 
 
