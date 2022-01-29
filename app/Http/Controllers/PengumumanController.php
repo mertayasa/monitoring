@@ -64,7 +64,7 @@ class PengumumanController extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-        //
+         return view('pengumuman.show', compact('pengumuman'));
     }
 
     /**

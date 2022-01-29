@@ -17,6 +17,6 @@ class PangkatGolonganDataTable
                     '<a href="' . route('pangkat_golongan.edit', $pangkat_golongan->id) . '" class="btn  btn-sm  btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px" ><b> Edit </b></a>' .
                     '<a href="' . route('pangkat_golongan.show', $pangkat_golongan->id) . '" class="btn  btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat" style="margin-right: 5px" ><b> Lihat</b></a>' .
                     '</div>';
-            });
+            })->addIndexColumn()->rawColumns(['action'])->make(true);
     }
 }

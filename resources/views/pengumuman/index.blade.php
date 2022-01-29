@@ -8,7 +8,6 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class=" mb-0 ">Data Pengumuman</h4>
                         <a href="{{ route('pengumuman.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip"
                             data-bs-placement="bottom" title="Tambah Pengumuman"> <i class="fas fa-folder-plus"></i>
                             Pengumuman Baru</a>
