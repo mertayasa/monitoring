@@ -36,6 +36,12 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Unit Kerja</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ isActive('jabatan') }}">
+                <a class="sidebar-link" href="{{ route('jabatan.index') }}">
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Jabatan</span>
+                </a>
+            </li>
         </ul>
 
 

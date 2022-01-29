@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Jabatan;
 use Illuminate\Http\Request;
+use App\DataTables\JabatanDataTable;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class JabatanController extends Controller
 {
@@ -12,9 +15,16 @@ class JabatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+  public function index(Jabatan $jabatan)
     {
-        //
+    //    dd($jabatan);
+        return view('jabatan.index', compact('jabatan'));
+    }
+
+     public function datatable()
+    {
+        $jabatan = Jabatan::all();
+        return JabatanDataTable::set($jabatan);
     }
 
     /**
@@ -24,7 +34,7 @@ class JabatanController extends Controller
      */
     public function create()
     {
-        //
+         return view('jabatan.create');
     }
 
     /**
@@ -35,8 +45,16 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         try {
+            Jabatan::create($request->all());
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'Data Jabatan Gagal Ditambahkan');
+        }
+
+        return redirect('jabatan')->with('success', 'Data Jabatan Berhasil Ditambahkan');
     }
+    
 
     /**
      * Display the specified resource.
@@ -46,7 +64,7 @@ class JabatanController extends Controller
      */
     public function show(Jabatan $jabatan)
     {
-        //
+         return view('jabatan.show', compact('jabatan'));
     }
 
     /**
@@ -57,7 +75,7 @@ class JabatanController extends Controller
      */
     public function edit(Jabatan $jabatan)
     {
-        //
+        return view('jabatan.edit', compact('jabatan'));
     }
 
     /**
@@ -69,7 +87,14 @@ class JabatanController extends Controller
      */
     public function update(Request $request, Jabatan $jabatan)
     {
-        //
+        try {
+            $jabatan->update($request->all());
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'Data Jabatan Gagal Di Edit');
+        }
+
+        return redirect('jabatan')->with('info', 'Data Jabatan Berhasil Diedit  ');
     }
 
     /**
@@ -80,6 +105,14 @@ class JabatanController extends Controller
      */
     public function destroy(Jabatan $jabatan)
     {
-        //
+         try {
+            $jabatan->delete();
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return response(['code' => 0, 'message' => 'Gagal menghapus data Jabatan']);
+        }
+
+        return response(['code' => 1, 'message' => 'Berhasil menghapus data Jabatan']);
     }
+    
 }
