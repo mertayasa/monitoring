@@ -10,6 +10,8 @@ use App\Http\Controllers\PangkatGolonganController;
 use App\Http\Controllers\UnitKerjaController;
 
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\DurasiPenilaianController;
+use App\Http\Controllers\TargetSkpController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,6 +89,28 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('update/{pengumuman}', [PengumumanController::class, 'update'])->name('update');
         Route::delete('destroy/{pengumuman}', [PengumumanController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [PengumumanController::class, 'datatable'])->name('datatable');
+    });
+
+        Route::group(['prefix' => 'durasi_penilaian', 'as' => 'durasi_penilaian.'], function () {
+        Route::get('/', [DurasiPenilaianController::class, 'index'])->name('index');
+        Route::get('create', [DurasiPenilaianController::class, 'create'])->name('create');
+        Route::post('store', [DurasiPenilaianController::class, 'store'])->name('store');
+        Route::get('edit/{durasi_penilaian}', [DurasiPenilaianController::class, 'edit'])->name('edit');
+        Route::get('show/{durasi_penilaian}', [DurasiPenilaianController::class, 'show'])->name('show');
+        Route::patch('update/{durasi_penilaian}', [DurasiPenilaianController::class, 'update'])->name('update');
+        Route::delete('destroy/{durasi_penilaian}', [DurasiPenilaianController::class, 'destroy'])->name('destroy');
+        Route::get('datatable', [DurasiPenilaianController::class, 'datatable'])->name('datatable');
+    });
+
+      Route::group(['prefix' => 'target_skp', 'as' => 'target_skp.'], function () {
+        Route::get('/', [TargetSkpController::class, 'index'])->name('index');
+        Route::get('create', [TargetSkpController::class, 'create'])->name('create');
+        Route::post('store', [TargetSkpController::class, 'store'])->name('store');
+        Route::get('edit/{target_skp}', [TargetSkpController::class, 'edit'])->name('edit');
+        Route::get('show/{target_skp}', [TargetSkpController::class, 'show'])->name('show');
+        Route::patch('update/{target_skp}', [TargetSkpController::class, 'update'])->name('update');
+        Route::delete('destroy/{target_skp}', [TargetSkpController::class, 'destroy'])->name('destroy');
+        Route::get('datatable', [TargetSkpController::class, 'datatable'])->name('datatable');
     });
 
 });
