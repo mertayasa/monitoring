@@ -25,7 +25,7 @@ class PangkatGolonganController extends Controller
      public function datatable()
     {
         $pangkat_golongan = PangkatGolongan::all();
-        return PengumumanDataTable::set($pangkat_golongan);
+        return PangkatGolonganDataTable::set($pangkat_golongan);
     }
 
     /**

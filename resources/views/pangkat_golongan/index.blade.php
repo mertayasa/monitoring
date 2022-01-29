@@ -8,11 +8,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class=" mb-0 ">Data Pangkat Golongan</h4>
                         <a href="{{ route('pangkat_golongan.create') }}" class="btn btn-primary add"
                             data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah pangkat_golongan"> <i
-                                class="fas fa-folder-plus"></i> Mata
-                            Pelajaran Baru</a>
+                                class="fas fa-folder-plus"></i> Pangkat Golongan Baru</a>
                     </div>
                     <div class="px-3">
                         @include('layouts.flash')

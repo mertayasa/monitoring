@@ -11,7 +11,7 @@ class PengumumanDataTable
     {
         return Datatables::of($pengumuman)
             ->addColumn('action', function ($pengumuman) {
-              $deleteUrl = "'" . route('pengumuman.destroy', $pengumuman->id) . "', 'NilaiEkskulDataTable'";
+              $deleteUrl = "'" . route('pengumuman.destroy', $pengumuman->id) . "', 'PengumumanDataTable'";
                 return
                     '<div class="btn-group">' .
                     '<a href="' . route('pengumuman.edit', $pengumuman->id) . '" class="btn  btn-sm  btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px" ><b> Edit </b></a>' .
