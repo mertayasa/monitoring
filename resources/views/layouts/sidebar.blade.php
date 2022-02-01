@@ -20,7 +20,7 @@
 
             <li class="sidebar-item {{ isActive('pengumuman') }}">
                 <a class="sidebar-link" href="{{ route('pengumuman.index') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">pengumuman</span>
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Pengumuman</span>
                 </a>
             </li>
 
