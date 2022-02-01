@@ -15,7 +15,19 @@ class CreateDurasiPenilaiansTable extends Migration
     {
         Schema::create('durasi_penilaians', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_pgw_kontrak');
+            $table->unsignedBigInteger('id_penilai');
+            $table->date('tgl_mulai_penilaian');
+            $table->date('tgl_selesai_penilaian')->nullable();
+            $table->text('permasalahan');
+            $table->text('keberatan');
+            $table->text('rekomendasi');
+            $table->text('penjelasan_penilai');
+            $table->text('keputusan_atasan');
             $table->timestamps();
+
+            $table->foreign('id_pgw_kontrak')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_penilai')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
