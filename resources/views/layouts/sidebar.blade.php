@@ -48,6 +48,13 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Kegiatan</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ isActive('sub_kegiatan') }}">
+                <a class="sidebar-link" href="{{ route('sub_kegiatan.index') }}">
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Sub
+                        Kegiatan</span>
+                </a>
+            </li>
         </ul>
 
 

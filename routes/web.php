@@ -13,6 +13,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\DurasiPenilaianController;
 use App\Http\Controllers\TargetSkpController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\SubKegiatanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,6 +124,17 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('update/{kegiatan}', [KegiatanController::class, 'update'])->name('update');
         Route::delete('destroy/{kegiatan}', [KegiatanController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [KegiatanController::class, 'datatable'])->name('datatable');
+    });
+
+        Route::group(['prefix' => 'sub_kegiatan', 'as' => 'sub_kegiatan.'], function () {
+        Route::get('/', [SubKegiatanController::class, 'index'])->name('index');
+        Route::get('create', [SubKegiatanController::class, 'create'])->name('create');
+        Route::post('store', [SubKegiatanController::class, 'store'])->name('store');
+        Route::get('edit/{sub_kegiatan}', [SubKegiatanController::class, 'edit'])->name('edit');
+        Route::get('show/{sub_kegiatan}', [SubKegiatanController::class, 'show'])->name('show');
+        Route::patch('update/{sub_kegiatan}', [SubKegiatanController::class, 'update'])->name('update');
+        Route::delete('destroy/{sub_kegiatan}', [SubKegiatanController::class, 'destroy'])->name('destroy');
+        Route::get('datatable', [SubKegiatanController::class, 'datatable'])->name('datatable');
     });
 
 });
