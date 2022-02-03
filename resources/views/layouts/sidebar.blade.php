@@ -42,6 +42,12 @@
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Jabatan</span>
                 </a>
             </li>
+
+            <li class="sidebar-item {{ isActive('kegiatan') }}">
+                <a class="sidebar-link" href="{{ route('kegiatan.index') }}">
+                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Kegiatan</span>
+                </a>
+            </li>
         </ul>
 
 

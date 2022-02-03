@@ -12,6 +12,7 @@ use App\Http\Controllers\UnitKerjaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\DurasiPenilaianController;
 use App\Http\Controllers\TargetSkpController;
+use App\Http\Controllers\KegiatanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,6 +112,17 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('update/{target_skp}', [TargetSkpController::class, 'update'])->name('update');
         Route::delete('destroy/{target_skp}', [TargetSkpController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [TargetSkpController::class, 'datatable'])->name('datatable');
+    });
+    
+        Route::group(['prefix' => 'kegiatan', 'as' => 'kegiatan.'], function () {
+        Route::get('/', [KegiatanController::class, 'index'])->name('index');
+        Route::get('create', [KegiatanController::class, 'create'])->name('create');
+        Route::post('store', [KegiatanController::class, 'store'])->name('store');
+        Route::get('edit/{kegiatan}', [KegiatanController::class, 'edit'])->name('edit');
+        Route::get('show/{kegiatan}', [KegiatanController::class, 'show'])->name('show');
+        Route::patch('update/{kegiatan}', [KegiatanController::class, 'update'])->name('update');
+        Route::delete('destroy/{kegiatan}', [KegiatanController::class, 'destroy'])->name('destroy');
+        Route::get('datatable', [KegiatanController::class, 'datatable'])->name('datatable');
     });
 
 });
