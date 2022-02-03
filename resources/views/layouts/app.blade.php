@@ -36,12 +36,85 @@
             flex: 0 0 auto;
             width: 16.6%;
         }
+        .anjay {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding-top: 35vh;
+            z-index: 9999;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .loader {
+            position: absolute;
+            left: 50%;
+            margin-top: 1rem;
+            transform: translate(-50%, -50%);
+            height: 5px;
+            width: 15rem;
+            background-color: lightgrey;
+        }
+
+        .fade-out {
+            -webkit-animation: fadeout 1s linear forwards;
+            animation: fadeout 1s linear forwards;
+            opacity: 1;
+        }
+
+        @keyframes fadeout {
+            100% {
+                opacity: 0;
+                z-index: -1;
+            }
+        }
+
+        .loading {
+            background-color: #0e76a8;
+            width: 5rem;
+            height: 5px;
+            animation: animation 1.8s infinite;
+        }
+
+        @keyframes animation {
+            0% {
+                transform: translateX(0rem);
+            }
+
+            50% {
+                transform: translateX(10rem);
+            }
+
+            100% {
+                transform: translateX(0rem);
+            }
+        }
 
     </style>
     @stack('styles')
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="anjay">
+            <img src="{{ asset('admin/img/laravel-logo.png') }}" width="50px">
+            <b>Sistem Monitoring</b>
+        </div>
+
+
+        <div class="loader">
+            <div class="loading">
+            </div>
+        </div>
+    </div>
     <div class="wrapper">
         @include('layouts.sidebar')
         <div class="main">
@@ -208,6 +281,22 @@
                 }).columns.adjust().responsive.recalc().ajax.reload();
             });
         })
+    </script>
+
+    <script>
+        // function removeBlur(){
+        //     const blur = document.getElementById('blur')
+        //     blur.classList.remove('blur')
+        // }
+
+        // document.addEventListener("DOMContentLoaded", removeBlur)
+
+        function removeAnimation(){
+            const preloader = document.getElementById('preloader')
+            preloader.classList.add('fade-out')
+        }
+
+        document.addEventListener("DOMContentLoaded", removeAnimation)
     </script>
 
     @stack('scripts')
