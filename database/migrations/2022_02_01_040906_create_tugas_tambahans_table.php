@@ -13,14 +13,14 @@ class CreateTugasTambahansTable extends Migration
      */
     public function up()
     {
-        Schema::create('tugas_tambahans', function (Blueprint $table) {
+        Schema::create('tugas_tambahan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_durasi_nilai');
             $table->string('nama_tugas', 100);
             $table->integer('nilai');
             $table->timestamps();
 
-            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaians')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaian');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateTugasTambahansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tugas_tambahans');
+        Schema::dropIfExists('tugas_tambahan');
     }
 }

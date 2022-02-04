@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class DurasiPenilaian extends Model
 {
     use HasFactory;
+
+    public $table = 'durasi_penilaian';
+    
+    protected $fillable = [
+        'id_pgw_kontrak',
+        'id_penilai',
+        'tgl_mulai_penilaian',
+        'tgl_selesai_penilaian',
+        'permasalahan',
+        'keberatan',
+        'rekomendasi',
+        'penjelasan_penilai',
+        'keputusan_atasan',
+    ];
 }

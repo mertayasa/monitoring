@@ -13,7 +13,7 @@ class CreateTargetSkpsTable extends Migration
      */
     public function up()
     {
-        Schema::create('target_skps', function (Blueprint $table) {
+        Schema::create('target_skp', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_durasi_nilai');
             $table->string('kegiatan', 100);
@@ -28,7 +28,7 @@ class CreateTargetSkpsTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaians')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaian');
         });
     }
 
@@ -39,6 +39,6 @@ class CreateTargetSkpsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('target_skps');
+        Schema::dropIfExists('target_skp');
     }
 }

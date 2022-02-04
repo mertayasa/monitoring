@@ -13,7 +13,7 @@ class CreateDurasiPenilaiansTable extends Migration
      */
     public function up()
     {
-        Schema::create('durasi_penilaians', function (Blueprint $table) {
+        Schema::create('durasi_penilaian', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pgw_kontrak');
             $table->unsignedBigInteger('id_penilai');
@@ -26,8 +26,8 @@ class CreateDurasiPenilaiansTable extends Migration
             $table->text('keputusan_atasan');
             $table->timestamps();
 
-            $table->foreign('id_pgw_kontrak')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_penilai')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_pgw_kontrak')->references('id')->on('users');
+            $table->foreign('id_penilai')->references('id')->on('users');
         });
     }
 
@@ -38,6 +38,6 @@ class CreateDurasiPenilaiansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('durasi_penilaians');
+        Schema::dropIfExists('durasi_penilaian');
     }
 }

@@ -106,7 +106,12 @@ class PangkatGolonganController extends Controller
      */
     public function destroy(PangkatGolongan $pangkat_golongan)
     {
-         try {
+        $check_users = $pangkat_golongan->user()->count();
+        if($check_users > 0) {
+            return response(['code' => 0, 'message' => 'Data Pangkat Golongan Tidak Bisa Dihapus Karena Sudah Digunakan']);
+        }
+
+        try {
             $pangkat_golongan->delete();
         } catch (Exception $e) {
             Log::info($e->getMessage());

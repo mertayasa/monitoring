@@ -106,6 +106,11 @@ class UnitKerjaController extends Controller
      */
     public function destroy(UnitKerja $unit_kerja)
     {
+        $check_users = $unit_kerja->user()->count();
+        if($check_users > 0) {
+            return response(['code' => 0, 'message' => 'Data Unit Kerja Tidak Bisa Dihapus Karena Sudah Digunakan']);
+        }
+
         try {
             $unit_kerja->delete();
         } catch (Exception $e) {

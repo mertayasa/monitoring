@@ -105,7 +105,12 @@ class JabatanController extends Controller
      */
     public function destroy(Jabatan $jabatan)
     {
-         try {
+        $check_users = $jabatan->user()->count();
+        if($check_users > 0) {
+            return response(['code' => 0, 'message' => 'Data Jabatan Tidak Bisa Dihapus Karena Sudah Digunakan']);
+        }
+
+        try {
             $jabatan->delete();
         } catch (Exception $e) {
             Log::info($e->getMessage());

@@ -13,7 +13,7 @@ class CreateSubKegiatansTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_kegiatans', function (Blueprint $table) {
+        Schema::create('sub_kegiatan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_kegiatan');
             $table->string('nama_sub',100);
@@ -21,7 +21,7 @@ class CreateSubKegiatansTable extends Migration
             $table->date('tgl_selesai_kegiatan');
             $table->timestamps();
 
-            $table->foreign('id_kegiatan')->references('id')->on('kegiatans')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_kegiatan')->references('id')->on('kegiatan');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateSubKegiatansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_kegiatans');
+        Schema::dropIfExists('sub_kegiatan');
     }
 }

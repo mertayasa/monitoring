@@ -13,7 +13,7 @@ class CreateNilaiPrilakusTable extends Migration
      */
     public function up()
     {
-        Schema::create('nilai_prilakus', function (Blueprint $table) {
+        Schema::create('nilai_prilaku', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_durasi_nilai');
             $table->integer('orientasi_pelayanan');
@@ -23,7 +23,7 @@ class CreateNilaiPrilakusTable extends Migration
             $table->integer('kerjasama');
             $table->timestamps();
 
-            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaians')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaian');
         });
     }
 
@@ -34,6 +34,6 @@ class CreateNilaiPrilakusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilai_prilakus');
+        Schema::dropIfExists('nilai_prilaku');
     }
 }

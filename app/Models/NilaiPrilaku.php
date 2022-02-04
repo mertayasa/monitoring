@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class NilaiPrilaku extends Model
 {
     use HasFactory;
+
+    public $table = 'nilai_prilaku';
+
+    protected $fillable = [
+        'id_durasi_nilai',
+        'orientasi_pelayanan',
+        'integritas',
+        'komitmen',
+        'disiplin',
+        'kerjasama',
+    ];
 }
