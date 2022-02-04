@@ -15,6 +15,15 @@ class SubKegiatan extends Model
         'id_kegiatan',
         'nama_sub',
         'tgl_mulai_kegiatan',
-        'tgl_selesai_kegiatan',
+        'tgl_selesai_kegiatan'
     ];
+
+      public $with = [
+        'kegiatan'
+    ];
+
+   function kegiatan()
+    {
+        return $this->belongsTo('App\Models\Kegiatan', 'id_kegiatan');
+    }
 }

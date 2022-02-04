@@ -12,6 +12,8 @@ use App\Http\Controllers\UnitKerjaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\DurasiPenilaianController;
 use App\Http\Controllers\TargetSkpController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\SubKegiatanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,6 +113,28 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('update/{target_skp}', [TargetSkpController::class, 'update'])->name('update');
         Route::delete('destroy/{target_skp}', [TargetSkpController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [TargetSkpController::class, 'datatable'])->name('datatable');
+    });
+    
+        Route::group(['prefix' => 'kegiatan', 'as' => 'kegiatan.'], function () {
+        Route::get('/', [KegiatanController::class, 'index'])->name('index');
+        Route::get('create', [KegiatanController::class, 'create'])->name('create');
+        Route::post('store', [KegiatanController::class, 'store'])->name('store');
+        Route::get('edit/{kegiatan}', [KegiatanController::class, 'edit'])->name('edit');
+        Route::get('show/{kegiatan}', [KegiatanController::class, 'show'])->name('show');
+        Route::patch('update/{kegiatan}', [KegiatanController::class, 'update'])->name('update');
+        Route::delete('destroy/{kegiatan}', [KegiatanController::class, 'destroy'])->name('destroy');
+        Route::get('datatable', [KegiatanController::class, 'datatable'])->name('datatable');
+    });
+
+        Route::group(['prefix' => 'sub_kegiatan', 'as' => 'sub_kegiatan.'], function () {
+        Route::get('/', [SubKegiatanController::class, 'index'])->name('index');
+        Route::get('create', [SubKegiatanController::class, 'create'])->name('create');
+        Route::post('store', [SubKegiatanController::class, 'store'])->name('store');
+        Route::get('edit/{sub_kegiatan}', [SubKegiatanController::class, 'edit'])->name('edit');
+        Route::get('show/{sub_kegiatan}', [SubKegiatanController::class, 'show'])->name('show');
+        Route::patch('update/{sub_kegiatan}', [SubKegiatanController::class, 'update'])->name('update');
+        Route::delete('destroy/{sub_kegiatan}', [SubKegiatanController::class, 'destroy'])->name('destroy');
+        Route::get('datatable', [SubKegiatanController::class, 'datatable'])->name('datatable');
     });
 
 });

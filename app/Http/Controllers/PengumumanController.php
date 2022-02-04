@@ -15,13 +15,13 @@ class PengumumanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  public function index(Pengumuman $pengumuman)
+    public function index(Pengumuman $pengumuman)
     {
     //    dd($pengumuman);
         return view('pengumuman.index', compact('pengumuman'));
     }
 
-     public function datatable()
+    public function datatable()
     {
         $pengumuman = Pengumuman::all();
         return PengumumanDataTable::set($pengumuman);
@@ -34,7 +34,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-         return view('pengumuman.create');
+        return view('pengumuman.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-         try {
+        try {
             Pengumuman::create($request->all());
         } catch (Exception $e) {
             Log::info($e->getMessage());
@@ -64,7 +64,7 @@ class PengumumanController extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-         return view('pengumuman.show', compact('pengumuman'));
+        return view('pengumuman.show', compact('pengumuman'));
     }
 
     /**
@@ -105,7 +105,7 @@ class PengumumanController extends Controller
      */
     public function destroy(Pengumuman $pengumuman)
     {
-         try {
+        try {
             $pengumuman->delete();
         } catch (Exception $e) {
             Log::info($e->getMessage());
