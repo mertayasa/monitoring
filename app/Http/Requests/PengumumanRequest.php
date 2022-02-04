@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PengumumanRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class PengumumanRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,9 @@ class PengumumanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'judul' => ['required', 'string', 'max:100', 'min:10'],
+            'deskripsi' => ['required', 'string', 'max:500', 'min:10'],
+            'status' => ['required', Rule::in(['publish', 'draft'])],
         ];
     }
 }

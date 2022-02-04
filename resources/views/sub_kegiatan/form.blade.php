@@ -12,13 +12,13 @@
 </div>
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('jabatan', 'tanggal Mulai Kegiatan', ['class' => 'mb-1']) !!}
+        {!! Form::label('jabatan', 'Tanggal Mulai Kegiatan', ['class' => 'mb-1']) !!}
         {!! Form::date('tgl_mulai_kegiatan', null, ['class' => 'form-control', 'id' => 'jabatan']) !!}
     </div>
 </div>
 <div class="row mt-3">
     <div class="col-12  pb-3 pb-md-0">
-        {!! Form::label('jabatan', 'tanggal Selesai Kegiatan', ['class' => 'mb-1']) !!}
+        {!! Form::label('jabatan', 'Tanggal Selesai Kegiatan', ['class' => 'mb-1']) !!}
         {!! Form::date('tgl_selesai_kegiatan', null, ['class' => 'form-control', 'id' => 'jabatan']) !!}
     </div>
 </div>

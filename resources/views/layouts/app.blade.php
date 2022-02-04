@@ -11,12 +11,12 @@
     <meta name="keywords"
         content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+    {{-- <link rel="shortcut icon" href="img/icons/icon-48x48.png" /> --}}
 
     <title>Sistem Informasi Monitoring</title>
 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href=" {{ asset('datatables/datatables.css') }}">
     <style>
@@ -35,11 +35,6 @@
         .col-md-16-6 {
             flex: 0 0 auto;
             width: 16.6%;
-        }
-        .anjay {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
         }
 
         #preloader {
@@ -104,7 +99,7 @@
 
 <body>
     <div id="preloader">
-        <div class="anjay">
+        <div class="text-center">
             <img src="{{ asset('admin/img/laravel-logo.png') }}" width="50px">
             <b>Sistem Monitoring</b>
         </div>
@@ -209,6 +204,23 @@
             })
         }
 
+        function showPassword(id) {
+            var passWordEl = document.getElementById(id);
+            if (passWordEl.type === "password") {
+                passWordEl.type = "text";
+            } else {
+                passWordEl.type = "password";
+            }
+        }
+
+        const numberOnlyInput = document.getElementsByClassName('number-only')
+        for (let index = 0; index < numberOnlyInput.length; index++) {
+            const numberOnly = numberOnlyInput[index];
+            numberOnly.addEventListener('input', function(element){
+                element.target.value = element.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+            })
+        }
+
         $(document).ready(function() {
             $('select:not(.custom-select)').select2({
                 theme: 'bootstrap4',
@@ -284,13 +296,6 @@
     </script>
 
     <script>
-        // function removeBlur(){
-        //     const blur = document.getElementById('blur')
-        //     blur.classList.remove('blur')
-        // }
-
-        // document.addEventListener("DOMContentLoaded", removeBlur)
-
         function removeAnimation(){
             const preloader = document.getElementById('preloader')
             preloader.classList.add('fade-out')

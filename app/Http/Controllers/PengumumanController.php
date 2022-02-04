@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use App\DataTables\PengumumanDataTable;
+use App\Http\Requests\PengumumanRequest;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
@@ -43,10 +44,10 @@ class PengumumanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PengumumanRequest $request)
     {
         try {
-            Pengumuman::create($request->all());
+            Pengumuman::create($request->validated());
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Data Pengumuman Gagal Ditambahkan');
@@ -85,10 +86,10 @@ class PengumumanController extends Controller
      * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengumuman $pengumuman)
+    public function update(PengumumanRequest $request, Pengumuman $pengumuman)
     {
         try {
-            $pengumuman->update($request->all());
+            $pengumuman->update($request->validated());
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Data Pengumuman Gagal Di Edit');
