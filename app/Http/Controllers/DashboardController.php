@@ -21,7 +21,7 @@ class DashboardController extends Controller
     public function generateDashboardData()
     {
         $dashboard_data = [
-            'pengumuman' => []
+            'pengumuman' => Pengumuman::where('status', 'publish')->latest()->get()
         ];
 
         return $dashboard_data;

@@ -8,52 +8,68 @@
         </div>
 
         <ul class="sidebar-nav">
-            <li class="sidebar-header">
-                Menu
-            </li>
-
             <li class="sidebar-item {{ isActive('dashboard') }}">
                 <a class="sidebar-link" href="{{ route('dashboard.index') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    <i class="align-middle" data-feather="home"></i> <span class="align-middle">Dashboard</span>
                 </a>
+            </li>
+            
+            @php
+                $user = isActive([
+                    'admin',
+                    'penilai',
+                    'kontrak',
+                ])
+            @endphp
+            <li class="sidebar-item">
+                <a data-target="#users" data-toggle="collapse" class="sidebar-link {{ $user == 'active' ? '' : 'collapsed' }}">
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Pengguna</span>
+                </a>
+                <ul id="users" class="sidebar-dropdown list-unstyled {{ $user == 'active' ? 'show' : 'collapse' }}" data-parent="#sidebar">
+                    <li class="sidebar-item {{ isActive('admin') }}"><a class="sidebar-link" href="{{ route('user.index', 'admin') }}">Admin</a></li>
+                    <li class="sidebar-item {{ isActive('penilai') }}"><a class="sidebar-link" href="{{ route('user.index', 'penilai') }}">Pejabat Penilai</a></li>
+                    <li class="sidebar-item {{ isActive('kontrak') }}"><a class="sidebar-link" href="{{ route('user.index', 'kontrak') }}">Pegawai Kontrak</a></li>
+                </ul>
             </li>
 
             <li class="sidebar-item {{ isActive('pengumuman') }}">
                 <a class="sidebar-link" href="{{ route('pengumuman.index') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Pengumuman</span>
+                    <i class="align-middle" data-feather="bell"></i> <span class="align-middle">Pengumuman</span>
                 </a>
             </li>
 
-            <li class="sidebar-item {{ isActive('pangkat_golongan') }}">
-                <a class="sidebar-link" href="{{ route('pangkat_golongan.index') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Pangkat
-                        Golongan</span>
+            @php
+                $kegiatan = isActive([
+                    'kegiatan',
+                    'sub_kegiatan',
+                ])
+            @endphp
+            <li class="sidebar-item">
+                <a data-target="#kegiatan" data-toggle="collapse" class="sidebar-link {{ $kegiatan == 'active' ? '' : 'collapsed' }}">
+                    <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Kegiatan</span>
                 </a>
+                <ul id="kegiatan" class="sidebar-dropdown list-unstyled {{ $kegiatan == 'active' ? 'show' : 'collapse' }}" data-parent="#sidebar">
+                    <li class="sidebar-item {{ isActive('kegiatan') }}"><a class="sidebar-link" href="{{ route('kegiatan.index') }}">Kegiatan</a></li>
+                    <li class="sidebar-item {{ isActive('sub_kegiatan') }}"><a class="sidebar-link" href="{{ route('sub_kegiatan.index') }}">Sub Kegiatan</a></li>
+                </ul>
             </li>
 
-            <li class="sidebar-item {{ isActive('unit_kerja') }}">
-                <a class="sidebar-link" href="{{ route('unit_kerja.index') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Unit Kerja</span>
+            @php
+                $master = isActive([
+                    'pangkat_golongan',
+                    'unit_kerja',
+                    'jabatan',
+                ])
+            @endphp
+            <li class="sidebar-item">
+                <a data-target="#master" data-toggle="collapse" class="sidebar-link {{ $master == 'active' ? '' : 'collapsed' }}">
+                    <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Data Master</span>
                 </a>
-            </li>
-
-            <li class="sidebar-item {{ isActive('jabatan') }}">
-                <a class="sidebar-link" href="{{ route('jabatan.index') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Jabatan</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item {{ isActive('kegiatan') }}">
-                <a class="sidebar-link" href="{{ route('kegiatan.index') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Kegiatan</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item {{ isActive('sub_kegiatan') }}">
-                <a class="sidebar-link" href="{{ route('sub_kegiatan.index') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Sub
-                        Kegiatan</span>
-                </a>
+                <ul id="master" class="sidebar-dropdown list-unstyled {{ $master == 'active' ? 'show' : 'collapse' }}" data-parent="#sidebar">
+                    <li class="sidebar-item {{ isActive('pangkat_golongan') }}"><a class="sidebar-link" href="{{ route('pangkat_golongan.index') }}">Pangkat Golongan</a></li>
+                    <li class="sidebar-item {{ isActive('unit_kerja') }}"><a class="sidebar-link" href="{{ route('unit_kerja.index') }}">Unit Kerja</a></li>
+                    <li class="sidebar-item {{ isActive('jabatan') }}"><a class="sidebar-link" href="{{ route('jabatan.index') }}">Jabatan</a></li>
+                </ul>
             </li>
         </ul>
 

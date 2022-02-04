@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Request as FacadesRequest;
 class UserController extends Controller
 {
 
-    public function index()
+    public function index($level)
     {
-        return view('user.index');
+        return view('user.'.$level.'.index', compact('level'));
     }
 
     public function datatable($level)
@@ -26,15 +26,15 @@ class UserController extends Controller
         }else{
             $user = User::where('level', $level)->get();
         }
-        return UserDataTable::set($user);
+        return UserDataTable::set($user, $level);
     }
 
-    public function create()
+    public function create($level)
     {
-        return view('user.create');
+        return view('user.'.$level.'.create', compact('level'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $level)
     {
         try {
             $data = $request->all();
@@ -47,6 +47,7 @@ class UserController extends Controller
                 $data['foto'] = $upload_image;
             }
 
+            $data['level'] = $level;
             $data['password'] = bcrypt($request->password);
             $user = User::create($data);
         } catch (Exception $e) {
@@ -58,17 +59,12 @@ class UserController extends Controller
     }
 
 
-    public function edit(User $user)
+    public function edit($level, User $user)
     {
-        if (FacadesRequest::is('*guru*')) {
-            return view('guru.edit', compact('user'));
-        }
-        if (FacadesRequest::is('*ortu*')) {
-            return view('ortu.edit', compact('user'));
-        }
+        return view('user.'.$level.'.edit', compact('user', 'level'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $level, User $user)
     {
         try {
             $data = $request->all();
@@ -97,12 +93,12 @@ class UserController extends Controller
         return redirect()->route($this->getFeedback($user->level, 'english') . '.index')->with('success', 'Berhasil mengubah data ' . $this->getFeedback($user->level));
     }
 
-    public function show(User $user)
+    public function show($level, User $user)
     {
-        return view('ortu.show', [$user]);
+        return view('user.'.$level.'.show', compact('user', 'level'));
     }
 
-    public function destroy(User $user)
+    public function destroy($level, User $user)
     {
         try {
             $user->delete();
@@ -120,15 +116,15 @@ class UserController extends Controller
             return 'admin';
         }
 
-        if ($level == 'guru') {
-            return 'guru';
+        if ($level == 'penilai') {
+            return 'penilai';
         }
 
-        if ($level == 'ortu') {
+        if ($level == 'kontrak') {
             if ($lang == 'english') {
-                return 'ortu';
+                return 'kontrak';
             }
-            return 'ortu';
+            return 'kontrak';
         }
     }
 

@@ -43,12 +43,13 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-        Route::get('/', [UserController::class, 'index'])->name('index');
-        Route::get('create', [UserController::class, 'create'])->name('create');
-        Route::post('store', [UserController::class, 'store'])->name('store');
-        Route::get('edit/{user}', [UserController::class, 'edit'])->name('edit');
-        Route::patch('update/{user}', [UserController::class, 'update'])->name('update');
-        Route::delete('destroy/{user}', [UserController::class, 'destroy'])->name('destroy');
+        Route::get('/{level}', [UserController::class, 'index'])->name('index');
+        Route::get('create/{level}', [UserController::class, 'create'])->name('create');
+        Route::post('store/{level}', [UserController::class, 'store'])->name('store');
+        Route::get('edit/{level}/{user}', [UserController::class, 'edit'])->name('edit');
+        Route::get('show/{level}/{user}', [UserController::class, 'show'])->name('show');
+        Route::patch('update/{level}/{user}', [UserController::class, 'update'])->name('update');
+        Route::delete('destroy/{level}/{user}', [UserController::class, 'destroy'])->name('destroy');
         Route::get('datatable/{level?}', [UserController::class, 'datatable'])->name('datatable');
     });
 

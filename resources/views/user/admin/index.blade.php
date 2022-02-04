@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="container-fluid p-0">
-        <h1 class=" mb-3">Pengumuman</h1>
+        <h1 class=" mb-3">Admin</h1>
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <a href="{{ route('pengumuman.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Tambah Pengumuman"> <i class="fas fa-folder-plus"></i>
-                            Pengumuman Baru</a>
+                        <a href="{{ route('user.create', $level) }}" class="btn btn-primary add" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="Tambah Admin"> <i class="fas fa-folder-plus"></i>
+                            Admin Baru</a>
                     </div>
                     <div class="px-3">
                         @include('layouts.flash')
@@ -19,9 +19,7 @@
                     <div class="card-body">
 
                         <div class=" d-flex justify-content-between">
-                            @include('pengumuman.datatable')
-
-                            {{-- {{ $pengumuman->judul }} --}}
+                            @include('user.'.$level.'.datatable')
                         </div>
                     </div>
                 </div>

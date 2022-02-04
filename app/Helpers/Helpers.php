@@ -16,14 +16,16 @@ function formatPrice($value)
 
 function isActive($param)
 {
+    $segment = Request::segments();
+
     if (is_array($param)) {
         foreach ($param as $par) {
-            if (Request::route()->getPrefix() == '/' . $par) {
+            if (Request::route()->getPrefix() == '/' . $par || in_array($par, $segment)) {
                 return 'active';
             }
         }
     } else {
-        return Request::route()->getPrefix() == '/' . $param ? 'active' : '';
+        return (Request::route()->getPrefix() == '/' . $param || in_array($param, $segment)) ? 'active' : '';
     }
 
     return '';
@@ -42,14 +44,9 @@ function showFor($roles)
 
 function roleName($level = null)
 {
-    $role_name = ($level ?? Auth::user()->level) == User::$admin ? 'admin' : (($level ?? Auth::user()->level) == User::$guru ? 'guru' : User::$ortu);
+    $role_name = ($level ?? Auth::user()->level) == User::$admin ? 'admin' : (($level ?? Auth::user()->level) == User::$penilai ? 'penilai' : User::$kontrak);
 
     return $role_name;
-}
-
-function authUser()
-{
-    return Auth::user();
 }
 
 function indonesianDate($date)
@@ -63,16 +60,6 @@ function getAge($date)
     $now = Carbon::now();
 
     return $birth_date->diffInYears($now);
-}
-
-function isLokal($gender)
-{
-    return $gender == 'true' ? 'Muatan Lokal' : 'Bukan Muatan Lokal';
-}
-
-function getStatus($status)
-{
-    return $status == 1 ? '<span class="badge badge-primary">Aktif</span>' : '<span class="badge badge-secondary">Nonaktif</span>';
 }
 
 function uploadFile($base_64_foto, $folder)
@@ -134,51 +121,5 @@ function getHari()
         '6' => 'Sabtu',
         '7' => 'Minggu',
     ];
-}
-
-function getSemester($tgl, $id_tahun_ajar)
-{
-    $tahun_ajar = TahunAjar::find($id_tahun_ajar);
-    if($tgl >= $tahun_ajar->mulai_smt_ganjil && $tgl <= $tahun_ajar->selesai_smt_ganjil){
-        return 'ganjil';
-    }
-    else if($tgl >= $tahun_ajar->mulai_smt_genap && $tgl <= $tahun_ajar->selesai_smt_genap){
-        return 'genal';
-    }else{
-        return false;
-    }
-}
-
-function getSemesterName($semester)
-{
-    return $semester == 'ganjil' ? '1 (Satu)' : '2 (Dua)';
-}
-
-
-function getPredikatNilai($nilai)
-{
-    switch($nilai){
-        case $nilai > 0 and $nilai <= 60:
-            return 'D';
-        break;
-        case $nilai > 60 and $nilai <= 70:
-            return 'C';
-        break;
-        case $nilai > 70 and $nilai <= 85:
-            return 'B';
-        break;
-        case $nilai > 85 and $nilai <= 90:
-            return 'B+';
-        break;
-        case $nilai > 90:
-            return 'A';
-        break;
-    }
-}
-
-
-function province()
-{
-    return "Bali";
 }
 
