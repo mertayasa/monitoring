@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\DataTables\UserDataTable;
 use App\Http\Requests\UserRequest;
+use App\Models\Jabatan;
+use App\Models\PangkatGolongan;
+use App\Models\UnitKerja;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Exception;
@@ -21,7 +24,7 @@ class UserController extends Controller
 
     public function datatable($level)
     {
-        if(isset($level)){
+        if(!isset($level)){
             $user = User::all();
         }else{
             $user = User::where('level', $level)->get();
@@ -31,10 +34,21 @@ class UserController extends Controller
 
     public function create($level)
     {
-        return view('user.'.$level.'.create', compact('level'));
+        $jabatan = ['' => 'Pilih jabatan'] + Jabatan::pluck('nama', 'id')->toArray();
+        $unit_kerja = ['' => 'Pilih Unit Kerja'] + UnitKerja::pluck('nama', 'id')->toArray();
+        $pangkat_golongan = ['' => 'Pilih Pangkat Golongan'] + PangkatGolongan::pluck('nama', 'id')->toArray();
+
+        $data = [
+            'jabatan' => $jabatan,
+            'unit_kerja' => $unit_kerja,
+            'pangkat_golongan' => $pangkat_golongan,
+            'level' => $level,
+        ];
+
+        return view('user.'.$level.'.create', $data);
     }
 
-    public function store(Request $request, $level)
+    public function store(UserRequest $request, $level)
     {
         try {
             $data = $request->all();
@@ -64,7 +78,7 @@ class UserController extends Controller
         return view('user.'.$level.'.edit', compact('user', 'level'));
     }
 
-    public function update(Request $request, $level, User $user)
+    public function update(UserRequest $request, $level, User $user)
     {
         try {
             $data = $request->all();
@@ -128,23 +142,23 @@ class UserController extends Controller
         }
     }
 
-    public function editProfile(User $user)
+    public function editProfile($level, User $user)
     {
-        return view('profile.edit', [$user]);
+        return view('user.'.$level.'.profile', compact('user', 'level'));
     }
 
-    public function updateProfile(User $user, Request $request)
+    public function updateProfile($level, User $user, UserRequest $request)
     {
         if (Auth::id() != $user->id) {
             abort(403);
         }
 
         try {
-            $data = $request->all();
+            $data = $request->validated();
             unset($data['level']);
 
-            if ($data['password']) {
-                $data['password'] = bcrypt($data['password']);
+            if ($request->password) {
+                $data['password'] = bcrypt($request->password);
             } else {
                 unset($data['password']);
             }

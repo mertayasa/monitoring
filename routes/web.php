@@ -38,8 +38,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
-        Route::get('edit/{user}', [Usercontroller::class, 'editProfile'])->name('edit');
-        Route::patch('update/{user}', [Usercontroller::class, 'updateProfile'])->name('update');
+        Route::get('edit/{level}/{user}', [Usercontroller::class, 'editProfile'])->name('edit');
+        Route::patch('update/{level}/{user}', [Usercontroller::class, 'updateProfile'])->name('update');
     });
 
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {

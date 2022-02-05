@@ -37,6 +37,9 @@ class User extends Authenticatable
         'id_unit_kerja',
         'id_jabatan',
         'id_pangkat_golongan',
+        'tgl_mulai_kontrak',
+        'tgl_selesai_kontrak',
+        'no_kontrak',
     ];
 
     /**
