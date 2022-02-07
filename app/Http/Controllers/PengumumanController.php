@@ -19,7 +19,7 @@ class PengumumanController extends Controller
     public function index()
     {
     //    dd($pengumuman);
-        return view('pengumuman.index', compact('pengumuman'));
+        return view('pengumuman.index');
     }
 
     public function datatable()

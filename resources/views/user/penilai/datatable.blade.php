@@ -3,8 +3,11 @@
         <tr>
             <th style="width: 30px">No</th>
             <th></th>
+            <th>Foto</th>
             <th>Nama</th>
-            <th>Email</th>
+            <th>Jabatan</th>
+            <th>No Telp</th>
+            <th>Status</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -40,12 +43,24 @@
                         searchable: false
                     },
                     {
+                        data: 'foto',
+                        name: 'foto'
+                    },
+                    {
                         data: 'nama',
                         name: 'nama'
                     },
                     {
-                        data: 'email',
-                        name: 'email'
+                        data: 'jabatan.nama',
+                        name: 'jabatan.nama'
+                    },
+                    {
+                        data: 'no_tlp',
+                        name: 'no_tlp'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
                     },
                     {
                         data: 'action',

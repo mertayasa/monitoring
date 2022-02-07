@@ -52,6 +52,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $with = [
+        'jabatan',
+        'unitKerja',
+        'pangkatGolongan',
+    ];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -105,6 +111,26 @@ class User extends Authenticatable
         } else {
             return asset('images/default/default_profil.png');
         }
+    }
+
+    public function getStatus()
+    {
+        return $this->attributes['status'] == 'nonaktif' ? 'Non Aktif' : 'Aktif';
+    }
+
+    public function getTglMulaiKontrak()
+    {
+        return !isNull($this->attributes['tgl_mulai_kontrak']) ? indonesianDate($this->attributes['tgl_mulai_kontrak']) : '-';
+    }
+
+    public function getTglLahir()
+    {
+        return !isNull($this->attributes['tgl_lahir']) ? indonesianDate($this->attributes['tgl_lahir']) : '-';
+    }
+
+    public function getTglSelesaiKontrak()
+    {
+        return !isNull($this->attributes['tgl_selesai_kontrak']) ? indonesianDate($this->attributes['tgl_selesai_kontrak']) : '-';
     }
 
 

@@ -19,16 +19,16 @@ class CreateTargetSkpsTable extends Migration
             $table->string('kegiatan', 100);
             $table->integer('kuantitas');
             $table->string('output',100);
-            $table->datetime('waktu');
-            $table->integer('kualitas');    
-            $table->integer('biaya');
+            $table->datetime('waktu')->nullable();
+            $table->integer('kualitas')->default(0);    
+            $table->integer('biaya')->default(0);
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
-            $table->integer('nilai');
-            $table->integer('total');
+            $table->integer('nilai')->default(0);
+            $table->integer('total')->default(0);
 
             $table->timestamps();
 
-            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaian');
+            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaian')->onDelete('cascade');
         });
     }
 

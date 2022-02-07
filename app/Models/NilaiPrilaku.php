@@ -19,4 +19,9 @@ class NilaiPrilaku extends Model
         'disiplin',
         'kerjasama',
     ];
+
+    public function durasiPenilaian()
+    {
+        return $this->belongsTo(DurasiPenilaian::class, 'id_durasi_nilai');
+    }
 }

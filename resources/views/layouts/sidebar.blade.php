@@ -38,6 +38,12 @@
                 </a>
             </li>
 
+            <li class="sidebar-item {{ isActive('penilaian') }}">
+                <a class="sidebar-link" href="{{ route('penilaian.index') }}">
+                    <i class="align-middle" data-feather="star"></i> <span class="align-middle">Penilai SKP</span>
+                </a>
+            </li>
+
             @php
                 $kegiatan = isActive([
                     'kegiatan',

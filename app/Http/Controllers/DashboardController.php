@@ -21,6 +21,9 @@ class DashboardController extends Controller
     public function generateDashboardData()
     {
         $dashboard_data = [
+            'total_penilai' => User::where('level', User::$penilai)->count(),
+            'total_kontrak' => User::where('level', User::$kontrak)->count(),
+            'total_admin' => User::where('level', User::$admin)->count(),
             'pengumuman' => Pengumuman::where('status', 'publish')->latest()->get()
         ];
 

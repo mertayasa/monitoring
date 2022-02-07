@@ -54,7 +54,7 @@
     </div>
     <div class="col-12 col-md-6 pb-3 pb-md-0">
         {!! Form::label('jenisKelamin', 'Jenis Kelamin', ['class' => 'mb-1']) !!}
-        {!! Form::select('jenis_kelamin', ['' => 'Pilih Jenis Kelamin', 'Laki-laki' => 'Laki-Laki', 'perempuan' => 'Perempuan'], null, ['class' => 'form-control', 'id' => 'jenisKelamin']) !!}  
+        {!! Form::select('jenis_kelamin', ['' => 'Pilih Jenis Kelamin', 'Laki-laki' => 'Laki-Laki', 'Perempuan' => 'Perempuan'], null, ['class' => 'form-control', 'id' => 'jenisKelamin']) !!}  
     </div>
 </div>
 @include('layouts.form_password')

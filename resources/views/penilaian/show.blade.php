@@ -2,20 +2,19 @@
 
 @section('content')
     <div class="container-fluid p-0">
-        <h1 class="h3 mb-3">Data pejabat penilai</h1>
+        {{-- <h1 class="h3 mb-3">Detail Pengumuman</h1> --}}
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        {{-- <h5 class="card-title mb-0">Detail Pejabat Penilai</h5> --}}
+                        <h5 class="card-title mb-0">Detail Pengumuman</h5>
                     </div>
                     <div class="card-body pt-0">
-                        @include('user.'.$level.'.form-show')
+                        @include('pengumuman.form-show')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('user.edit', [$level, $user->id]) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ route('user.index', $level) }}" class="btn btn-danger">Kembali</a>
+                                <a href="{{ route('pengumuman.index') }}" class="btn btn-danger">Kembali</a>
                             </div>
                         </div>
                     </div>

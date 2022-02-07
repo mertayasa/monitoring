@@ -16,14 +16,14 @@ class CreateNilaiPrilakusTable extends Migration
         Schema::create('nilai_prilaku', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_durasi_nilai');
-            $table->integer('orientasi_pelayanan');
-            $table->integer('integritas');
-            $table->integer('komitmen');
-            $table->integer('disiplin');
-            $table->integer('kerjasama');
+            $table->integer('orientasi_pelayanan')->nullable();
+            $table->integer('integritas')->nullable();
+            $table->integer('komitmen')->nullable();
+            $table->integer('disiplin')->nullable();
+            $table->integer('kerjasama')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaian');
+            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaian')->onDelete('cascade');
         });
     }
 

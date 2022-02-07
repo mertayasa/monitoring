@@ -2,6 +2,8 @@
 
 namespace App\DataTables;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\DataTables;
 
@@ -12,6 +14,12 @@ class UserDataTable
         return Datatables::of($user)
             ->editColumn('foto', function ($user){
                 return '<img src="'.$user->getFoto().'" alt="" width="75px">';
+            })
+            ->editColumn('status', function ($user){
+                return $user->getStatus();
+            })
+            ->editColumn('tgl_mulai_kontrak', function ($user) use($level){
+                return $user->getTglMulaiKontrak();
             })
             ->addColumn('action', function ($user) use($level) {
                 $deleteUrl = "'" . route('user.destroy', [$level, $user->id]) . "', '".$level."DataTable'";

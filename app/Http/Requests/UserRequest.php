@@ -42,19 +42,19 @@ class UserRequest extends FormRequest
         if($route_level == User::$penilai){
             $rules += ['id_pangkat_golongan' => ['required', 'numeric', 'exists:pangkat_golongan,id']];
             $rules += ['id_jabatan' => ['required', 'numeric', 'exists:jabatan,id']];
-            $rules += ['id_unit_kerja' => ['required', 'numeric', 'exists:junit_kerja,id']];
+            $rules += ['id_unit_kerja' => ['required', 'numeric', 'exists:unit_kerja,id']];
         }
         
         if($route_level == User::$kontrak){
             $rules += ['tgl_mulai_kontrak' => ['nullable', 'date']];
             $rules += ['tgl_selesai_kontrak' => ['nullable', 'date']];
-            $rules += ['id_unit_kerja' => ['required', 'numeric', 'exists:junit_kerja,id']];
+            $rules += ['id_unit_kerja' => ['required', 'numeric', 'exists:unit_kerja,id']];
         }
 
         if($route_level != User::$admin){
             $rules += ['jenis_kelamin' => ['required', Rule::in('Laki-laki', 'Perempuan')]];
             $rules += ['no_tlp' => ['required', 'string', 'max:13']];
-            $rules += ['tempat_lahir' => ['required', 'max:50']];
+            $rules += ['tempat_lahir' => ['required', 'max:100']];
             $rules += ['tgl_lahir' => ['required', 'date', 'before:'.$today]];
             $rules += ['alamat' => ['required', 'max:100']];
         }
@@ -67,7 +67,7 @@ class UserRequest extends FormRequest
             }
             
             if($route_level == User::$kontrak){
-                $rules += ['no_kontrak' => ['required', 'numeric', 'unique:users,no_kontrak,'.$this->route('user')->id]];
+                $rules += ['no_kontrak' => ['required', 'unique:users,no_kontrak,'.$this->route('user')->id]];
             }
             
             if($this->password != null){
@@ -82,12 +82,12 @@ class UserRequest extends FormRequest
             }
 
             if($route_level == User::$kontrak){
-                $rules += ['no_kontrak' => ['required', 'numeric', 'unique:users,no_kontrak']];
+                $rules += ['no_kontrak' => ['required', 'unique:users,no_kontrak']];
             }
             unset($rules['password']);
         }
 
-        dd($rules);
+        // dd($rules);
         return $rules;
     }
 

@@ -16,9 +16,9 @@ class CreateSubKegiatansTable extends Migration
         Schema::create('sub_kegiatan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_kegiatan');
-            $table->string('nama_sub',100);
-            $table->date('tgl_mulai_kegiatan');
-            $table->date('tgl_selesai_kegiatan');
+            $table->string('nama_sub',100)->nullable();
+            $table->date('tgl_mulai_kegiatan')->nullable();
+            $table->date('tgl_selesai_kegiatan')->nullable();
             $table->timestamps();
 
             $table->foreign('id_kegiatan')->references('id')->on('kegiatan');

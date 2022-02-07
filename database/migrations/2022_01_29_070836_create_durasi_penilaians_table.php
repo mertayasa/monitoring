@@ -19,11 +19,11 @@ class CreateDurasiPenilaiansTable extends Migration
             $table->unsignedBigInteger('id_penilai');
             $table->date('tgl_mulai_penilaian');
             $table->date('tgl_selesai_penilaian')->nullable();
-            $table->text('permasalahan');
-            $table->text('keberatan');
-            $table->text('rekomendasi');
-            $table->text('penjelasan_penilai');
-            $table->text('keputusan_atasan');
+            $table->text('permasalahan')->nullable();
+            $table->text('keberatan')->nullable();
+            $table->text('rekomendasi')->nullable();
+            $table->text('penjelasan_penilai')->nullable();
+            $table->text('keputusan_atasan')->nullable();
             $table->timestamps();
 
             $table->foreign('id_pgw_kontrak')->references('id')->on('users');

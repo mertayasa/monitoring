@@ -1,13 +1,11 @@
-<table class="table table-hover table-striped" width="100%" id="{{ $level }}DataTable">
+<table class="table table-hover table-striped" width="100%" id="PenilaianDataTable">
     <thead>
         <tr>
             <th style="width: 30px">No</th>
             <th></th>
-            <th>Foto</th>
-            <th>Nama</th>
-            <th>Mulai Kontrak</th>
-            <th>No Telp</th>
-            <th>Status</th>
+            <th>Pegawai</th>
+            <th>Penilai</th>
+            <th>Durasi Penilaian</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -18,13 +16,13 @@
 
     <script>
         let table
-        let url = "{{ route('user.datatable', $level) }}"
+        let url = "{{ route('penilaian.datatable') }}"
 
         datatable(url)
 
         function datatable(url) {
 
-            table = $("#{{ $level }}DataTable").DataTable({
+            table = $('#PenilaianDataTable').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
@@ -43,24 +41,16 @@
                         searchable: false
                     },
                     {
-                        data: 'foto',
-                        name: 'foto'
+                        data: 'pgw_kontrak.nama',
+                        name: 'pgw_kontrak.nama'
                     },
                     {
-                        data: 'nama',
-                        name: 'nama'
+                        data: 'penilai.nama',
+                        name: 'penilai.nama'
                     },
                     {
-                        data: 'tgl_mulai_kontrak',
-                        name: 'tgl_mulai_kontrak'
-                    },
-                    {
-                        data: 'no_tlp',
-                        name: 'no_tlp'
-                    },
-                    {
-                        data: 'status',
-                        name: 'status'
+                        data: 'durasi',
+                        name: 'durasi'
                     },
                     {
                         data: 'action',

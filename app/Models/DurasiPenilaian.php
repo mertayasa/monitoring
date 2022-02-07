@@ -22,4 +22,14 @@ class DurasiPenilaian extends Model
         'penjelasan_penilai',
         'keputusan_atasan',
     ];
+
+    public function pgwKontrak()
+    {
+        return $this->belongsTo(User::class, 'id_pgw_kontrak');
+    }
+
+    public function penilai()
+    {
+        return $this->belongsTo(User::class, 'id_penilai');
+    }
 }

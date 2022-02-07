@@ -31,6 +31,11 @@ function isActive($param)
     return '';
 }
 
+function isNull($value)
+{
+    return $value == null || $value == '' ? true : false;
+}
+
 function showFor($roles)
 {
     foreach ($roles as $role) {

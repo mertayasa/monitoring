@@ -14,6 +14,7 @@
                         @include('user.'.$level.'.form-show')
                         <div class="row mt-3">
                             <div class="col-12">
+                                <a href="{{ route('user.edit', [$level, $user->id]) }}" class="btn btn-warning">Edit</a>
                                 <a href="{{ route('user.index', $level) }}" class="btn btn-danger">Kembali</a>
                             </div>
                         </div>

@@ -34,9 +34,9 @@ class UserController extends Controller
 
     public function create($level)
     {
-        $jabatan = ['' => 'Pilih jabatan'] + Jabatan::pluck('nama', 'id')->toArray();
+        $jabatan = $level == User::$penilai ? ['' => 'Pilih jabatan'] + Jabatan::pluck('nama', 'id')->toArray() : [];
         $unit_kerja = ['' => 'Pilih Unit Kerja'] + UnitKerja::pluck('nama', 'id')->toArray();
-        $pangkat_golongan = ['' => 'Pilih Pangkat Golongan'] + PangkatGolongan::pluck('nama', 'id')->toArray();
+        $pangkat_golongan = $level == User::$penilai ? ['' => 'Pilih Pangkat Golongan'] + PangkatGolongan::pluck('nama', 'id')->toArray() : [];
 
         $data = [
             'jabatan' => $jabatan,
@@ -66,22 +66,34 @@ class UserController extends Controller
             $user = User::create($data);
         } catch (Exception $e) {
             Log::info($e->getMessage());
-            return redirect()->back()->withInput()->with('error', 'Gagal menambahkan ' . $this->getFeedback($user->level) . ' !');
+            return redirect()->back()->withInput()->with('error', 'Gagal menambahkan ' . $level . ' !');
         }
 
-        return redirect()->route($this->getFeedback($user->level, 'english') . '.index')->with('success', 'Berhasil menambahkan data ' . $this->getFeedback($user->level));
+        return redirect()->route('user.index', $level)->with('success', 'Berhasil menambahkan data ' . $level);
     }
 
 
     public function edit($level, User $user)
     {
-        return view('user.'.$level.'.edit', compact('user', 'level'));
+        $jabatan = $level == User::$penilai ? ['' => 'Pilih jabatan'] + Jabatan::pluck('nama', 'id')->toArray() : [];
+        $unit_kerja = ['' => 'Pilih Unit Kerja'] + UnitKerja::pluck('nama', 'id')->toArray();
+        $pangkat_golongan = $level == User::$penilai ? ['' => 'Pilih Pangkat Golongan'] + PangkatGolongan::pluck('nama', 'id')->toArray() : [];
+
+        $data = [
+            'user' => $user,
+            'jabatan' => $jabatan,
+            'unit_kerja' => $unit_kerja,
+            'pangkat_golongan' => $pangkat_golongan,
+            'level' => $level,
+        ];
+
+        return view('user.'.$level.'.edit', $data);
     }
 
     public function update(UserRequest $request, $level, User $user)
     {
         try {
-            $data = $request->all();
+            $data = $request->validated();
             unset($data['level']);
 
             if($request['foto']){
@@ -95,16 +107,18 @@ class UserController extends Controller
 
             if($request->password){
                 $data['password'] = bcrypt($request->password);
+            }else{
+                unset($data['password']);
             }
 
             $user->update($data);
             $user = $user->refresh();
         } catch (Exception $e) {
             Log::info($e->getMessage());
-            return redirect()->back()->withInput()->with('error', 'Gagal mengubah ' . $this->getFeedback($user->level) . ' !');
+            return redirect()->back()->withInput()->with('error', 'Gagal mengubah ' . $level . ' !');
         }
 
-        return redirect()->route($this->getFeedback($user->level, 'english') . '.index')->with('success', 'Berhasil mengubah data ' . $this->getFeedback($user->level));
+        return redirect()->route('user.index', $level)->with('success', 'Berhasil mengubah data ' . $level);
     }
 
     public function show($level, User $user)
@@ -122,24 +136,6 @@ class UserController extends Controller
         }
 
         return response(['code' => 1, 'message' => 'Berhasil menghapus user']);
-    }
-
-    private function getFeedback($level, $lang = null)
-    {
-        if ($level == 'admin') {
-            return 'admin';
-        }
-
-        if ($level == 'penilai') {
-            return 'penilai';
-        }
-
-        if ($level == 'kontrak') {
-            if ($lang == 'english') {
-                return 'kontrak';
-            }
-            return 'kontrak';
-        }
     }
 
     public function editProfile($level, User $user)
