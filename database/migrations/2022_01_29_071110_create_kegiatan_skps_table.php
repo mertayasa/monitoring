@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTargetSkpsTable extends Migration
+class CreateKegiatanSkpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,19 @@ class CreateTargetSkpsTable extends Migration
      */
     public function up()
     {
-        Schema::create('target_skp', function (Blueprint $table) {
+        Schema::create('kegiatan_skp', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_nilai_skp');
-            $table->string('kegiatan', 100);
+            $table->string('kegiatan', 255);
+            
             $table->integer('kuantitas');
-            $table->string('output',100);
-            $table->datetime('waktu')->nullable();
-            $table->integer('kualitas')->default(0);    
+            $table->string('satuan_kuantitas')->nullable();
+            
+            $table->integer('kualitas')->default(0);
+            
+            $table->integer('waktu')->default(0);
+            $table->string('satuan_waktu')->nullable();
+
             $table->integer('biaya')->default(0);
 
             $table->timestamps();

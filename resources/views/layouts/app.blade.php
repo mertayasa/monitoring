@@ -93,6 +93,10 @@
             }
         }
 
+        .required{
+            color: red !important;
+        }
+
     </style>
     @stack('styles')
 </head>
@@ -250,7 +254,6 @@
                         inputElement[inputEl].classList.remove('is-invalid')
                     }
                 }
-
             }
         }
 

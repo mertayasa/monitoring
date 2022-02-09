@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NilaiPerilakuRequest extends FormRequest
+class NilaiSkpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,12 @@ class NilaiPerilakuRequest extends FormRequest
     {
         return [
             'id_nilai_skp' => ['required', 'exists:nilai_skp,id'],
-            'orientasi_pelayanan' => ['required', 'numeric', 'gt:0', 'max:100'],
-            'integritas' => ['required', 'numeric', 'gt:0', 'max:100'],
-            'komitmen' => ['required', 'numeric', 'gt:0', 'max:100'],
-            'disiplin' => ['required', 'numeric', 'gt:0', 'max:100'],
+            'nilai' => ['required', 'numeric', 'gt:0', 'max:100'],
+            'permasalahan' => ['nullable', 'max:255'],
+            'keberatan' => ['nullable', 'max:255'],
+            'rekomendasi' => ['nullable', 'max:255'],
+            'penjelasan_penilai' => ['nullable', 'max:255'],
+            'keputusan_atasan' => ['nullable', 'max:255'],
         ];
     }
 

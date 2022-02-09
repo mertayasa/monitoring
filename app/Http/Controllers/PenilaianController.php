@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\PenilaianDataTable;
+use App\Http\Requests\InfoUmumSkpRequest;
+use App\Http\Requests\KegiatanSkpRequest;
+use App\Http\Requests\NilaiPerilakuRequest;
+use App\Http\Requests\NilaiPrilakuRequest;
+use App\Http\Requests\NilaiSkpRequest;
+use App\Models\KegiatanSkp;
 use App\Models\NilaiSkp;
 use App\Models\NilaiPrilaku;
-use App\Models\TargetSkp;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -36,7 +41,7 @@ class PenilaianController extends Controller
         return view('penilaian.create', $data);
     }
 
-    public function store(Request $request)
+    public function store(InfoUmumSkpRequest $request)
     {
         try{
             $nilai_skp = DB::transaction(function () use($request) {
@@ -52,18 +57,7 @@ class PenilaianController extends Controller
             return redirect()->back()->withInput()->with('error', 'Gagal menyimpan data penilaian');
         }
 
-        return redirect()->route('penilaian.edit_skp', $nilai_skp->id)->with('success', 'Berhasil menyimpan data penilaian');
-    }
-
-    public function editSkp(NilaiSkp $nilai_skp)
-    {
-        $target_skp = TargetSkp::where('id_nilai_skp', $nilai_skp->id)->get();
-        $data = [
-            'nilai_skp' => $nilai_skp,
-            'target_skp' => $target_skp,
-        ];
-
-        return view('penilaian.edit_skp', $data);
+        return redirect()->route('penilaian.edit_kegiatan', $nilai_skp->id)->with('success', 'Berhasil menyimpan data penilaian');
     }
 
     public function edit(NilaiSkp $nilai_skp)
@@ -76,7 +70,7 @@ class PenilaianController extends Controller
         return view('penilaian.edit', $data);
     }
 
-    public function update(Request $request, NilaiSkp $nilai_skp)
+    public function update(InfoUmumSkpRequest $request, NilaiSkp $nilai_skp)
     {
         try{
             $nilai_skp->update($request->all());
@@ -86,9 +80,116 @@ class PenilaianController extends Controller
             return redirect()->back()->withInput()->with('error', 'Gagal mengubah data penilaian');
         }
 
-        return redirect()->route('penilaian.edit_skp', $nilai_skp->id)->with('success', 'Berhasil mengubah data penilaian');
+        return redirect()->route('penilaian.edit_kegiatan', $nilai_skp->id)->with('success', 'Berhasil mengubah data penilaian');
     }
+
+
+    // =========================================================================
+
+
+    public function storeKegiatan(KegiatanSkpRequest $request, NilaiSkp $nilai_skp)
+    {
+        try{
+            KegiatanSkp::create($request->validated());
+            $table = KegiatanSkp::renderTable($nilai_skp->id);
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return response(['code' => 0, 'message' => 'Gagal menyimpan data kegiatan']);
+        }
+
+        return response(['code' => 1, 'message' => 'Berhasil menyimpan data kegiatan', 'table' => $table]);
+    }
+
+    public function editKegiatan(NilaiSkp $nilai_skp)
+    {
+        $kegiatan_skp = KegiatanSkp::where('id_nilai_skp', $nilai_skp->id)->get();
+        $data = [
+            'nilai_skp' => $nilai_skp,
+            'kegiatan_skp' => $kegiatan_skp,
+        ];
+
+        return view('penilaian.edit_kegiatan', $data);
+    }
+
+    public function updateKegiatan(KegiatanSkpRequest $request, NilaiSkp $nilai_skp, KegiatanSkp $kegiatan_skp)
+    {
+        try{
+            $kegiatan_skp->update($request->validated());
+            $table = KegiatanSkp::renderTable($nilai_skp->id);
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return response(['code' => 0, 'message' => 'Gagal mengubah data kegiatan']);
+        }
+
+        return response(['code' => 1, 'message' => 'Berhasil mengubah data kegiatan', 'table' => $table]);
+    }
+
+    public function destroyKegiatan(NilaiSkp $nilai_skp, KegiatanSkp $kegiatan_skp)
+    {
+        try{
+            $kegiatan_skp->delete();
+            $table = KegiatanSkp::renderTable($nilai_skp->id);
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return response(['code' => 0, 'message' => 'Gagal menghapus data kegiatan']);
+        }
+
+        return response(['code' => 1, 'message' => 'Berhasil menghapus data kegiatan', 'table' => $table]);
+    }
+
+
+    // =========================================================================
     
+
+    public function editPrilaku(NilaiSkp $nilai_skp)
+    {
+        $data = [
+            'nilai_prilaku' => NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->first(),
+            'nilai_skp' => $nilai_skp,
+        ];
+
+        return view('penilaian.edit_prilaku', $data);
+    }
+
+    public function updatePrilaku(NilaiPerilakuRequest $request, NilaiSkp $nilai_skp)
+    {
+        try{
+            $nilai_prilaku = NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->first();
+            $nilai_prilaku->update($request->validated());
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'Gagal mengubah data prilaku');
+        }
+
+        return redirect()->route('penilaian.edit_nilai', $nilai_skp->id)->with('success', 'Berhasil mengubah data nilai prilaku');
+    }
+
+
+    // =========================================================================
+
+
+    public function editNilai(NilaiSkp $nilai_skp)
+    {
+        $data = [
+            'nilai_skp' => $nilai_skp,
+        ];
+
+        return view('penilaian.edit_nilai', $data);
+    }
+
+    public function updateNilai(NilaiSkpRequest $request, NilaiSkp $nilai_skp)
+    {
+        try{
+            $nilai_skp->update($request->validated());
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return redirect()->back()->withInput()->with('error', 'Gagal mengubah data prilaku');
+        }
+
+        return redirect()->route('penilaian.index')->with('success', 'Berhasil mengubah data nilai prilaku');
+    }
+
+
     public function destroy(NilaiSkp $nilai_skp)
     {
         try {

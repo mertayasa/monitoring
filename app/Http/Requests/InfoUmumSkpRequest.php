@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class KegiatanRequest extends FormRequest
+class InfoUmumSkpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class KegiatanRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class KegiatanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_pgw_kontrak' => ['required', 'exists:users,id'],
+            'id_penilai' => ['required', 'exists:users,id'],
+            'tgl_mulai_penilaian' => ['required', 'date'],
+            'tgl_selesai_penilaian' => ['required', 'date', 'after:tgl_mulai_penilaian']
         ];
     }
 }

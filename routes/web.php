@@ -57,11 +57,21 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [PenilaianController::class, 'index'])->name('index');
         Route::get('create', [PenilaianController::class, 'create'])->name('create');
         Route::post('store', [PenilaianController::class, 'store'])->name('store');
-        Route::post('store-skp', [PenilaianController::class, 'storeSkp'])->name('store_skp');
+        
         Route::get('edit/{nilai_skp}', [PenilaianController::class, 'edit'])->name('edit');
         Route::patch('update/{nilai_skp}', [PenilaianController::class, 'update'])->name('update');
-        Route::get('edit-skp/{nilai_skp}', [PenilaianController::class, 'editSkp'])->name('edit_skp');
-        Route::patch('update-skp/{nilai_skp}', [PenilaianController::class, 'updateSkp'])->name('update_skp');
+        
+        Route::get('edit-kegiatan/{nilai_skp}', [PenilaianController::class, 'editKegiatan'])->name('edit_kegiatan');
+        Route::post('store-kegiatan/{nilai_skp}', [PenilaianController::class, 'storeKegiatan'])->name('store_kegiatan');
+        Route::patch('update-kegiatan/{nilai_skp}/{kegiatan_skp}', [PenilaianController::class, 'updateKegiatan'])->name('update_kegiatan');
+        Route::delete('destroy-kegiatan/{nilai_skp}/{kegiatan_skp}', [PenilaianController::class, 'destroyKegiatan'])->name('destroy_kegiatan');
+        
+        Route::get('edit-prilaku/{nilai_skp}', [PenilaianController::class, 'editPrilaku'])->name('edit_prilaku');
+        Route::post('update-prilaku/{nilai_skp}', [PenilaianController::class, 'updatePrilaku'])->name('update_prilaku');
+        
+        Route::get('edit-nilai/{nilai_skp}', [PenilaianController::class, 'editNilai'])->name('edit_nilai');
+        Route::patch('update-nilai/{nilai_skp}', [PenilaianController::class, 'updateNilai'])->name('update_nilai');
+        
         Route::delete('destroy/{nilai_skp}', [PenilaianController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [PenilaianController::class, 'datatable'])->name('datatable');
     });
