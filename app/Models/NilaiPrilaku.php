@@ -12,7 +12,7 @@ class NilaiPrilaku extends Model
     public $table = 'nilai_prilaku';
 
     protected $fillable = [
-        'id_durasi_nilai',
+        'id_nilai_skp',
         'orientasi_pelayanan',
         'integritas',
         'komitmen',
@@ -20,8 +20,8 @@ class NilaiPrilaku extends Model
         'kerjasama',
     ];
 
-    public function durasiPenilaian()
+    public function nilaiSkp()
     {
-        return $this->belongsTo(DurasiPenilaian::class, 'id_durasi_nilai');
+        return $this->belongsTo(NilaiSkp::class, 'id_nilai_skp');
     }
 }

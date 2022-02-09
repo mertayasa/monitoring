@@ -15,12 +15,12 @@ class CreateTugasTambahansTable extends Migration
     {
         Schema::create('tugas_tambahan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_durasi_nilai');
+            $table->unsignedBigInteger('id_nilai_skp');
             $table->string('nama_tugas', 100)->nullable();
             $table->integer('nilai')->default(0);
             $table->timestamps();
 
-            $table->foreign('id_durasi_nilai')->references('id')->on('durasi_penilaian')->onDelete('cascade');
+            $table->foreign('id_nilai_skp')->references('id')->on('nilai_skp')->onDelete('cascade');
         });
     }
 

@@ -12,7 +12,7 @@ class TargetSkp extends Model
     public $table = 'target_skp';
 
     protected $fillable = [
-        'id_durasi_nilai',
+        'id_nilai_skp',
         'kegiatan',
         'kuantitas',
         'output',

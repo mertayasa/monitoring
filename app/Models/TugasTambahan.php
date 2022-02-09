@@ -12,7 +12,7 @@ class TugasTambahan extends Model
     public $table = 'tugas_tambahan';
 
     protected $fillable = [
-        'id_durasi_nilai',
+        'id_nilai_skp',
         'nama_tugas',
         'nilai',
     ];

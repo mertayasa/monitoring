@@ -10,7 +10,6 @@ use App\Http\Controllers\PangkatGolonganController;
 use App\Http\Controllers\UnitKerjaController;
 
 use App\Http\Controllers\PengumumanController;
-use App\Http\Controllers\DurasiPenilaianController;
 use App\Http\Controllers\TargetSkpController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PenilaianController;
@@ -59,11 +58,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('create', [PenilaianController::class, 'create'])->name('create');
         Route::post('store', [PenilaianController::class, 'store'])->name('store');
         Route::post('store-skp', [PenilaianController::class, 'storeSkp'])->name('store_skp');
-        Route::get('edit/{durasi_penilaian}', [PenilaianController::class, 'edit'])->name('edit');
-        Route::patch('update/{durasi_penilaian}', [PenilaianController::class, 'update'])->name('update');
-        Route::get('edit-skp/{durasi_penilaian}', [PenilaianController::class, 'editSkp'])->name('edit_skp');
-        Route::patch('update-skp/{durasi_penilaian}', [PenilaianController::class, 'updateSkp'])->name('update_skp');
-        Route::delete('destroy/{durasi_penilaian}', [PenilaianController::class, 'destroy'])->name('destroy');
+        Route::get('edit/{nilai_skp}', [PenilaianController::class, 'edit'])->name('edit');
+        Route::patch('update/{nilai_skp}', [PenilaianController::class, 'update'])->name('update');
+        Route::get('edit-skp/{nilai_skp}', [PenilaianController::class, 'editSkp'])->name('edit_skp');
+        Route::patch('update-skp/{nilai_skp}', [PenilaianController::class, 'updateSkp'])->name('update_skp');
+        Route::delete('destroy/{nilai_skp}', [PenilaianController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [PenilaianController::class, 'datatable'])->name('datatable');
     });
 
@@ -108,18 +107,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('datatable', [PengumumanController::class, 'datatable'])->name('datatable');
     });
 
-        Route::group(['prefix' => 'durasi_penilaian', 'as' => 'durasi_penilaian.'], function () {
-        Route::get('/', [DurasiPenilaianController::class, 'index'])->name('index');
-        Route::get('create', [DurasiPenilaianController::class, 'create'])->name('create');
-        Route::post('store', [DurasiPenilaianController::class, 'store'])->name('store');
-        Route::get('edit/{durasi_penilaian}', [DurasiPenilaianController::class, 'edit'])->name('edit');
-        Route::get('show/{durasi_penilaian}', [DurasiPenilaianController::class, 'show'])->name('show');
-        Route::patch('update/{durasi_penilaian}', [DurasiPenilaianController::class, 'update'])->name('update');
-        Route::delete('destroy/{durasi_penilaian}', [DurasiPenilaianController::class, 'destroy'])->name('destroy');
-        Route::get('datatable', [DurasiPenilaianController::class, 'datatable'])->name('datatable');
-    });
-
-      Route::group(['prefix' => 'target_skp', 'as' => 'target_skp.'], function () {
+    Route::group(['prefix' => 'target_skp', 'as' => 'target_skp.'], function () {
         Route::get('/', [TargetSkpController::class, 'index'])->name('index');
         Route::get('create', [TargetSkpController::class, 'create'])->name('create');
         Route::post('store', [TargetSkpController::class, 'store'])->name('store');

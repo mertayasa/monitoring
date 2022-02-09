@@ -40,7 +40,7 @@
 
             <li class="sidebar-item {{ isActive('penilaian') }}">
                 <a class="sidebar-link" href="{{ route('penilaian.index') }}">
-                    <i class="align-middle" data-feather="star"></i> <span class="align-middle">Penilai SKP</span>
+                    <i class="align-middle" data-feather="star"></i> <span class="align-middle">Penilaian SKP</span>
                 </a>
             </li>
 

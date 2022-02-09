@@ -13,12 +13,12 @@
                     <div class="card-body pt-0">
                         @include('layouts.flash')
                         @include('layouts.error_message')
-                        {!! Form::model($durasi_penilaian, ['route' => ['penilaian.update', $durasi_penilaian->id], 'method' => 'patch']) !!}
+                        {!! Form::model($nilai_skp, ['route' => ['penilaian.update', $nilai_skp->id], 'method' => 'patch']) !!}
                         @include('penilaian.form')
                         <div class="row mt-3">
                             <div class="col-12">
                                 <a href="{{ route('penilaian.index') }}" class="btn btn-danger">Kembali</a>
-                                <button class="btn btn-primary ml-3" type="submit">Simpan</button>
+                                <button class="btn btn-primary ml-3" type="submit">Simpan & Lanjut</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

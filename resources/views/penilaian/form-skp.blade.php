@@ -27,9 +27,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div class="hint">
+                    <span>
+                        Petunjuk
+                        <ul>
+                            <li>asdasn</li>
+                            <li>asdasn</li>
+                            <li>asdasn</li>
+                            <li>asdasn</li>
+                        </ul>
+                    </span>
+                </div>
                 {!! Form::open(['route' => 'penilaian.store_skp', 'id' => 'formskp']) !!}
                 <div class="row">
-                    {!! Form::hidden('id_durasi_nilai', $durasi_penilaian->id, []) !!}
+                    {!! Form::hidden('id_nilai_skp', $nilai_skp->id, []) !!}
                     <div class="col-12 pb-3 pb-md-0 mb-2">
                         {!! Form::label('kegiatanSKP', 'Kegiatan SKP', ['class' => 'mb-1']) !!}
                         {!! Form::text('kegiatan', null, ['class' => 'form-control', 'id' => 'kegiatanSKP']) !!}

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDurasiPenilaiansTable extends Migration
+class CreateNilaiSkpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateDurasiPenilaiansTable extends Migration
      */
     public function up()
     {
-        Schema::create('durasi_penilaian', function (Blueprint $table) {
+        Schema::create('nilai_skp', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pgw_kontrak');
             $table->unsignedBigInteger('id_penilai');
             $table->date('tgl_mulai_penilaian');
             $table->date('tgl_selesai_penilaian')->nullable();
+            $table->integer('nilai')->default(0);
             $table->text('permasalahan')->nullable();
             $table->text('keberatan')->nullable();
             $table->text('rekomendasi')->nullable();
@@ -38,6 +39,6 @@ class CreateDurasiPenilaiansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('durasi_penilaian');
+        Schema::dropIfExists('nilai_skp');
     }
 }
