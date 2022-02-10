@@ -14,7 +14,7 @@
                         @include('layouts.flash')
                         @include('layouts.error_message')
                         {!! Form::model($user, ['route' => ['profile.update', [$level, $user->id]], 'method' => 'patch']) !!}
-                        @include('user.'.$level.'.form')
+                        @include('user.'.$level.'.form-profile')
                         <div class="row mt-3">
                             <div class="col-12">
                                 <a href="{{ route('dashboard.index') }}" class="btn btn-danger">Kembali</a>

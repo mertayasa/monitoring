@@ -30,6 +30,7 @@ class ProfileRequest extends FormRequest
             'nama' => 'required|max:50',
             'email' => 'required',
             'password' => 'required',
+            'password_confirmation' => 'required'
         ];
 
          if($this->getMethod() == 'PATCH'){
