@@ -18,7 +18,8 @@
                     {{-- <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Log out</a> --}}
-                    <a href="{{ route('profile.edit', [Auth::user()->level, Auth::id()]) }}" class="dropdown-item has-icon">
+                    <a href="{{ route('profile.edit', [Auth::user()->level, Auth::id()]) }}"
+                        class="dropdown-item has-icon">
                         <i class="far fa-user"></i> Profile
                     </a>
                     <a class="dropdown-item has-icon text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();

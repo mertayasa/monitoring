@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\UserDataTable;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\ProfileRequest;
 use App\Models\Jabatan;
 use App\Models\PangkatGolongan;
 use App\Models\UnitKerja;
@@ -143,7 +144,7 @@ class UserController extends Controller
         return view('user.'.$level.'.profile', compact('user', 'level'));
     }
 
-    public function updateProfile($level, User $user, UserRequest $request)
+    public function updateProfile($level, User $user, ProfileRequest $request)
     {
         if (Auth::id() != $user->id) {
             abort(403);
