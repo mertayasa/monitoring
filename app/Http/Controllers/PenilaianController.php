@@ -190,6 +190,15 @@ class PenilaianController extends Controller
     }
 
 
+// ==================================================================
+
+    public function show(NilaiSkp $nilai_skp)
+    {
+        return view('penilaian.show');
+    }
+
+
+
     public function destroy(NilaiSkp $nilai_skp)
     {
         try {

@@ -128,3 +128,8 @@ function getHari()
     ];
 }
 
+function getYear()
+{
+    return Carbon::parse('now')->isoFormat('Y');
+}
+

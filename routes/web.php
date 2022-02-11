@@ -74,6 +74,8 @@ Route::middleware(['auth'])->group(function () {
         
         Route::delete('destroy/{nilai_skp}', [PenilaianController::class, 'destroy'])->name('destroy');
         Route::get('datatable', [PenilaianController::class, 'datatable'])->name('datatable');
+
+        Route::get('show/{nilai_skp}', [PenilaianController::class, 'show'])->name('show');
     });
 
     Route::group(['prefix' => 'jabatan', 'as' => 'jabatan.'], function () {
