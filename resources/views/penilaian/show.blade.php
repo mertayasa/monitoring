@@ -8,8 +8,10 @@
                     <div class="card-header">
                         <h5 class="card-title mb-0">Detail Penilaian SKP</h5>
                     </div>
-                    <div class="card-body pt-0">
+                    <div class="card-body pt-0 " style="color: black;">
                         @include('penilaian.skp.form-cover')
+                        <hr class="m-5">
+                        @include('penilaian.skp.form-dp3skp')
                         <div class="row mt-3">
                             <div class="col-12">
                                 <a href="{{ route('penilaian.index') }}" class="btn btn-danger">Kembali</a>

@@ -1,5 +1,5 @@
 <div>
-    <table class="table cover table-borderless">
+    <table class="table  table-borderless">
         <tr>
             <td colspan="5" class="text-center" style=" font-size: 15px; font-weight:600; color:black">
                 <img src="{{ asset('admin/img/pancasila.png') }}" width="100px"><br>PENILAIAN KINERJA <br> PEGAWAI
