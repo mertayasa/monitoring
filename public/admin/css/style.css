@@ -171,3 +171,7 @@
     margin-top: 20px;
     text-align: center;
 }
+
+.skp td {
+    line-height: 5px;
+}
