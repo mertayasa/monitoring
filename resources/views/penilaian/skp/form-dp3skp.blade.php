@@ -2,7 +2,7 @@
     <div class="dp-3 text-center">
         <p>FORMULIR SASARAN KERJA <br> PEGAWAI KONTRAK</p>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="color: black; border-color:black">
         {{-- <tr>
             <td colspan="5" class="text-center" style=" font-size: 15px; font-weight:600; color:black">
                 <img src="{{ asset('admin/img/pancasila.png') }}" width="100px"><br>PENILAIAN KINERJA <br> PEGAWAI
@@ -73,6 +73,17 @@
             <th>KUAL/MUTU</th>
             <th colspan="2">WAKTU</th>
             <th>BIAYA</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td colspan="2"> ssss</td>
+            <td>-</td>
+            <td>0</td>
+            <td>Laporan</td>
+            <td>0</td>
+            <td>0</td>
+            <td>Bulan</td>
+            <td></td>
         </tr>
         <tr>
             <td>1</td>
