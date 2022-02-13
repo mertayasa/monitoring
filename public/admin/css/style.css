@@ -165,3 +165,9 @@
 .text-black {
     color: black;
 }
+
+.ttd {
+    /* margin-left:55%; */
+    margin-top: 20px;
+    text-align: center;
+}
