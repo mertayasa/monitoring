@@ -16,6 +16,8 @@
                         @include('penilaian.skp.form-penilaian-prilaku')
                         <hr class="m-5">
                         @include('penilaian.skp.form-ppk')
+                        <hr class="m-5">
+                        @include('penilaian.skp.form-penilaian-prestasi')
                         <div class="row mt-3">
                             <div class="col-12">
                                 <a href="{{ route('penilaian.index') }}" class="btn btn-danger">Kembali</a>
