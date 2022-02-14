@@ -130,7 +130,7 @@
 
     <br>
 
-    <table class="table table-borderless ">
+    <table class="table table-borderless " style="color: black; font-size:10px; padding:0; ">
         <tr>
             <td colspan="3" style="text-align: center; color:black">RAHASIA</td>
             <td></td>
@@ -138,40 +138,126 @@
         </tr>
     </table>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="color: black; font-size:10px; padding:0; ">
         <tr>
             <td>4.</td>
             <td colspan="4">UNSUR YANG DINILAI</td>
             <td>Jumlah</td>
-            <td></td>
+            <td rowspan="26"></td>
             <td>6.</td>
             <td>TANGGAPAN PEJABAT PENILAI</td>
             <td></td>
             <td colspan="2"></td>
         </tr>
         <tr>
-            <td></td>
+            <td rowspan="10"></td>
             <td colspan="2">a. Sasaran Kerja Pegawai (SKP)</td>
             <td>86,78</td>
             <td>x 60%</td>
             <td>51,00</td>
-            <td></td>
             <td></td>
             <td>ATAS KEBERATAN</td>
             <td></td>
             <td colspan="2"></td>
         </tr>
         <tr>
-            <td></td>
-            <td>b. Perilaku Kerja</td>
+            <td rowspan="8">b. Perilaku Kerja</td>
             <td>1. Orientasi Pelayanan</td>
             <td>70</td>
             <td>(Baik)</td>
-            <td rowspan="9"></td>
-            <td></td>
+            <td rowspan="8"></td>
             <td></td>
             <td></td>
             <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>2. Integritas</td>
+            <td>..</td>
+            <td>(..)</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>3. Komitmen</td>
+            <td>..</td>
+            <td>(..)</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>4. Disiplin</td>
+            <td>..</td>
+            <td>(..)</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>5. Kerjasama</td>
+            <td>..</td>
+            <td>(..)</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>6. Kepemimpinan</td>
+            <td>..</td>
+            <td>(..)</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>Jumlah</td>
+            <td>..</td>
+            <td>(..)</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"> Tanggal </td>
+        </tr>
+        <tr>
+            <td>Nilai Rata-rata</td>
+            <td>..</td>
+            <td>(..)</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Nilai Prilau Kerja</td>
+            <td>..</td>
+            <td>.. %</td>
+            <td>30,,</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+
+        <tr>
+            <td colspan="5" rowspan="2">NILAI PRESTASI KERJA</td>
+            <td>83,,</td>
+        </tr>
+        <tr>
+            <td>(..)</td>
+        </tr>
+
+        <tr>
+            <td colspan="6">5. KEBERATAN DARI PEGAWAI KONTRAK</td>
+            <td colspan="3">7. KEPUTUSAN ATASAN PEJABAT</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="6">YANG DINILAI (APABILA ADA)</td>
+            <td colspan="3">PENILAI ATAS KEBERATAN</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="6" rowspan="4" style="text-align:end; Padding-top:100px">Tanggal,</td>
+            <td colspan="4" style="text-align:end; Padding-top:100px">Tanggal, </td>
         </tr>
     </table>
 
