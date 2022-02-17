@@ -62,5 +62,29 @@
             <th colspan="2">..</th>
         </tr>
     </table>
+    <br>
+    <table style="border:none;">
+        <tr style="border:none;">
+            <td style="width: 100px"></td>
+            <td style="width: 200px">
+                <br>
+                <br>
+                Pejabat Penilai
+                <br><br><br><br><br>
+                Nama <br>
+                NIP
+            </td>
+            <td style="width: 500px"></td>
+            <td style="width: 300px">
+                Denpasar, {{ \Carbon\Carbon::now()->isoFormat('LL') }} <br>
+                Pegawai Kontrak Yang Dinilai
+                <br><br><br><br><br>
+                {{ Auth::user()->name }}
+                Nama <br>
+                No Kontrak.
+            </td>
+            <td style="width: 100px"></td>
+        </tr>
+    </table>
 
 </div>
