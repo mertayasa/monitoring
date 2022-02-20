@@ -25,42 +25,42 @@
         <tr>
             <td>1</td>
             <td style="width: 100px">Nama</td>
-            <td style="width: 300px"></td>
+            <td style="width: 300px">{{ $nilai_skp->penilai->nama }}</td>
             <td>1</td>
             <td colspan="2">Nama</td>
-            <td colspan="4"></td>
+            <td colspan="4"> {{ $nilai_skp->pgwKontrak->nama }}</td>
         </tr>
         <tr>
             <td>2</td>
             <td style="width: 100px">NIP</td>
-            <td></td>
+            <td>{{ $nilai_skp->penilai->nip }}</td>
             <td>2</td>
             <td colspan="2">No Kontrak</td>
-            <td colspan="4"></td>
+            <td colspan="4">{{ $nilai_skp->pgwKontrak->no_kontrak }}</td>
         </tr>
         <tr>
             <td>3</td>
             <td style="width: 100px">Pangkat/Gol.Ruang</td>
-            <td></td>
+            <td>{{ $nilai_skp->penilai->pangkatGolongan->nama }}</td>
             <td>3</td>
             <td colspan="2">Pangkat/Gol.Ruang</td>
-            <td colspan="4"></td>
+            <td colspan="4">{{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td>
         </tr>
         <tr>
             <td>4</td>
             <td style="width: 100px">Jabatan</td>
-            <td></td>
+            <td>{{ $nilai_skp->penilai->jabatan->nama }}</td>
             <td>4</td>
             <td colspan="2">Jabatan</td>
-            <td colspan="4"></td>
+            <td colspan="4">{{ $nilai_skp->pgwKontrak->jabatan->nama }}</td>
         </tr>
         <tr>
             <td>5</td>
             <td style="width: 100px">Unit Kerja</td>
-            <td></td>
+            <td>{{ $nilai_skp->penilai->unitKerja->nama }}</td>
             <td>5</td>
             <td colspan="2">Unit Kerja</td>
-            <td colspan="4"></td>
+            <td colspan="4">{{ $nilai_skp->pgwKontrak->unitKerja->nama }}</td>
         </tr>
         <tr>
             <th rowspan="2" style="width: 10px">NO</th>
@@ -74,28 +74,22 @@
             <th colspan="2">WAKTU</th>
             <th>BIAYA</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td colspan="2"> ssss</td>
-            <td>-</td>
-            <td>0</td>
-            <td>Laporan</td>
-            <td>0</td>
-            <td>0</td>
-            <td>Bulan</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td colspan="2"> ssss</td>
-            <td>-</td>
-            <td>0</td>
-            <td>Laporan</td>
-            <td>0</td>
-            <td>0</td>
-            <td>Bulan</td>
-            <td></td>
-        </tr>
+        @php
+            $no = 1;
+        @endphp
+        @foreach ($kegiatan_skp as $data)
+            <tr>
+                <td>{{ $no++ }}</td>
+                <td colspan="2"> {{ $data->kegiatan }}</td>
+                <td>-</td>
+                <td>{{ $data->kuantitas }}</td>
+                <td>{{ $data->satuan_kuantitas }}</td>
+                <td>{{ $data->kualitas }}</td>
+                <td>{{ $data->waktu }}</td>
+                <td>{{ $data->satuan_waktu }}</td>
+                <td>{{ $data->biaya }}</td>
+            </tr>
+        @endforeach
         <tr></tr>
     </table>
 
@@ -107,17 +101,16 @@
                 <br>
                 Pejabat Penilai
                 <br><br><br><br><br>
-                Nama <br>
-                NIP
+                {{ $nilai_skp->penilai->nama }} <br>
+                Nip. {{ $nilai_skp->penilai->nip }}
             </td>
             <td style="width: 500px"></td>
             <td style="width: 300px">
                 Denpasar, {{ \Carbon\Carbon::now()->isoFormat('LL') }} <br>
                 Pegawai Kontrak Yang Dinilai
                 <br><br><br><br><br>
-                {{ Auth::user()->name }}
-                Nama <br>
-                NIP
+                {{ $nilai_skp->pgwKontrak->nama }} <br>
+                No Kontrak. {{ $nilai_skp->pgwKontrak->nip }}<br>
             </td>
             <td style="width: 100px"></td>
         </tr>

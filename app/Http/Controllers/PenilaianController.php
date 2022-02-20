@@ -244,7 +244,9 @@ class PenilaianController extends Controller
 
     public function show(NilaiSkp $nilai_skp)
     {
-        return view('penilaian.show', compact('nilai_skp'));
+        $kegiatan_skp=KegiatanSkp::all();
+        // dd($kegiatan_skp);
+        return view('penilaian.show', compact('nilai_skp', 'kegiatan_skp'));
     }
 
 
