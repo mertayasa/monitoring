@@ -4,7 +4,8 @@
     </div>
 
     <br>
-    <p> Periode Penilaian: ... s/d ... </p>
+    <p> Periode Penilaian: {{ indonesianDate($nilai_skp->tgl_mulai_penilaian) }} s/d
+        {{ indonesianDate($nilai_skp->tgl_selesai_penilaian) }} </p>
     <table class="table table-bordered" style="color: black; border-color:black">
         <tr>
             <th colspan="2" style="text-align: center">PEGAWAI YANG DINILAI</th>
@@ -12,33 +13,33 @@
         </tr>
         <tr>
             <td>Nama</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->pgwKontrak->nama }}</td>
             <td>Nama</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->nama }}</td>
         </tr>
         <tr>
+            <td>No Kontrak</td>
+            <td>{{ $nilai_skp->pgwKontrak->no_kontrak }}</td>
             <td>NIP</td>
-            <td>...</td>
-            <td>NIP</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->nip }}</td>
         </tr>
         <tr>
             <td>Pangkat/Golongan</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td>
             <td>Pangkat/Golongan</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->pangkatGolongan->nama }}</td>
         </tr>
         <tr>
             <td>Jabatan</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->pgwKontrak->jabatan->nama }}</td>
             <td>Jabatan</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->jabatan->nama }}</td>
         </tr>
         <tr>
             <td>Unit Kerja</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->pgwKontrak->unitKerja->nama }}</td>
             <td>Unit Kerja</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->unitKerja->nama }}</td>
         </tr>
 
     </table>
@@ -51,27 +52,27 @@
         <tr>
             <td>1</td>
             <td>Orientasi Pelayanan</td>
-            <td>...</td>
+            <td>{{ $nilai_prilaku->orientasi_pelayanan }}</td>
         </tr>
         <tr>
             <td>2</td>
             <td>Inisiatif Kerja</td>
-            <td>...</td>
+            <td>{{ $nilai_prilaku->inisiatf_kerja }}</td>
         </tr>
         <tr>
             <td>3</td>
             <td>Komitmen</td>
-            <td>...</td>
+            <td>{{ $nilai_prilaku->komitmen }}</td>
         </tr>
         <tr>
             <td>4</td>
             <td>Kerjasama</td>
-            <td>...</td>
+            <td>{{ $nilai_prilaku->kerjasama }}</td>
         </tr>
         <tr>
             <td>5</td>
             <td>Kepemimpinan</td>
-            <td>...</td>
+            <td>{{ $nilai_prilaku->prilaku }}</td>
         </tr>
         <tr>
             <td colspan="2">Nilai Akhir</td>
@@ -88,11 +89,10 @@
             <td style="width: 500px"></td>
             <td style="width: 300px">
                 Denpasar, {{ \Carbon\Carbon::now()->isoFormat('LL') }} <br>
-                Pegawai Kontrak Yang Dinilai
+                Pejabat Penilai Kinerja
                 <br><br><br><br><br>
-                {{ Auth::user()->name }}
-                Nama <br>
-                No Kontrak.
+                {{ $nilai_skp->penilai->nama }} <br>
+                Nip. {{ $nilai_skp->penilai->nip }}
             </td>
             <td style="width: 100px"></td>
         </tr>
