@@ -88,6 +88,22 @@ function uploadFile($base_64_foto, $folder)
     return $folder . '/' . $safeName;
 }
 
+function countWeekPerMonth($month_index, $year)
+{
+    $start_of_month = \Carbon\Carbon::create()->day(1)->year($year)->month($month_index);
+    $end_of_month = \Carbon\Carbon::create()->day(1)->year($year)->month($month_index)->addMonth()->subDay();
+    $sunday_count = 0;
+    $period =  \Carbon\CarbonPeriod::create($start_of_month, $end_of_month);
+    $period_array = $period->toArray();
+    foreach ($period_array as $key => $date) {
+        if ($date->format('l') == 'Sunday') {
+            $sunday_count++;
+        }
+    }
+
+    return $sunday_count;
+}
+
 function getDayCode($day)
 {
     switch(strtolower($day)){

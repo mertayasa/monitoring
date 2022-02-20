@@ -7,11 +7,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <a href="{{ route('kegiatan.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Tambah kegiatan"> <i class="fas fa-folder-plus"></i>
-                            Kegiatan Baru</a>
-                    </div>
+                    @if (Auth::user()->isAdmin())
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <a href="{{ route('kegiatan.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Tambah kegiatan"> <i class="fas fa-folder-plus"></i>
+                                Kegiatan Baru</a>
+                        </div>
+                    @endif        
                     <div class="px-3">
                         @include('layouts.flash')
                         @include('layouts.error_message')

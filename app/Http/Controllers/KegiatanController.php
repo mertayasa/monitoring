@@ -97,6 +97,17 @@ class KegiatanController extends Controller
         return redirect('kegiatan')->with('info', 'Data kegiatan Berhasil Diedit  ');
     }
 
+    public function kalender($year = null)
+    {
+        $year = $year == null ? date('Y') : $year;
+        $data = [
+            'year' => $year,
+            'kegiatan' => Kegiatan::where('tahun_anggaran', $year)->get()
+        ];
+
+        return view('kegiatan.kalender', $data);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

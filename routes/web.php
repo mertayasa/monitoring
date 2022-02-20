@@ -138,6 +138,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [KegiatanController::class, 'index'])->name('index');
         Route::get('create', [KegiatanController::class, 'create'])->name('create');
         Route::post('store', [KegiatanController::class, 'store'])->name('store');
+        Route::get('kalender', [KegiatanController::class, 'kalender'])->name('kalender');
         Route::get('edit/{kegiatan}', [KegiatanController::class, 'edit'])->name('edit');
         Route::get('show/{kegiatan}', [KegiatanController::class, 'show'])->name('show');
         Route::patch('update/{kegiatan}', [KegiatanController::class, 'update'])->name('update');

@@ -15,4 +15,9 @@ class Kegiatan extends Model
         'nama_program',
         'tahun_anggaran',
     ];
+
+    public function subKegiatan()
+    {
+        return $this->hasMany(SubKegiatan::class, 'id_kegiatan');
+    }
 }
