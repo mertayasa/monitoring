@@ -13,27 +13,27 @@
         <tr>
             <td style="width: 300px">NAMA</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->pgwKontrak->nama }}</td>
         </tr>
         <tr>
             <td>NIP</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->pgwKontrak->no_kontrak }}</td>
         </tr>
         <tr>
             <td>PANGKAT/GOL RUANG</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td>
         </tr>
         <tr>
             <td>JABATAN</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->pgwKontrak->jabatan->nama }}</td>
         </tr>
         <tr>
             <td>UNIT KERJA</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->pgwKontrak->unitKerja->nama }}</td>
         </tr>
 
         <tr>
@@ -43,27 +43,27 @@
         <tr>
             <td>NAMA</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->nama }}</td>
         </tr>
         <tr>
             <td>NIP</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->nip }}</td>
         </tr>
         <tr>
             <td>PANGKAT/GOL RUANG</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->pangkatGolongan->nama }}</td>
         </tr>
         <tr>
             <td>JABATAN</td>
             <td>:</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->jabatan->nama }}</td>
         </tr>
         <tr>
             <td>UNIT KERJA</td>
             <td>:</td>
-            <td>..</td>
+            <td></td>
         </tr>
 
         <tr>
@@ -140,35 +140,35 @@
             <td colspan="3">PERMASALAHAN</td>
         </tr>
         <tr>
-            <td colspan="3">..</td>
+            <td colspan="3">{{ $nilai_skp->permasalahan }}</td>
         </tr>
         <tr>
             <td style="width: 10px" rowspan="2">6</td>
             <td colspan="3">REKOMENDASI</td>
         </tr>
         <tr>
-            <td colspan="3">..</td>
+            <td colspan="3">{{ $nilai_skp->rekomendasi }}</td>
         </tr>
         <tr>
             <td style="width: 10px" rowspan="2">7</td>
             <td colspan="3">KEBERATAN</td>
         </tr>
         <tr>
-            <td colspan="3">..</td>
+            <td colspan="3">{{ $nilai_skp->keberatan }}</td>
         </tr>
         <tr>
             <td style="width: 10px" rowspan="2">8</td>
             <td colspan="3">PENJELASAN PEJABAT PENILAI ATAS KEBERATAN</td>
         </tr>
         <tr>
-            <td colspan="3">..</td>
+            <td colspan="3">{{ $nilai_skp->penjelasan_penilai }}</td>
         </tr>
         <tr>
             <td style="width: 10px" rowspan="2">9</td>
             <td colspan="3">KEPUTUSAN ATAS PEJABAT PENILAI KINERJA</td>
         </tr>
         <tr>
-            <td colspan="3">..</td>
+            <td colspan="3">{{ $nilai_skp->keputusan_atasan }}</td>
         </tr>
     </table>
     <br>
@@ -178,19 +178,19 @@
             <td style="width: 200px">
                 <br>
                 10. Denpasar, <br>
-                Pegawai yang dinilai
+                Pegawai Kontrak Yang Dinilai
                 <br><br><br><br><br>
-                Nama <br>
-                N0 Kontrak.
+                {{ $nilai_skp->pgwKontrak->nama }} <br>
+                No Kontrak. {{ $nilai_skp->pgwKontrak->nip }}<br>
             </td>
             <td style="width: 500px"></td>
             <td style="width: 300px">
                 <br>
                 11. Denpasar, <br>
-                Pejabat Penilai Kinerja
+                Pejabat Penilai
                 <br><br><br><br><br>
-                Nama <br>
-                NIP.
+                {{ $nilai_skp->penilai->nama }} <br>
+                Nip. {{ $nilai_skp->penilai->nip }}
             </td>
             <td style="width: 100px"></td>
         </tr>
