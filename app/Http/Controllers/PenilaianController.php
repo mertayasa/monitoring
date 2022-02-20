@@ -36,7 +36,7 @@ class PenilaianController extends Controller
     public function create()
     {
         $data = [
-            'pgw_kontrak' => ['' => 'Pilih pegawai kontrak'] + User::where('level', User::$kontrak)->pluck('nama', 'id')->toArray(),
+            'pgw_kontrak' => ['' => 'Pilih pegawai kontrak'] + User::where('level', User::$kontrak)->where('status', 'aktif')->pluck('nama', 'id')->toArray(),
             'penilai' => ['' => 'Pilih penilai'] + User::where('level', User::$penilai)->pluck('nama', 'id')->toArray(),
         ];
 
@@ -65,7 +65,9 @@ class PenilaianController extends Controller
     public function edit(NilaiSkp $nilai_skp)
     {
         $data = [
-            'pgw_kontrak' => ['' => 'Pilih pegawai kontrak'] + User::where('level', User::$kontrak)->pluck('nama', 'id')->toArray(),
+            'pgw_kontrak' => ['' => 'Pilih pegawai kontrak'] + User::where('level', User::$kontrak)->where('status', 'aktif')->orWhere(function($user) use($nilai_skp){
+                return $user->where('id', $nilai_skp->id_pgw_kontrak);
+            })->pluck('nama', 'id')->toArray(),
             'penilai' => ['' => 'Pilih penilai'] + User::where('level', User::$penilai)->pluck('nama', 'id')->toArray(),
             'nilai_skp' => $nilai_skp
         ];

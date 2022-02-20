@@ -136,6 +136,16 @@ class User extends Authenticatable
 
 
 
+    public function penilaiSkp()
+    {
+        return $this->hasMany(NilaiSkp::class, 'id_penilai');
+    }
+
+    public function kontrakSkp()
+    {
+        return $this->hasMany(NilaiSkp::class, 'id_pgw_kontrak');
+    }
+
     public function jabatan()
     {
         return $this->belongsTo(Jabatan::class, 'id_jabatan');
