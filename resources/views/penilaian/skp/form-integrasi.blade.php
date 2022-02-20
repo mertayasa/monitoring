@@ -1,14 +1,14 @@
 <div>
     <div class="dp-3 text-center">
-        <p>PENILAIAN PRESTASI KERJA PEGAWAI KONTRAK PERIODE ... - ...</p>
+        <p>INTEGRASI HASIL PENILAIAN KINERJA PEGAWAI KONTRAK TAHUN 2021</p>
     </div>
 
     <br>
     <table class="table table-bordered" style="color: black; border-color:black">
 
         <tr>
-            <th colspan="2"> PEJABAT PENILAI</th>
-            <th colspan="2">PEGAWAI KONTRAK YANG DINILAI</th>
+            <th colspan="2">PEGAWAI YANG DINILAI</th>
+            <th colspan="2">PEJABAT PENILAI KINERJA</th>
         </tr>
         <tr>
             <td>Nama</td>
@@ -44,22 +44,28 @@
             <td>Tanggal Penilaian</td>
             <td colspan="3">..</td>
         </tr>
-
         <tr>
-            <th colspan="2">UNSUR YANG DINILAI</th>
-            <th colspan="2">NILAI</th>
+            <td colspan="4" style="text-align: center">INTEGRASI HASIL PENILAIAN KINERJA PEGAWAI KONTRAK 2021</td>
         </tr>
         <tr>
-            <td colspan="2">a. Sasaran Kerja Pegawai (SKP)</td>
+            <th colspan="2">PERIODE </th>
+            <th colspan="2">NILAI KINERJA PEGAWAI KONTRAK</th>
+        </tr>
+        <tr>
+            <td colspan="2">Januari - Juni</td>
             <td colspan="2">..</td>
         </tr>
         <tr>
-            <td colspan="2">b. Perilaku Kerja Pegawai</td>
+            <td colspan="2">Juli - Desember</td>
             <td colspan="2">..</td>
         </tr>
         <tr>
-            <th colspan="2">NILAI PRESTASI KERJA PEGAWAI KONTRAK</th>
-            <th colspan="2">..</th>
+            <td colspan="2">NILAI KINERJA PEGAWAI KONTRAK TAHUN 2021</td>
+            <td colspan="2">..</td>
+        </tr>
+        <tr>
+            <td colspan="2">PREDIKAT</td>
+            <td colspan="2">(..)</td>
         </tr>
     </table>
     <br>
@@ -69,19 +75,19 @@
             <td style="width: 200px">
                 <br>
                 <br>
-                Pejabat Penilai
+                Pegawai yang dinilai
                 <br><br><br><br><br>
                 Nama <br>
-                NIP
+                N0 Kontrak.
             </td>
             <td style="width: 500px"></td>
             <td style="width: 300px">
                 Denpasar, {{ \Carbon\Carbon::now()->isoFormat('LL') }} <br>
-                Pegawai Kontrak Yang Dinilai
+                Pejabat Penilai Kinerja
                 <br><br><br><br><br>
                 {{ Auth::user()->name }}
                 Nama <br>
-                No Kontrak.
+                NIP.
             </td>
             <td style="width: 100px"></td>
         </tr>
