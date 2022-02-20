@@ -5,7 +5,7 @@
             <td rowspan="24"></td>
         </tr>
         <tr>
-            <td colspan="3" rowspan="4"></td>
+            <td colspan="3" rowspan="4"> {{ $nilai_skp->rekomendasi }}</td>
             <td colspan="3" style="text-align: center"> <img src="{{ asset('admin/img/pancasila-color.png') }}"
                     width="100px">
             </td>
@@ -20,7 +20,8 @@
         </tr>
         <tr>
             <td colspan="2">PEMERINTAH KAB. KLUNGKUNG </td>
-            <td>Tanggal : ... s/d ..</td>
+            <td>Tanggal :{{ indonesianDate($nilai_skp->tgl_mulai_penilaian) }} s/d
+                {{ indonesianDate($nilai_skp->tgl_selesai_penilaian) }}</td>
         </tr>
         <tr>
             <td></td>
@@ -35,32 +36,36 @@
             <td>PEJABAT PENILAI</td>
             <td rowspan="5"></td>
             <td> a. Nama</td>
-            <td>Ni Kade ...</td>
+            <td>{{ $nilai_skp->pgwKontrak->nama }}</td>
         </tr>
         <tr>
             <td rowspan="17">
-                10. DITERIMA TANGGAL,
+                10. DITERIMA TANGGAL,<br>
+                Pegawai Kontrak Yang Dinilai
+                <br><br><br><br><br>
+                {{ $nilai_skp->pgwKontrak->nama }} <br>
+                No Kontrak. {{ $nilai_skp->pgwKontrak->nip }}<br>
             </td>
             <td></td>
             <td rowspan="17">
             </td>
-            <td>b. NIP</td>
-            <td>...</td>
+            <td>b. No Kontrak</td>
+            <td>{{ $nilai_skp->pgwKontrak->no_kontrak }}</td>
         </tr>
         <tr>
             <td></td>
             <td>c. Pangkat, Golongan Ruang, TMT</td>
-            <td> ...</td>
+            <td> {{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td>
         </tr>
         <tr>
             <td></td>
             <td>d. Jabatan/Pangkat</td>
-            <td> ...</td>
+            <td> {{ $nilai_skp->pgwKontrak->jabatan->nama }}</td>
         </tr>
         <tr>
             <td></td>
             <td>e. Unit Organisasi</td>
-            <td> ...</td>
+            {{-- <td> {{ $nilai_skp->pgwKontrak->unitOrganisasi->nama }}</td> --}}
         </tr>
 
         <tr>
@@ -72,27 +77,27 @@
             <td></td>
             <td rowspan="5"></td>
             <td>a. Nama</td>
-            <td>Ni Kade ...</td>
+            <td>{{ $nilai_skp->penilai->nama }}</td>
         </tr>
         <tr>
             <td></td>
             <td>b. NIP</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->penilai->nip }}</td>
         </tr>
         <tr>
             <td></td>
             <td>c. Pangkat, Golongan Ruang, TMT</td>
-            <td> ...</td>
+            <td>{{ $nilai_skp->penilai->pangkatGolongan->nama }}</td>
         </tr>
         <tr>
             <td></td>
             <td>d. Jabatan/Pangkat</td>
-            <td> ...</td>
+            <td>{{ $nilai_skp->penilai->jabatan->nama }}</td>
         </tr>
         <tr>
             <td></td>
             <td>e. Unit Organisasi</td>
-            <td> ...</td>
+            {{-- <td> {{ $nilai_skp->penilai->unitOrganisasi->nama }}</td> --}}
         </tr>
 
         <tr>
@@ -124,7 +129,7 @@
         <tr>
             <td></td>
             <td>e. Unit Organisasi</td>
-            <td> ...</td>
+            {{-- <td> ...</td> --}}
         </tr>
     </table>
 
@@ -163,7 +168,7 @@
         <tr>
             <td rowspan="8">b. Perilaku Kerja</td>
             <td>1. Orientasi Pelayanan</td>
-            <td>70</td>
+            <td>{{ $nilai_prilaku->orientasi_pelayanan }}</td>
             <td>(Baik)</td>
             <td rowspan="8"></td>
             <td></td>
@@ -172,7 +177,7 @@
         </tr>
         <tr>
             <td>2. Integritas</td>
-            <td>..</td>
+            <td>{{ $nilai_prilaku->integritas }}</td>
             <td>(..)</td>
             <td></td>
             <td></td>
@@ -180,7 +185,7 @@
         </tr>
         <tr>
             <td>3. Komitmen</td>
-            <td>..</td>
+            <td>{{ $nilai_prilaku->komitmen }}</td>
             <td>(..)</td>
             <td></td>
             <td></td>
@@ -188,7 +193,7 @@
         </tr>
         <tr>
             <td>4. Disiplin</td>
-            <td>..</td>
+            <td>{{ $nilai_prilaku->disiplin }}</td>
             <td>(..)</td>
             <td></td>
             <td></td>
@@ -196,7 +201,7 @@
         </tr>
         <tr>
             <td>5. Kerjasama</td>
-            <td>..</td>
+            <td>{{ $nilai_prilaku->kerjasama }}</td>
             <td>(..)</td>
             <td></td>
             <td></td>
@@ -204,7 +209,7 @@
         </tr>
         <tr>
             <td>6. Kepemimpinan</td>
-            <td>..</td>
+            <td>{{ $nilai_prilaku->kepemimpinan }}</td>
             <td>(..)</td>
             <td></td>
             <td></td>
@@ -212,7 +217,7 @@
         </tr>
         <tr>
             <td>Jumlah</td>
-            <td>..</td>
+            <td>{{ $nilai_prilaku->total_nilai }}</td>
             <td>(..)</td>
             <td></td>
             <td></td>
@@ -220,7 +225,7 @@
         </tr>
         <tr>
             <td>Nilai Rata-rata</td>
-            <td>..</td>
+            <td>{{ round($nilai_prilaku->nilai_rata, 2) }}</td>
             <td>(..)</td>
             <td></td>
             <td></td>
@@ -229,7 +234,7 @@
         <tr>
             <td></td>
             <td>Nilai Prilau Kerja</td>
-            <td>..</td>
+            <td>{{ round($nilai_prilaku->nilai_rata, 2) }} </td>
             <td>.. %</td>
             <td>30,,</td>
             <td></td>
@@ -253,11 +258,15 @@
         <tr>
             <td colspan="6">YANG DINILAI (APABILA ADA)</td>
             <td colspan="3">PENILAI ATAS KEBERATAN</td>
-            <td></td>
+            <td>{{ $nilai_prilaku->keputusan_atasan }}</td>
         </tr>
         <tr>
-            <td colspan="6" rowspan="4" style="text-align:end; Padding-top:100px">Tanggal,</td>
-            <td colspan="4" style="text-align:end; Padding-top:100px">Tanggal, </td>
+            <td colspan="6" rowspan="4" style="text-align:center; Padding-top:10px"> {{ $nilai_skp->keberatan }}
+                <br> Tanggal,
+            </td>
+            <td colspan="4" style="text-align:center; Padding-top:10px">{{ $nilai_skp->keberatan }}
+                <br>Tanggal,
+            </td>
         </tr>
     </table>
 
