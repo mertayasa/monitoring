@@ -29,6 +29,8 @@ class NilaiPerilakuRequest extends FormRequest
             'integritas' => ['required', 'numeric', 'gt:0', 'max:100'],
             'komitmen' => ['required', 'numeric', 'gt:0', 'max:100'],
             'disiplin' => ['required', 'numeric', 'gt:0', 'max:100'],
+            'kerjasama' => ['required', 'numeric', 'gt:0', 'max:100'],
+            'kepemimpinan' => ['required', 'numeric', 'gt:0', 'max:100'],
         ];
     }
 

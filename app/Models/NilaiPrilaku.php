@@ -18,6 +18,7 @@ class NilaiPrilaku extends Model
         'komitmen',
         'disiplin',
         'kerjasama',
+        'kepemimpinan'
     ];
 
     public function nilaiSkp()

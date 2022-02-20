@@ -66,6 +66,10 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('update-kegiatan/{nilai_skp}/{kegiatan_skp}', [PenilaianController::class, 'updateKegiatan'])->name('update_kegiatan');
         Route::delete('destroy-kegiatan/{nilai_skp}/{kegiatan_skp}', [PenilaianController::class, 'destroyKegiatan'])->name('destroy_kegiatan');
         
+        Route::post('store-tugas-tambahan/{nilai_skp}', [PenilaianController::class, 'storeTugasTambahan'])->name('store_tugas_tambahan');
+        Route::patch('update-tugas-tambahan/{nilai_skp}/{tugas_tambahan}', [PenilaianController::class, 'updateTugasTambahan'])->name('update_tugas_tambahan');
+        Route::delete('destroy-tugas-tambahan/{nilai_skp}/{tugas_tambahan}', [PenilaianController::class, 'destroyTugasTambahan'])->name('destroy_tugas_tambahan');
+        
         Route::get('edit-prilaku/{nilai_skp}', [PenilaianController::class, 'editPrilaku'])->name('edit_prilaku');
         Route::post('update-prilaku/{nilai_skp}', [PenilaianController::class, 'updatePrilaku'])->name('update_prilaku');
         

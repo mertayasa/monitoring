@@ -24,7 +24,7 @@ class KegiatanSkp extends Model
 
     static function renderTable($id_nilai_skp)
     {
-        $kegiatan_skp = KegiatanSkp::where('id_nilai_skp', $id_nilai_skp)->get();
+        $kegiatan_skp = self::where('id_nilai_skp', $id_nilai_skp)->get();
         return view('penilaian.table-kegiatan', compact('kegiatan_skp'))->render();
     }
 }

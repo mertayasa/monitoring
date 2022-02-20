@@ -23,3 +23,15 @@
         {!! Form::text('disiplin', $nilai_prilaku->disiplin ?? '', ['class' => 'form-control number-only', 'id' => 'disiplin']) !!}
     </div>
 </div>
+<div class="row mt-3">
+    <div class="col-12 col-md-6 pb-3 pb-md-0">
+        {!! Form::label('kerjasama', 'Kerjasama <span class="required">*</span>', ['class' => 'mb-1'], false) !!}
+        {!! Form::text('kerjasama', $nilai_prilaku->kerjasama ?? '', ['class' => 'form-control number-only', 'id' => 'kerjasama']) !!}
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12 col-md-6 pb-3 pb-md-0">
+        {!! Form::label('kepemimpinan', 'Kepemimpinan <span class="required">*</span>', ['class' => 'mb-1'], false) !!}
+        {!! Form::text('kepemimpinan', $nilai_prilaku->kepemimpinan ?? '', ['class' => 'form-control number-only', 'id' => 'kepemimpinan']) !!}
+    </div>
+</div>

@@ -8,9 +8,11 @@ use App\Http\Requests\KegiatanSkpRequest;
 use App\Http\Requests\NilaiPerilakuRequest;
 use App\Http\Requests\NilaiPrilakuRequest;
 use App\Http\Requests\NilaiSkpRequest;
+use App\Http\Requests\TugasTambahanRequest;
 use App\Models\KegiatanSkp;
 use App\Models\NilaiSkp;
 use App\Models\NilaiPrilaku;
+use App\Models\TugasTambahan;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -103,9 +105,11 @@ class PenilaianController extends Controller
     public function editKegiatan(NilaiSkp $nilai_skp)
     {
         $kegiatan_skp = KegiatanSkp::where('id_nilai_skp', $nilai_skp->id)->get();
+        $tugas_tambahan = TugasTambahan::where('id_nilai_skp', $nilai_skp->id)->get();
         $data = [
             'nilai_skp' => $nilai_skp,
             'kegiatan_skp' => $kegiatan_skp,
+            'tugas_tambahan' => $tugas_tambahan,
         ];
 
         return view('penilaian.edit_kegiatan', $data);
@@ -135,6 +139,50 @@ class PenilaianController extends Controller
         }
 
         return response(['code' => 1, 'message' => 'Berhasil menghapus data kegiatan', 'table' => $table]);
+    }
+
+
+    // =========================================================================
+
+
+
+    public function storeTugasTambahan(TugasTambahanRequest $request, NilaiSkp $nilai_skp)
+    {
+        try{
+            TugasTambahan::create($request->validated());
+            $table = TugasTambahan::renderTable($nilai_skp->id);
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return response(['code' => 0, 'message' => 'Gagal menyimpan data tugas tambahan']);
+        }
+
+        return response(['code' => 1, 'message' => 'Berhasil menyimpan data tugas tambahan', 'table' => $table]);
+    }
+
+    public function updateTugasTambahan(TugasTambahanRequest $request, NilaiSkp $nilai_skp, TugasTambahan $tugas_tambahan)
+    {
+        try{
+            $tugas_tambahan->update($request->validated());
+            $table = TugasTambahan::renderTable($nilai_skp->id);
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return response(['code' => 0, 'message' => 'Gagal mengubah data tugas tambahan']);
+        }
+
+        return response(['code' => 1, 'message' => 'Berhasil mengubah data tugas tambahan', 'table' => $table]);
+    }
+
+    public function destroyTugasTambahan(TugasTambahan $nilai_skp, TugasTambahan $tugas_tambahan)
+    {
+        try{
+            $tugas_tambahan->delete();
+            $table = TugasTambahan::renderTable($nilai_skp->id);
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return response(['code' => 0, 'message' => 'Gagal menghapus data tugas tambahan']);
+        }
+
+        return response(['code' => 1, 'message' => 'Berhasil menghapus data tugas tambahan', 'table' => $table]);
     }
 
 

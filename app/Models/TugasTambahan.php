@@ -16,4 +16,10 @@ class TugasTambahan extends Model
         'nama_tugas',
         'nilai',
     ];
+
+    static function renderTable($id_nilai_skp)
+    {
+        $tugas_tambahan = self::where('id_nilai_skp', $id_nilai_skp)->get();
+        return view('penilaian.table-tugas-tambahan', compact('tugas_tambahan'))->render();
+    }
 }

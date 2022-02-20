@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class TugasTambahanRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class TugasTambahanRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,30 @@ class TugasTambahanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_nilai_skp' => ['required', 'exists:nilai_skp,id'],
+            'nama_tugas' => ['required', 'string', 'max:100', 'min:5'],
+            'nilai' => ['nullable', 'numeric', 'min:0', 'max:100'],
         ];
+    }
+
+    public function messages()
+    {
+        $messages = [
+            'id_nilai_skp.required' => 'Form nilai skp tidak sesuai',
+            'id_nilai_skp.exists' => 'Form nilai skp tidak sesuai',
+        ];
+
+        return $messages;
+    }
+
+    protected function failedValidation(Validator $validator) {
+
+        throw new HttpResponseException(
+            response()->json([
+
+                'errors' => $validator->errors()
+
+            ],400)
+        );
     }
 }
