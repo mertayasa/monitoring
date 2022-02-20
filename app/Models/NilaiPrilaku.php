@@ -25,4 +25,18 @@ class NilaiPrilaku extends Model
     {
         return $this->belongsTo(NilaiSkp::class, 'id_nilai_skp');
     }
+
+     public function getTotalNilaiAttribute(){
+        $sum = 0;
+        $sum = $sum + ($this->attributes['orientasi_pelayanan'] + $this->attributes['integritas']+ $this->attributes['komitmen']+ $this->attributes['disiplin'] + $this->attributes['kerjasama'] + $this->attributes['kepemimpinan']);
+        
+        return $sum;
+    }
+
+      public function getNilaiRataAttribute(){
+        $nilai_rata = 0;
+        $nilai_rata = $nilai_rata + ($this->attributes['orientasi_pelayanan'] + $this->attributes['integritas']+ $this->attributes['komitmen']+ $this->attributes['disiplin'] + $this->attributes['kerjasama']+ $this->attributes['kepemimpinan'])/7;
+        
+        return $nilai_rata;
+    }
 }

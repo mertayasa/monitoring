@@ -245,15 +245,26 @@ class PenilaianController extends Controller
     public function show(NilaiSkp $nilai_skp)
     {
         $kegiatan_skp=KegiatanSkp::all();
-        // dd($kegiatan_skp);
-        return view('penilaian.show', compact('nilai_skp', 'kegiatan_skp'));
+        $nilai_prilaku=NilaiPrilaku::all()[0];
+        $jumlah=$nilai_prilaku->total_nilai;
+        $nilai_rata = $nilai_prilaku->nilai_rata;
+        // dd($jumlah);
+
+        $data = [
+            'kegiatan_skp' => $kegiatan_skp,
+            'nilai_prilaku' => $nilai_prilaku,
+            'jumlah' => $jumlah,
+            'nilai_skp' => $nilai_skp,
+            'nilai_rata' => $nilai_rata
+        ];
+        return view('penilaian.show', $data);
     }
 
 
 
     public function destroy(NilaiSkp $nilai_skp)
     {
-        try {
+        try {   
             $nilai_skp->delete();
         } catch (Exception $e) {
             Log::info($e->getMessage());

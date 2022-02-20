@@ -6,10 +6,12 @@
         <tr>
             <td>Nama</td>
             <td>:</td>
+            <td>{{ $nilai_skp->pgwKontrak->nama }}</td>
         </tr>
         <tr>
             <td>No Kontrak</td>
             <td>:</td>
+            <td>{{ $nilai_skp->pgwKontrak->no_kontrak }}</td>
         </tr>
     </table>
     <br>
@@ -27,103 +29,86 @@
             <td>4</td>
         </tr>
         <tr>
+            <td rowspan="12"></td>
+            <td> {{ indonesianDate($nilai_skp->tgl_mulai_penilaian) }} s/d
+                {{ indonesianDate($nilai_skp->tgl_selesai_penilaian) }}</td>
+            <td>Penilaian SKP {{ indonesianDate($nilai_skp->tgl_mulai_penilaian) }} s/d
+                {{ indonesianDate($nilai_skp->tgl_selesai_penilaian) }}</td>
             <td></td>
-            <td>.. s/d ..</td>
-            <td>Penilaian SKP ... s/d ..</td>
             <td></td>
-            <td></td>
-            <td>86,63</td>
+            <td> {{ $nilai_skp->nilai }} </td>
             <td rowspan="12" style="text-align: center;"> <br>
                 PEJABAT PENILAI
                 <br><br><br><br><br>
-                Nama <br>
-                NIP
+                {{ $nilai_skp->penilai->nama }} <br>
+                NIP. {{ $nilai_skp->penilai->nip }}
             </td>
         </tr>
         <tr></tr>
         <tr>
-            <td></td>
-            <td></td>
+            <td rowspan="10"></td>
             <td colspan="3">Sedangkan penilaian prilaku kerjanya adalah </td>
             <td></td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
             <td colspan="3">Sebagai berikut:</td>
             <td></td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
             <td>Orientasi Pelayanan</td>
             <td>=</td>
-            <td>70</td>
+            <td>{{ $nilai_prilaku->orientasi_pelayanan }}</td>
             <td>(Baik)</td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
             <td>Integritas</td>
             <td>=</td>
-            <td></td>
+            <td>{{ $nilai_prilaku->integritas }}</td>
             <td>(..)</td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
             <td>Komitmen</td>
             <td>=</td>
-            <td></td>
+            <td>{{ $nilai_prilaku->komitmen }}</td>
             <td>(..)</td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
             <td>Disiplin</td>
             <td>=</td>
-            <td></td>
+            <td>{{ $nilai_prilaku->disiplin }}</td>
             <td>(..)</td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
             <td>Kerjasama</td>
             <td>=</td>
-            <td></td>
+            <td>{{ $nilai_prilaku->kerjasama }}</td>
             <td>(..)</td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
             <td>Kepemimpinan</td>
             <td>=</td>
-            <td></td>
+            <td>{{ $nilai_prilaku->kepemimpinan }}</td>
             <td>(..)</td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
             <td>Jumlah</td>
             <td>=</td>
-            <td></td>
+            <td>{{ $nilai_prilaku->total_nilai }}</td>
             <td>(..)</td>
 
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td>INilai Rata-rata</td>
+            <td>Nilai Rata-rata</td>
             <td>=</td>
-            <td></td>
+            <td>{{ round($nilai_prilaku->nilai_rata, 2) }}</td>
             <td>(..)</td>
 
         </tr>
