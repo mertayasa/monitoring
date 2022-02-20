@@ -129,6 +129,10 @@ class UserController extends Controller
 
     public function destroy($level, User $user)
     {
+        if($level == User::$admin && (Auth::id() == $user->id || User::where('level', User::$admin)->count() == 1)){
+            return response(['code' => 0, 'message' => 'Tidak bisa menghapus admin yang sedang login atau admin yang cuma ada 1!']);
+        }
+
         try {
             $user->delete();
         } catch (Exception $e) {

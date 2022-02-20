@@ -35,7 +35,7 @@ class UserRequest extends FormRequest
             'password' => ['required', 'min:6', 'confirmed'],
         ];
 
-        if($this->status){
+        if($this->request->has('status')){
             $rules += ['status' => ['required', Rule::in(['aktif', 'nonaktif'])]];
         }
 

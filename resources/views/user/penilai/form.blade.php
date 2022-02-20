@@ -57,6 +57,12 @@
         {!! Form::select('jenis_kelamin', ['' => 'Pilih Jenis Kelamin', 'Laki-laki' => 'Laki-Laki', 'Perempuan' => 'Perempuan'], null, ['class' => 'form-control', 'id' => 'jenisKelamin']) !!}  
     </div>
 </div>
+<div class="row mt-3">
+    <div class="col-12 col-md-6 pb-3 pb-md-0">
+        {!! Form::label('status', 'Status', ['class' => 'mb-1']) !!}
+        {!! Form::select('status', ['' => 'Pilih Status', 'aktif' => 'Aktif', 'nonaktif' => 'Nonaktif'], null, ['class' => 'form-control', 'id' => 'status']) !!}  
+    </div>
+</div>
 @include('layouts.form_password')
 <div class="row mt-3">
     <div class="col-12 col-md-6 pb-3 pb-md-0">

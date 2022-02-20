@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\DataTables;
 
@@ -23,6 +24,13 @@ class UserDataTable
             })
             ->addColumn('action', function ($user) use($level) {
                 $deleteUrl = "'" . route('user.destroy', [$level, $user->id]) . "', '".$level."DataTable'";
+                if($level == User::$admin && (Auth::id() == $user->id || User::where('level', User::$admin)->count() == 1)){
+                    return
+                    '<div class="btn-group">' .
+                        '<a href="' . route('user.edit', [$level, $user->id]) . '" class="btn  btn-sm  btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px" ><b> Edit </b></a>' .
+                        '<a href="' . route('user.show', [$level, $user->id]) . '" class="btn  btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lihat" style="margin-right: 5px" ><b> Lihat</b></a>' .
+                    '</div>';    
+                }
 
                 return
                     '<div class="btn-group">' .
