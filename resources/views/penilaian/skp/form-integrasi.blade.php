@@ -7,38 +7,38 @@
     <table class="table table-bordered" style="color: black; border-color:black">
 
         <tr>
-            <th colspan="2">PEGAWAI YANG DINILAI</th>
-            <th colspan="2">PEJABAT PENILAI KINERJA</th>
+            <th colspan="2" style="text-align: center">PEGAWAI YANG DINILAI</th>
+            <th colspan="2" style="text-align: center">PEJABAT PENILAI KINERJA</th>
         </tr>
         <tr>
             <td>Nama</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->pgwKontrak->nama }}</td>
             <td>Nama</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->nama }}</td>
         </tr>
         <tr>
+            <td>No Kontrak</td>
+            <td>{{ $nilai_skp->pgwKontrak->no_kontrak }}</td>
             <td>NIP</td>
-            <td>...</td>
-            <td>NIP</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->nip }}</td>
         </tr>
         <tr>
             <td>Pangkat/Golongan</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td>
             <td>Pangkat/Golongan</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->pangkatGolongan->nama }}</td>
         </tr>
         <tr>
             <td>Jabatan</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->pgwKontrak->jabatan->nama }}</td>
             <td>Jabatan</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->jabatan->nama }}</td>
         </tr>
         <tr>
             <td>Unit Kerja</td>
-            <td>...</td>
+            <td>{{ $nilai_skp->pgwKontrak->unitKerja->nama }}</td>
             <td>Unit Kerja</td>
-            <td>..</td>
+            <td>{{ $nilai_skp->penilai->unitKerja->nama }}</td>
         </tr>
         <tr>
             <td>Tanggal Penilaian</td>
@@ -75,19 +75,18 @@
             <td style="width: 200px">
                 <br>
                 <br>
-                Pegawai yang dinilai
+                Pegawai Kontrak Yang Dinilai
                 <br><br><br><br><br>
-                Nama <br>
-                N0 Kontrak.
+                {{ $nilai_skp->pgwKontrak->nama }} <br>
+                No Kontrak. {{ $nilai_skp->pgwKontrak->nip }}<br>
             </td>
             <td style="width: 500px"></td>
             <td style="width: 300px">
                 Denpasar, {{ \Carbon\Carbon::now()->isoFormat('LL') }} <br>
-                Pejabat Penilai Kinerja
+                Pejabat Penilai
                 <br><br><br><br><br>
-                {{ Auth::user()->name }}
-                Nama <br>
-                NIP.
+                {{ $nilai_skp->penilai->nama }} <br>
+                Nip. {{ $nilai_skp->penilai->nip }}
             </td>
             <td style="width: 100px"></td>
         </tr>
