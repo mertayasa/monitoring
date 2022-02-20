@@ -129,8 +129,19 @@ class UserController extends Controller
 
     public function destroy($level, User $user)
     {
-        if($level == User::$admin && (Auth::id() == $user->id || User::where('level', User::$admin)->count() == 1)){
+        if(Auth::user()->level == User::$admin && (Auth::id() == $user->id || User::where('level', User::$admin)->count() == 1)){
             return response(['code' => 0, 'message' => 'Tidak bisa menghapus admin yang sedang login atau admin yang cuma ada 1!']);
+        }
+
+        if(Auth::user()->level != User::$admin){
+            return response(['code' => 0, 'message' => 'Gagal menghapus user, anda bukan admin']);
+        }
+
+        $user->load('penilaiSkp');
+        $user->load('kontrakSkp');
+        
+        if($user->penilaiSkp()->exists() || $user->kontrakSkp()->exists()){
+            return response(['code' => 0, 'message' => 'Gagal menghapus user, data user masih digunakan di nilai skp']);
         }
 
         try {
