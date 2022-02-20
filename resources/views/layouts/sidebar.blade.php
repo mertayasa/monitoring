@@ -53,6 +53,7 @@
                 $kegiatan = isActive([
                     'kegiatan',
                     'sub_kegiatan',
+                    'kalender',
                 ])
             @endphp
             @if (Auth::user()->isAdmin())
@@ -63,11 +64,12 @@
                     <ul id="kegiatan" class="sidebar-dropdown list-unstyled {{ $kegiatan == 'active' ? 'show' : 'collapse' }}" data-parent="#sidebar">
                         <li class="sidebar-item {{ isActive('kegiatan') }}"><a class="sidebar-link" href="{{ route('kegiatan.index') }}">Kegiatan</a></li>
                         <li class="sidebar-item {{ isActive('sub_kegiatan') }}"><a class="sidebar-link" href="{{ route('sub_kegiatan.index') }}">Sub Kegiatan</a></li>
+                        <li class="sidebar-item {{ isActive('kalender') }}"><a class="sidebar-link" href="{{ route('kalender.index') }}">Kalender Kegiatan</a></li>
                     </ul>
                 </li>
             @else
-                <li class="sidebar-item {{ isActive('kegiatan') }}">
-                    <a class="sidebar-link" href="{{ route('kegiatan.kalender') }}">
+                <li class="sidebar-item {{ isActive('kalender') }}">
+                    <a class="sidebar-link" href="{{ route('kalender.index') }}">
                         <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Kegiatan</span>
                     </a>
                 </li>
