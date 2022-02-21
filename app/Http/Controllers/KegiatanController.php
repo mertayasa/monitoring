@@ -97,12 +97,20 @@ class KegiatanController extends Controller
         return redirect('kegiatan')->with('info', 'Data kegiatan Berhasil Diedit  ');
     }
 
-    public function kalender($year = null)
+    public function kalender(Request $request)
     {
-        $year = $year == null ? date('Y') : $year;
+        $year = $request->has('tahun') ? $request->tahun : date('Y');
+        $tahun_anggran = Kegiatan::select('tahun_anggaran')->distinct()->pluck('tahun_anggaran', 'tahun_anggaran')->toArray();
+        if(!array_key_exists(date('Y'), $tahun_anggran)){
+            $tahun_anggran += [date('Y') => date('Y')];
+        }
+
+        arsort($tahun_anggran, SORT_NUMERIC);
+
         $data = [
             'year' => $year,
-            'kegiatan' => Kegiatan::where('tahun_anggaran', $year)->get()
+            'kegiatan' => Kegiatan::where('tahun_anggaran', $year)->get(),
+            'tahun_anggaran' => $tahun_anggran,
         ];
 
         return view('kegiatan.kalender', $data);
