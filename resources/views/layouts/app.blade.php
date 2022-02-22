@@ -93,7 +93,7 @@
             }
         }
 
-        .required{
+        .required {
             color: red !important;
         }
 
@@ -104,7 +104,7 @@
 <body>
     <div id="preloader">
         <div class="text-center">
-            <img src="{{ asset('admin/img/laravel-logo.png') }}" width="50px">
+            <img src="{{ asset('admin/logo.png') }}" width="50px">
             <b>Sistem Monitoring</b>
         </div>
 
@@ -220,7 +220,7 @@
         const numberOnlyInput = document.getElementsByClassName('number-only')
         for (let index = 0; index < numberOnlyInput.length; index++) {
             const numberOnly = numberOnlyInput[index];
-            numberOnly.addEventListener('input', function(element){
+            numberOnly.addEventListener('input', function(element) {
                 element.target.value = element.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
             })
         }
@@ -299,7 +299,7 @@
     </script>
 
     <script>
-        function removeAnimation(){
+        function removeAnimation() {
             const preloader = document.getElementById('preloader')
             preloader.classList.add('fade-out')
         }
