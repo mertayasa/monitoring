@@ -144,6 +144,28 @@ function getHari()
     ];
 }
 
+function getPredikatNilai($nilai)
+{
+    switch($nilai){
+        case $nilai > 0 and $nilai <= 50:
+            return 'Sangat Kurang';
+        break;
+        case $nilai > 50 and $nilai <= 70:
+            return 'Kurang';
+        break;
+        case $nilai > 70 and $nilai <= 90:
+            return 'Cukup';
+        break;
+        case $nilai > 90 and $nilai <= 120:
+            return 'Baik';
+        break;
+        case $nilai > 110:
+            return 'Sangat Baik';
+        break;
+    }
+}
+
+
 function getYear()
 {
     return Carbon::parse('now')->isoFormat('Y');

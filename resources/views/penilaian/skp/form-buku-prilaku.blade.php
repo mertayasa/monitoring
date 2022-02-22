@@ -60,56 +60,56 @@
             <td>Orientasi Pelayanan</td>
             <td>=</td>
             <td>{{ $nilai_prilaku->orientasi_pelayanan }}</td>
-            <td>(Baik)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->orientasi_pelayanan) }} )</td>
 
         </tr>
         <tr>
             <td>Integritas</td>
             <td>=</td>
             <td>{{ $nilai_prilaku->integritas }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->integritas) }} )</td>
 
         </tr>
         <tr>
             <td>Komitmen</td>
             <td>=</td>
             <td>{{ $nilai_prilaku->komitmen }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->komitmen) }} )</td>
 
         </tr>
         <tr>
             <td>Disiplin</td>
             <td>=</td>
             <td>{{ $nilai_prilaku->disiplin }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->disiplin) }} )</td>
 
         </tr>
         <tr>
             <td>Kerjasama</td>
             <td>=</td>
             <td>{{ $nilai_prilaku->kerjasama }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->kerjasama) }} )</td>
 
         </tr>
         <tr>
             <td>Kepemimpinan</td>
             <td>=</td>
             <td>{{ $nilai_prilaku->kepemimpinan }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->kepemimpinan) }} )</td>
 
         </tr>
         <tr>
             <td>Jumlah</td>
             <td>=</td>
             <td>{{ $nilai_prilaku->total_nilai }}</td>
-            <td>(..)</td>
+            <td></td>
 
         </tr>
         <tr>
             <td>Nilai Rata-rata</td>
             <td>=</td>
             <td>{{ round($nilai_prilaku->nilai_rata, 2) }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai(round($nilai_prilaku->nilai_rata, 2)) }} )</td>
 
         </tr>
 
