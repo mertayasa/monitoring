@@ -39,7 +39,7 @@
             <td>{{ $nilai_skp->pgwKontrak->nama }}</td>
         </tr>
         <tr>
-            <td rowspan="17">
+            <td rowspan="17" style=" line-height: 20px ">
                 10. DITERIMA TANGGAL,<br>
                 Pegawai Kontrak Yang Dinilai
                 <br><br><br><br><br>
@@ -47,7 +47,9 @@
                 No Kontrak. {{ $nilai_skp->pgwKontrak->nip }}<br>
             </td>
             <td></td>
-            <td rowspan="17">
+            <td rowspan="5" style="line-height: 20px; ">
+                <br><br> {{ $nilai_skp->penilai->nama }} <br>
+                Nip. {{ $nilai_skp->penilai->nip }}
             </td>
             <td>b. No Kontrak</td>
             <td>{{ $nilai_skp->pgwKontrak->no_kontrak }}</td>
@@ -75,6 +77,7 @@
         </tr>
         <tr>
             <td></td>
+            <td rowspan="6"></td>
             <td rowspan="5"></td>
             <td>a. Nama</td>
             <td>{{ $nilai_skp->penilai->nama }}</td>
@@ -101,33 +104,33 @@
         </tr>
 
         <tr>
-            <td></td>
+            <td rowspan="6"></td>
             <td>3.</td>
-            <td colspan="2"> ATASAN PEJABAT PENILAI</td>
+            <td colspan="2"> 10. DITERIMA TANGGAL,</td>
         </tr>
         <tr>
-            <td></td>
+            <td rowspan="7" style=" line-height: 20px "> ATASAN PEJABAT PENILAI<br>
+                <br><br><br>
+                nama atasan <br>
+                Nip<br>
+            </td>
             <td rowspan="5"></td>
             <td>a. Nama</td>
             <td>Ni Kade ...</td>
         </tr>
         <tr>
-            <td></td>
             <td>b. NIP</td>
             <td>...</td>
         </tr>
         <tr>
-            <td></td>
             <td>c. Pangkat, Golongan Ruang, TMT</td>
             <td> ...</td>
         </tr>
         <tr>
-            <td></td>
             <td>d. Jabatan/Pangkat</td>
             <td> ...</td>
         </tr>
         <tr>
-            <td></td>
             <td>e. Unit Organisasi</td>
             {{-- <td> ...</td> --}}
         </tr>
