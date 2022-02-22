@@ -172,7 +172,7 @@
             <td rowspan="8">b. Perilaku Kerja</td>
             <td>1. Orientasi Pelayanan</td>
             <td>{{ $nilai_prilaku->orientasi_pelayanan }}</td>
-            <td>(Baik)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->orientasi_pelayanan) }} )</td>
             <td rowspan="8"></td>
             <td></td>
             <td></td>
@@ -181,7 +181,7 @@
         <tr>
             <td>2. Integritas</td>
             <td>{{ $nilai_prilaku->integritas }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->integritas) }} )</td>
             <td></td>
             <td></td>
             <td colspan="2"></td>
@@ -189,7 +189,7 @@
         <tr>
             <td>3. Komitmen</td>
             <td>{{ $nilai_prilaku->komitmen }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->komitmen) }} )</td>
             <td></td>
             <td></td>
             <td colspan="2"></td>
@@ -197,7 +197,7 @@
         <tr>
             <td>4. Disiplin</td>
             <td>{{ $nilai_prilaku->disiplin }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->disiplin) }} )</td>
             <td></td>
             <td></td>
             <td colspan="2"></td>
@@ -205,7 +205,7 @@
         <tr>
             <td>5. Kerjasama</td>
             <td>{{ $nilai_prilaku->kerjasama }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->kerjasama) }} )</td>
             <td></td>
             <td></td>
             <td colspan="2"></td>
@@ -213,7 +213,7 @@
         <tr>
             <td>6. Kepemimpinan</td>
             <td>{{ $nilai_prilaku->kepemimpinan }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->kepemimpinan) }} )</td>
             <td></td>
             <td></td>
             <td colspan="2"></td>
@@ -229,7 +229,7 @@
         <tr>
             <td>Nilai Rata-rata</td>
             <td>{{ round($nilai_prilaku->nilai_rata, 2) }}</td>
-            <td>(..)</td>
+            <td>( {{ getPredikatNilai($nilai_prilaku->nilai_rata) }} )</td>
             <td></td>
             <td></td>
             <td colspan="2"></td>
