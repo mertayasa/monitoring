@@ -248,14 +248,16 @@ class PenilaianController extends Controller
         $nilai_prilaku=NilaiPrilaku::all()[0];
         $jumlah=$nilai_prilaku->total_nilai;
         $nilai_rata = $nilai_prilaku->nilai_rata;
-        // dd($jumlah);
+        $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
+        // dd($nilai_prestasi_kerja);
 
         $data = [
             'kegiatan_skp' => $kegiatan_skp,
             'nilai_prilaku' => $nilai_prilaku,
             'jumlah' => $jumlah,
             'nilai_skp' => $nilai_skp,
-            'nilai_rata' => $nilai_rata
+            'nilai_rata' => $nilai_rata,
+            'nilai_prestasi_kerja' => $nilai_prestasi_kerja
         ];
         return view('penilaian.show', $data);
     }

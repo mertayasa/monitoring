@@ -32,4 +32,11 @@ class NilaiSkp extends Model
     {
         return $this->belongsTo(User::class, 'id_penilai');
     }
+
+         public function getPersenSkpAttribute(){
+        $sum = 0;
+        $sum = $sum + ($this->attributes['nilai'] * 0.6);
+        
+        return $sum;
+    }
 }

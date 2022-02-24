@@ -39,4 +39,14 @@ class NilaiPrilaku extends Model
         
         return $nilai_rata;
     }
+
+         public function getPersenPrilakuAttribute(){
+       $nilai_rata = 0;
+        $nilai_rata = $nilai_rata + ($this->attributes['orientasi_pelayanan'] + $this->attributes['integritas']+ $this->attributes['komitmen']+ $this->attributes['disiplin'] + $this->attributes['kerjasama']+ $this->attributes['kepemimpinan'])/7;
+        
+        $persen_prilaku = $nilai_rata * 0.4;
+
+        return $persen_prilaku;
+    }
+    
 }
