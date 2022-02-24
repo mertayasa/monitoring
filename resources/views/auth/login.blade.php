@@ -8,7 +8,7 @@
 
                     <div class="text-center mt-4">
                         <div class="text-center">
-                            <img src="{{ asset('admin/img/laravel-logo.png') }}" alt="Logo App" class="img-fluid " width="132"
+                            <img src="{{ asset('admin/img/logo.png') }}" alt="Logo App" class="img-fluid " width="132"
                                 height="132" />
                         </div>
                         <h1 class="h2 pt-3 pb-3">SISTEM INFORMASI MONITORING </h1>

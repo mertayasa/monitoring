@@ -52,31 +52,33 @@
         <tr>
             <td>1</td>
             <td>Orientasi Pelayanan</td>
-            <td>{{ $nilai_prilaku->orientasi_pelayanan }}</td>
+            <td>100</td>
         </tr>
         <tr>
             <td>2</td>
             <td>Inisiatif Kerja</td>
-            <td>{{ $nilai_prilaku->inisiatf_kerja }}</td>
+            <td>100</td>
         </tr>
         <tr>
             <td>3</td>
             <td>Komitmen</td>
-            <td>{{ $nilai_prilaku->komitmen }}</td>
+            <td>100</td>
         </tr>
         <tr>
             <td>4</td>
             <td>Kerjasama</td>
-            <td>{{ $nilai_prilaku->kerjasama }}</td>
+            <td>100</td>
         </tr>
         <tr>
             <td>5</td>
             <td>Kepemimpinan</td>
-            <td>{{ $nilai_prilaku->prilaku }}</td>
+            <td>100</td>
         </tr>
         <tr>
-            <td colspan="2">Nilai Akhir</td>
-            <td>..</td>
+            <td colspan="2"><b> Nilai Akhir </b>
+            </td>
+            <td><b> 100 </b>
+            </td>
         </tr>
     </table>
     <br>
@@ -88,7 +90,7 @@
             </td>
             <td style="width: 500px"></td>
             <td style="width: 300px">
-                Denpasar, {{ \Carbon\Carbon::now()->isoFormat('LL') }} <br>
+                Denpasar, {{ indonesianDate($nilai_skp->tgl_selesai_penilaian) }} <br>
                 Pejabat Penilai Kinerja
                 <br><br><br><br><br>
                 {{ $nilai_skp->penilai->nama }} <br>

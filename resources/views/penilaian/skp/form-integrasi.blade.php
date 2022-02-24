@@ -78,7 +78,7 @@
                 Pegawai Kontrak Yang Dinilai
                 <br><br><br><br><br>
                 {{ $nilai_skp->pgwKontrak->nama }} <br>
-                No Kontrak. {{ $nilai_skp->pgwKontrak->nip }}<br>
+                No Kontrak. {{ $nilai_skp->pgwKontrak->no_kontrak }}<br>
             </td>
             <td style="width: 500px"></td>
             <td style="width: 300px">
