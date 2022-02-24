@@ -1,6 +1,8 @@
 <div>
     <div class="dp-3 text-center">
-        <p>PENILAIAN PRESTASI KERJA PEGAWAI KONTRAK PERIODE ... - ...</p>
+        <p>PENILAIAN PRESTASI KERJA PEGAWAI KONTRAK PERIODE {{ upperCase(getMonth($nilai_skp->tgl_mulai_penilaian)) }}
+            -
+            {{ upperCase(getMonth($nilai_skp->tgl_selesai_penilaian)) }}</p>
     </div>
 
     <br>
@@ -59,7 +61,7 @@
         </tr>
         <tr>
             <th colspan="2">NILAI PRESTASI KERJA PEGAWAI KONTRAK</th>
-            <th colspan="2">..</th>
+            <th colspan="2">{{ round($nilai_prestasi_kerja, 2) }}</th>
         </tr>
     </table>
     <br>
@@ -76,11 +78,11 @@
             </td>
             <td style="width: 500px"></td>
             <td style="width: 300px">
-                Denpasar, {{ \Carbon\Carbon::now()->isoFormat('LL') }} <br>
+                Denpasar, {{ indonesianDate($nilai_skp->tgl_selesai_penilaian) }} <br>
                 Pegawai Kontrak Yang Dinilai
                 <br><br><br><br><br>
                 {{ $nilai_skp->pgwKontrak->nama }} <br>
-                No Kontrak. {{ $nilai_skp->pgwKontrak->nip }}<br>
+                No Kontrak. {{ $nilai_skp->pgwKontrak->no_kontrak }}<br>
             </td>
             <td style="width: 100px"></td>
         </tr>

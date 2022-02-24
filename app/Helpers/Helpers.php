@@ -59,6 +59,16 @@ function indonesianDate($date)
     return Carbon::parse($date)->isoFormat('LL');
 }
 
+function getMonth($date)
+{
+    return Carbon::parse($date)->isoFormat('MMMM');
+}
+
+function upperCase($value)
+{
+    return strtoupper($value);
+}
+
 function getAge($date)
 {
     $birth_date = Carbon::parse($date);
