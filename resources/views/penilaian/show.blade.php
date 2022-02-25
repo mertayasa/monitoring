@@ -9,7 +9,9 @@
                         <h5 class="card-title mb-0">Detail Penilaian SKP</h5>
                         {{-- <a href="{{ route('nilai.export_raport', [$anggota_kelas->id, $semester]) }}"
                             class="btn btn-primary"><i class="fas fa-file-download"></i> Cetak SKP</a> --}}
-                        <a href="#" class="btn btn-primary"><i class="fas fa-file-download"></i> Cetak SKP</a>
+                        <a href="{{ route('penilaian.print', $nilai_skp->id) }}" class="btn btn-primary"><i
+                                class="fas fa-file-download"></i>
+                            Cetak SKP</a>
                     </div>
                     <div class="card-body pt-0 " style="color: black;">
                         @include('penilaian.skp.form-cover')

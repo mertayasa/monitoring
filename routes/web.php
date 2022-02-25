@@ -80,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('datatable', [PenilaianController::class, 'datatable'])->name('datatable');
 
         Route::get('show/{nilai_skp}', [PenilaianController::class, 'show'])->name('show');
+        Route::get('print/{nilai_skp}', [PenilaianController::class, 'print'])->name('print');
     });
 
     Route::group(['prefix' => 'jabatan', 'as' => 'jabatan.'], function () {

@@ -19,6 +19,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class PenilaianController extends Controller
 {
@@ -272,7 +275,7 @@ class PenilaianController extends Controller
         return view('penilaian.show', $data);
     }
 
-
+// ====================================================================
 
     public function destroy(NilaiSkp $nilai_skp)
     {
@@ -285,4 +288,33 @@ class PenilaianController extends Controller
 
         return response(['code' => 1, 'message' => 'Berhasil menghapus data penilaian']);
     }
+
+// ======================================================================
+
+    public function print(NilaiSkp $nilai_skp, NilaiPrilaku $nilai_prilaku)
+    {
+        $kegiatan_skp=KegiatanSkp::all();
+        $nilai_prilaku=NilaiPrilaku::all()[0];
+        $jumlah=$nilai_prilaku->total_nilai;
+        $nilai_rata = $nilai_prilaku->nilai_rata;
+        $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
+        $persen_skp = $nilai_skp->persen_skp;
+        // $nilai_skp= NilaiSkp::all();
+        // dd($nilai_prestasi_kerja);
+
+        $data = [
+            'kegiatan_skp' => $kegiatan_skp,
+            'nilai_prilaku' => $nilai_prilaku,
+            'jumlah' => $jumlah,
+            'nilai_skp' => $nilai_skp,
+            'nilai_rata' => $nilai_rata,
+            'nilai_prestasi_kerja' => $nilai_prestasi_kerja,
+            'persen_skp' => $persen_skp,
+            'nilai_skp' => $nilai_skp
+        ];
+        // return view('inventorie.export_pdf', compact('nilai_skps', 'ttd', 'ttdUser'));
+        $pdf = PDF::loadview('penilaian.export_pdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->stream('skp'  . Carbon::now() . '.pdf');
+    }
+
 }
