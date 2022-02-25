@@ -24,12 +24,22 @@ class PenilaianController extends Controller
 {
     public function index()
     {
+        
         return view('penilaian.index');
+        
     }
 
     public function datatable()
     {
-        $nilai_skp = NilaiSkp::with('pgwKontrak', 'penilai')->latest();
+        if (Auth::user()->isKontrak()) {
+            $nilai_skp = NilaiSkp::with('pgwKontrak', 'penilai')->where('id_pgw_kontrak', Auth::id())->get();
+            // dd($nilai_skp);
+        }
+        else {
+            $nilai_skp = NilaiSkp::with('pgwKontrak', 'penilai')->latest();
+        }
+
+
         return PenilaianDataTable::set($nilai_skp);
     }
 

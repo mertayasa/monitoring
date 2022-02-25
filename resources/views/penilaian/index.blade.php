@@ -8,9 +8,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <a href="{{ route('penilaian.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Tambah Penilaian"> <i class="fas fa-folder-plus"></i>
-                            Penilaian Baru</a>
+                        @if (Auth::user()->isAdmin())
+                            <a href="{{ route('penilaian.create') }}" class="btn btn-primary add" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Tambah Penilaian"> <i class="fas fa-folder-plus"></i>
+                                Penilaian Baru</a>
+                        @endif
                     </div>
                     <div class="px-3">
                         @include('layouts.flash')
@@ -19,7 +21,11 @@
                     <div class="card-body">
 
                         <div class=" d-flex justify-content-between">
+                            {{-- @if (Auth::user()->isKontrak())
+                                @include('penilaian.skp_kontrak')
+                            @else --}}
                             @include('penilaian.datatable')
+                            {{-- @endif --}}
                         </div>
                     </div>
                 </div>
