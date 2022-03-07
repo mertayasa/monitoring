@@ -16,23 +16,23 @@
     <title>Cetak Daftar Inventaris</title>
 </head>
 
-<body>
+<body style="font-family: 'Times New Roman', Times, serif">
     {{-- <div class="container"> --}}
     {{-- <div class="card-body pt-0 " style="color: black;"> --}}
     @include('penilaian.skp.form-cover')
-    <hr class="m-5">
+    {{-- <hr class="m-5"> --}}
     @include('penilaian.skp.form-dp3skp')
-    <hr class="m-5">
-    @include('penilaian.skp.form-buku-prilaku')
+    {{-- <hr class="m-5"> --}}
+    {{-- @include('penilaian.skp.form-buku-prilaku')
     <hr class="m-5">
     @include('penilaian.skp.form-ppk')
     <hr class="m-5">
-    @include('penilaian.skp.form-penilaian-prestasi')
-    <hr class="m-5">
+    @include('penilaian.skp.form-penilaian-prestasi') --}}
+    {{-- <hr class="m-5"> --}}
     @include('penilaian.skp.form-penilaian-perilaku')
-    <hr class="m-5">
-    @include('penilaian.skp.form-integrasi')
-    <hr class="m-5">
+    {{-- <hr class="m-5"> --}}
+    {{-- @include('penilaian.skp.form-integrasi')
+    <hr class="m-5"> --}}
     {{-- </div> --}}
     {{-- </div> --}}
 

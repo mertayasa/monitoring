@@ -1,5 +1,5 @@
 <div>
-    <table class="table  table-borderless">
+    <table class="table  table-borderless" style="font-size: 12px">
         <tr>
             <td colspan="5" class="text-center" style=" font-size: 15px; font-weight:600; color:black">
                 <img src="{{ asset('admin/img/pancasila.png') }}" width="100px"><br>PENILAIAN KINERJA <br> PEGAWAI
@@ -8,7 +8,7 @@
         </tr>
         <tr>
             <td colspan="5" class="text-center"
-                style=" font-size: 12px;  font-weight:600; color:black; padding-top:100px">
+                style=" font-size: 12px;  font-weight:600; color:black; padding-top:80px">
                 Jangka Waktu Penilaian <br>
                 {{ indonesianDate($nilai_skp->tgl_mulai_penilaian) }} s/d
                 {{ indonesianDate($nilai_skp->tgl_selesai_penilaian) }}

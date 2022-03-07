@@ -1,4 +1,4 @@
-<div>
+<div class="page_break">
     <div class="dp-3 text-center">
         <p>FORMULIR SASARAN KERJA <br> PEGAWAI KONTRAK</p>
     </div>
@@ -25,9 +25,9 @@
         <tr>
             <td>1</td>
             <td style="width: 100px">Nama</td>
-            <td style="width: 300px">{{ $nilai_skp->penilai->nama }}</td>
+            <td style="width: 200px">{{ $nilai_skp->penilai->nama }}</td>
             <td>1</td>
-            <td colspan="2">Nama</td>
+            <td colspan="2" style="width: 100px">Nama</td>
             <td colspan="4"> {{ $nilai_skp->pgwKontrak->nama }}</td>
         </tr>
         <tr>
