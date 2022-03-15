@@ -28,13 +28,13 @@
             <td> {{ $nilai_skp->pgwKontrak->no_kontrak }} </td>
             <td></td>
         </tr>
-        <tr>
+        {{-- <tr>
             <td></td>
             <td style="width: 200px">Pangkat Golongan Ruang</td>
             <td style="width: 10px">:</td>
             <td> {{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }} </td>
             <td></td>
-        </tr>
+        </tr> --}}
         <tr>
             <td></td>
             <td style="width: 200px">Jabatan</td>

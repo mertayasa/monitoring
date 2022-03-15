@@ -44,7 +44,8 @@
             <td>{{ $nilai_skp->penilai->pangkatGolongan->nama }}</td>
             <td>3</td>
             <td colspan="2">Pangkat/Gol.Ruang</td>
-            <td colspan="4">{{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td>
+            {{-- <td colspan="4">{{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td> --}}
+            <td colspan="4"> - </td>
         </tr>
         <tr>
             <td>4</td>
