@@ -37,6 +37,14 @@
             width: 16.6%;
         }
 
+        /* .use-select2-height {
+            height: calc(1.5em + 0.75rem + 2px) !important;
+        } */
+
+        .select2-container--bootstrap4 .select2-selection--single{
+            height: calc(1.3em + 0.75rem + 2px) !important;
+        }
+
         #preloader {
             position: fixed;
             top: 0;

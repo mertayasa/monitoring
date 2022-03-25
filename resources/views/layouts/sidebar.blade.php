@@ -14,26 +14,28 @@
                 </a>
             </li>
 
-            @php
-                $user = isActive(['admin', 'penilai', 'kontrak']);
-            @endphp
-            <li class="sidebar-item">
-                <a data-target="#users" data-toggle="collapse"
-                    class="sidebar-link {{ $user == 'active' ? '' : 'collapsed' }}">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Pengguna</span>
-                </a>
-                <ul id="users" class="sidebar-dropdown list-unstyled {{ $user == 'active' ? 'show' : 'collapse' }}"
-                    data-parent="#sidebar">
-                    @if (Auth::user()->isAdmin())
-                        <li class="sidebar-item {{ isActive('admin') }}"><a class="sidebar-link"
-                                href="{{ route('user.index', 'admin') }}">Admin</a></li>
-                    @endif
-                    <li class="sidebar-item {{ isActive('penilai') }}"><a class="sidebar-link"
-                            href="{{ route('user.index', 'penilai') }}">Pejabat Penilai</a></li>
-                    <li class="sidebar-item {{ isActive('kontrak') }}"><a class="sidebar-link"
-                            href="{{ route('user.index', 'kontrak') }}">Pegawai Kontrak</a></li>
-                </ul>
-            </li>
+            @if (Auth::user()->isAdmin() or Auth::user()->isPenilai())
+                @php
+                    $user = isActive(['admin', 'penilai', 'kontrak']);
+                @endphp
+                <li class="sidebar-item">
+                    <a data-target="#users" data-toggle="collapse"
+                        class="sidebar-link {{ $user == 'active' ? '' : 'collapsed' }}">
+                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Pengguna</span>
+                    </a>
+                    <ul id="users" class="sidebar-dropdown list-unstyled {{ $user == 'active' ? 'show' : 'collapse' }}"
+                        data-parent="#sidebar">
+                        @if (Auth::user()->isAdmin())
+                            <li class="sidebar-item {{ isActive('admin') }}"><a class="sidebar-link"
+                                    href="{{ route('user.index', 'admin') }}">Admin</a></li>
+                        @endif
+                        <li class="sidebar-item {{ isActive('penilai') }}"><a class="sidebar-link"
+                                href="{{ route('user.index', 'penilai') }}">Pejabat Penilai</a></li>
+                        <li class="sidebar-item {{ isActive('kontrak') }}"><a class="sidebar-link"
+                                href="{{ route('user.index', 'kontrak') }}">Pegawai Kontrak</a></li>
+                    </ul>
+                </li>
+            @endif
 
             @if (Auth::user()->isAdmin())
                 <li class="sidebar-item {{ isActive('pengumuman') }}">
