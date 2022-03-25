@@ -25,7 +25,8 @@
         </tr>
         <tr>
             <td>Pangkat/Golongan</td>
-            <td>{{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td>
+            {{-- <td>{{ $nilai_skp->pgwKontrak->pangkatGolongan->nama }}</td> --}}
+            <td> - </td>
             <td>Pangkat/Golongan</td>
             <td>{{ $nilai_skp->penilai->pangkatGolongan->nama }}</td>
         </tr>
