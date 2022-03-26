@@ -27,23 +27,54 @@ class PenilaianController extends Controller
 {
     public function index()
     {
-        
-        return view('penilaian.index');
-        
+        $pegawai_kontrak = User::kontrak()->pluck('nama', 'id');
+        $data = [
+            'pegawai_kontrak' => ['' => 'Pilih Pegawai'] + $pegawai_kontrak->toArray()
+        ];
+
+        return view('penilaian.index', $data);
     }
 
-    public function datatable()
+    public function datatable(Request $request)
     {
         if (Auth::user()->isKontrak()) {
             $nilai_skp = NilaiSkp::with('pgwKontrak', 'penilai')->where('id_pgw_kontrak', Auth::id())->get();
-            // dd($nilai_skp);
         }
         else {
-            $nilai_skp = NilaiSkp::with('pgwKontrak', 'penilai')->latest();
+            $nilai_skp = $this->filterSkp($request);
+            // $nilai_skp = NilaiSkp::with('pgwKontrak', 'penilai')->latest();
         }
 
 
         return PenilaianDataTable::set($nilai_skp);
+    }
+
+    public function filterSkp($request)
+    {
+        $tgl_mulai = $request->tgl_mulai ?? null;
+        $tgl_selesai = $request->tgl_selesai ?? null;
+        Log::info($tgl_mulai);
+        Log::info($tgl_selesai);
+        $id_pgw_kontrak = $request->id_pgw_kontrak ?? null;
+
+        $nilai_skp = NilaiSkp::with('pgwKontrak', 'penilai');
+
+        if($id_pgw_kontrak != null){
+            $nilai_skp->where('id_pgw_kontrak', $id_pgw_kontrak);
+        }
+
+        if($tgl_mulai != null){
+            if($tgl_selesai != null){
+                $nilai_skp->whereDate('tgl_mulai_penilaian', '>=', $tgl_mulai)->whereDate('tgl_selesai_penilaian', '<=', $tgl_selesai);
+            }else{
+                Log::info('asds');
+                $nilai_skp->whereDate('tgl_mulai_penilaian', '>=', $tgl_mulai);
+            }
+        }
+
+        $nilai_skp = $nilai_skp->get();
+
+        return $nilai_skp;
     }
 
     public function create()

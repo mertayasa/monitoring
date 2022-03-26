@@ -234,7 +234,7 @@
         }
 
         $(document).ready(function() {
-            $('select:not(.custom-select)').select2({
+            $('select:not(.custom-select, .flatpickr-monthDropdown-months)').select2({
                 theme: 'bootstrap4',
             });
         })
