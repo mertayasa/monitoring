@@ -5,8 +5,8 @@ services:
         build:
             context: ./
             dockerfile: Dockerfile
-        image: laravel-monitoring
-        container_name: laravel-monitoring
+        image: laravel-monitor
+        container_name: laravel-monitor
         restart: unless-stopped
         volumes:
             - ./:/var/www/html
@@ -14,25 +14,20 @@ services:
             - ./docker-config/php.ini:/etc/php8/conf.d/custom.ini
         networks:
             - mainapp
-        depends_on:
-            - database
         ports:
-            - 8383:8080
+            - ${DOCKER_PORT}:8080
 
-    # npm:
-    #     image: node:17-alpine
-    #     container_name: laravel-npm
-    #     restart: unless-stopped
-    #     working_dir: /var/www/html
-    #     entrypoint: ["npm"]
-    #     depends_on:
-    #     - app
-    #     volumes:
-    #     - ./:/var/www/html
+    npm:
+        image: node:17-alpine
+        container_name: npm-monitor
+        restart: unless-stopped
+        working_dir: /var/www/html
+        entrypoint: ["npm"]
+        depends_on:
+        - app
+        volumes:
+        - ./:/var/www/html
             
 networks:
     mainapp:
         name: mainapp
-# volumes:
-#     mysqldb:
-#         driver: local
