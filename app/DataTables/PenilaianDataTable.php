@@ -21,7 +21,7 @@ class PenilaianDataTable
                 $hide = roleName() == 'kontrak' ? 'd-none' : '';
                 return
                     '<div class="btn-group">' .
-                    '<a href="' . route('penilaian.edit', $penilaian->id) . '" class="btn  btn-sm  btn-warning ' . $hide . ' " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px" ><b> Edit </b></a>' .
+                    '<a href="' . route('penilaian.edit', $penilaian->id) . '" class="btn  btn-sm  btn-warning ' . $hide . ' " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px" ><b> Nilai </b></a>' .
                     '<a href="#" onclick="deleteModel(' . $deleteUrl . ',)" class="btn btn-sm btn-danger ' . $hide . ' " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" style="margin-right: 5px"><b> Hapus</b></a>' .
                     '<a href="' . route('penilaian.show', $penilaian->id) . '" class="btn  btn-sm  btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="show" style="margin-right: 5px" ><b> Lihat SKP</b></a>' .
                     '</div>';
