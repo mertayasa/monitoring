@@ -39,7 +39,8 @@
             <td></td>
             <td style="width: 200px">Jabatan</td>
             <td style="width: 10px">:</td>
-            <td>{{ $nilai_skp->pgwKontrak->jabatan->nama }} </td>
+            {{-- <td>{{ $nilai_skp->pgwKontrak->jabatan->nama }} </td> --}}
+            <td>-</td>
             <td></td>
         </tr>
         <tr>

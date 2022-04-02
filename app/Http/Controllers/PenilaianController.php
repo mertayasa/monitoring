@@ -288,20 +288,20 @@ class PenilaianController extends Controller
 
     public function show(NilaiSkp $nilai_skp)
     {
-        $kegiatan_skp=KegiatanSkp::all();
-        $nilai_prilaku=NilaiPrilaku::all()[0];
-        $jumlah=$nilai_prilaku->total_nilai;
-        $nilai_rata = $nilai_prilaku->nilai_rata;
-        $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
+        $kegiatan_skp=KegiatanSkp:: where('id_nilai_skp', $nilai_skp->id)->get();
+        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->get();
+        // $jumlah=$nilai_prilaku->total_nilai;
+        // $nilai_rata = $nilai_prilaku->nilai_rata;
+        // $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
         // dd($nilai_prestasi_kerja);
 
         $data = [
             'kegiatan_skp' => $kegiatan_skp,
             'nilai_prilaku' => $nilai_prilaku,
-            'jumlah' => $jumlah,
+            // 'jumlah' => $jumlah,
             'nilai_skp' => $nilai_skp,
-            'nilai_rata' => $nilai_rata,
-            'nilai_prestasi_kerja' => $nilai_prestasi_kerja
+            // 'nilai_rata' => $nilai_rata,
+            // 'nilai_prestasi_kerja' => $nilai_prestasi_kerja
         ];
         return view('penilaian.show', $data);
     }
@@ -324,8 +324,8 @@ class PenilaianController extends Controller
 
     public function print(NilaiSkp $nilai_skp, NilaiPrilaku $nilai_prilaku)
     {
-        $kegiatan_skp=KegiatanSkp::all();
-        $nilai_prilaku=NilaiPrilaku::all()[0];
+        $kegiatan_skp=KegiatanSkp::where('id_nilai_skp' , $nilai_skp->id)->get();
+        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp' , $nilai_skp->id)->get();
         $jumlah=$nilai_prilaku->total_nilai;
         $nilai_rata = $nilai_prilaku->nilai_rata;
         $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;

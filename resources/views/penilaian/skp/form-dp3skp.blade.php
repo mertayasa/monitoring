@@ -53,7 +53,8 @@
             <td>{{ $nilai_skp->penilai->jabatan->nama }}</td>
             <td>4</td>
             <td colspan="2">Jabatan</td>
-            <td colspan="4">{{ $nilai_skp->pgwKontrak->jabatan->nama }}</td>
+            {{-- <td colspan="4">{{ $nilai_skp->pgwKontrak->jabatan->nama }}</td> --}}
+            <td colspan="4"> - </td>
         </tr>
         <tr>
             <td>5</td>

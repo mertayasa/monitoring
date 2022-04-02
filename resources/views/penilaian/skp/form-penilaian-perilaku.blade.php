@@ -32,9 +32,11 @@
         </tr>
         <tr>
             <td>Jabatan</td>
-            <td>{{ $nilai_skp->pgwKontrak->jabatan->nama }}</td>
+            {{-- <td>{{ $nilai_skp->pgwKontrak->jabatan->nama }}</td> --}}
+            <td> - </td>
             <td>Jabatan</td>
             <td>{{ $nilai_skp->penilai->jabatan->nama }}</td>
+
         </tr>
         <tr>
             <td>Unit Kerja</td>
