@@ -324,25 +324,42 @@ class PenilaianController extends Controller
 
     public function print(NilaiSkp $nilai_skp, NilaiPrilaku $nilai_prilaku)
     {
-        $kegiatan_skp=KegiatanSkp::where('id_nilai_skp' , $nilai_skp->id)->get();
-        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp' , $nilai_skp->id)->get();
-        $jumlah=$nilai_prilaku->total_nilai;
-        $nilai_rata = $nilai_prilaku->nilai_rata;
-        $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
-        $persen_skp = $nilai_skp->persen_skp;
-        // $nilai_skp= NilaiSkp::all();
+        // $kegiatan_skp=KegiatanSkp::where('id_nilai_skp' , $nilai_skp->id)->get();
+        // $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp' , $nilai_skp->id)->get();
+        // $jumlah=$nilai_prilaku->total_nilai;
+        // $nilai_rata = $nilai_prilaku->nilai_rata;
+        // $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
+        // $persen_skp = $nilai_skp->persen_skp;
+        // // $nilai_skp= NilaiSkp::all();
+        // // dd($nilai_prestasi_kerja);
+
+        // $data = [
+        //     'kegiatan_skp' => $kegiatan_skp,
+        //     'nilai_prilaku' => $nilai_prilaku,
+        //     'jumlah' => $jumlah,
+        //     'nilai_skp' => $nilai_skp,
+        //     'nilai_rata' => $nilai_rata,
+        //     'nilai_prestasi_kerja' => $nilai_prestasi_kerja,
+        //     'persen_skp' => $persen_skp,
+        //     'nilai_skp' => $nilai_skp
+        // ];
+
+        $kegiatan_skp=KegiatanSkp:: where('id_nilai_skp', $nilai_skp->id)->get();
+        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->get();
+        // $jumlah=$nilai_prilaku->total_nilai;
+        // $nilai_rata = $nilai_prilaku->nilai_rata;
+        // $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
         // dd($nilai_prestasi_kerja);
 
         $data = [
             'kegiatan_skp' => $kegiatan_skp,
             'nilai_prilaku' => $nilai_prilaku,
-            'jumlah' => $jumlah,
+            // 'jumlah' => $jumlah,
             'nilai_skp' => $nilai_skp,
-            'nilai_rata' => $nilai_rata,
-            'nilai_prestasi_kerja' => $nilai_prestasi_kerja,
-            'persen_skp' => $persen_skp,
-            'nilai_skp' => $nilai_skp
+            // 'nilai_rata' => $nilai_rata,
+            // 'nilai_prestasi_kerja' => $nilai_prestasi_kerja
         ];
+        
         // return view('inventorie.export_pdf', compact('nilai_skps', 'ttd', 'ttdUser'));
         $pdf = PDF::loadview('penilaian.export_pdf', $data)->setPaper('a4', 'landscape');
         return $pdf->stream('skp'  . Carbon::now() . '.pdf');
