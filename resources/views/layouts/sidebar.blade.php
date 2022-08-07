@@ -23,7 +23,8 @@
                         class="sidebar-link {{ $user == 'active' ? '' : 'collapsed' }}">
                         <i class="align-middle" data-feather="users"></i> <span class="align-middle">Pengguna</span>
                     </a>
-                    <ul id="users" class="sidebar-dropdown list-unstyled {{ $user == 'active' ? 'show' : 'collapse' }}"
+                    <ul id="users"
+                        class="sidebar-dropdown list-unstyled {{ $user == 'active' ? 'show' : 'collapse' }}"
                         data-parent="#sidebar">
                         @if (Auth::user()->isAdmin())
                             <li class="sidebar-item {{ isActive('admin') }}"><a class="sidebar-link"
@@ -40,18 +41,19 @@
             @if (Auth::user()->isAdmin())
                 <li class="sidebar-item {{ isActive('pengumuman') }}">
                     <a class="sidebar-link" href="{{ route('pengumuman.index') }}">
-                        <i class="align-middle" data-feather="bell"></i> <span
-                            class="align-middle">Pengumuman</span>
+                        <i class="align-middle" data-feather="bell"></i> <span class="align-middle">Pengumuman</span>
                     </a>
                 </li>
             @endif
 
+            @if (Auth::user()->isPenilai())
+                <li class="sidebar-item {{ isActive('penilaian') }}">
+                    <a class="sidebar-link" href="{{ route('penilaian.index') }}">
+                        <i class="align-middle" data-feather="star"></i> <span class="align-middle">Penilaian SKP</span>
+                    </a>
+                </li>
+            @endif
 
-            <li class="sidebar-item {{ isActive('penilaian') }}">
-                <a class="sidebar-link" href="{{ route('penilaian.index') }}">
-                    <i class="align-middle" data-feather="star"></i> <span class="align-middle">Penilaian SKP</span>
-                </a>
-            </li>
 
             @php
                 $kegiatan = isActive(['kegiatan', 'sub_kegiatan', 'kalender']);
@@ -60,8 +62,7 @@
                 <li class="sidebar-item">
                     <a data-target="#kegiatan" data-toggle="collapse"
                         class="sidebar-link {{ $kegiatan == 'active' ? '' : 'collapsed' }}">
-                        <i class="align-middle" data-feather="calendar"></i> <span
-                            class="align-middle">Kegiatan</span>
+                        <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Kegiatan</span>
                     </a>
                     <ul id="kegiatan"
                         class="sidebar-dropdown list-unstyled {{ $kegiatan == 'active' ? 'show' : 'collapse' }}"
@@ -77,8 +78,7 @@
             @else
                 <li class="sidebar-item {{ isActive('kalender') }}">
                     <a class="sidebar-link" href="{{ route('kalender.index') }}">
-                        <i class="align-middle" data-feather="calendar"></i> <span
-                            class="align-middle">Kegiatan</span>
+                        <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Kegiatan</span>
                     </a>
                 </li>
             @endif
