@@ -18,10 +18,10 @@
                         <hr class="m-5">
                         @include('penilaian.skp.form-dp3skp')
                         <hr class="m-5">
-                        {{-- @include('penilaian.skp.form-buku-prilaku')
-                        <hr class="m-5">
-                        @include('penilaian.skp.form-ppk')
-                        <hr class="m-5">
+                        {{-- @include('penilaian.skp.form-buku-prilaku') --}}
+                        {{-- <hr class="m-5"> --}}
+                        {{-- @include('penilaian.skp.form-ppk') --}}
+                        {{-- <hr class="m-5">
                         @include('penilaian.skp.form-penilaian-prestasi')
                         <hr class="m-5"> --}}
                         @include('penilaian.skp.form-penilaian-perilaku')

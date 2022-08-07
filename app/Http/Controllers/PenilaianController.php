@@ -289,7 +289,7 @@ class PenilaianController extends Controller
     public function show(NilaiSkp $nilai_skp)
     {
         $kegiatan_skp=KegiatanSkp:: where('id_nilai_skp', $nilai_skp->id)->get();
-        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->get();
+        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->get()[0];
         // $jumlah=$nilai_prilaku->total_nilai;
         // $nilai_rata = $nilai_prilaku->nilai_rata;
         // $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
@@ -345,7 +345,7 @@ class PenilaianController extends Controller
         // ];
 
         $kegiatan_skp=KegiatanSkp:: where('id_nilai_skp', $nilai_skp->id)->get();
-        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->get();
+        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->get()[0];
         // $jumlah=$nilai_prilaku->total_nilai;
         // $nilai_rata = $nilai_prilaku->nilai_rata;
         // $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;

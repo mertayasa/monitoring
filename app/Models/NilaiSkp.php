@@ -16,6 +16,7 @@ class NilaiSkp extends Model
         'id_penilai',
         'tgl_mulai_penilaian',
         'tgl_selesai_penilaian',
+        'nilai',
         'permasalahan',
         'keberatan',
         'rekomendasi',

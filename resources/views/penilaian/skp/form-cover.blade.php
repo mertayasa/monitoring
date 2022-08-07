@@ -2,7 +2,10 @@
     <table class="table  table-borderless" style="font-size: 12px">
         <tr>
             <td colspan="5" class="text-center" style=" font-size: 15px; font-weight:600; color:black">
-                <img src="{{ public_path('admin/img/pancasila.png') }}" style="width:100px;" width="100px"><br>PENILAIAN KINERJA <br> PEGAWAI
+                {{-- <img src="{{ public_path('admin/img/pancasila.png') }}" style="width:100px;" width="100px"><br>PENILAIAN KINERJA <br> PEGAWAI
+                KONTRAK --}}
+                <img src="{{ public_path('admin/img/pancasila.png') }}" style="width:100px;" width="100px">
+                <br>PENILAIAN KINERJA <br> PEGAWAI
                 KONTRAK
             </td>
         </tr>
@@ -52,7 +55,7 @@
         </tr>
         <tr>
             <td colspan="5" class="text-center"
-                style=" font-size: 15px; font-weight:600; color:black; padding-top:100px"" >
+                style=" font-size: 15px; font-weight:600; color:black; padding-top:100px"">
                 DINAS PENDIDIKAN KEPEMUDAAN DAN OLAHRAGA PROVINSI BALI<br> TAHUN {{ getYear() }}
             </td>
         </tr>

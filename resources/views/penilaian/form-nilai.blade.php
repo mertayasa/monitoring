@@ -2,7 +2,7 @@
 <div class="row mt-3">
     <div class="col-12 col-md-6 pb-3 pb-md-0">
         {!! Form::label('nilai', 'Nilai SKP <span class="required">*</span>', ['class' => 'mb-1'], false) !!}
-        {!! Form::text('nilai', null, ['class' => 'form-control number-only', 'id' => 'nilai']) !!}
+        {!! Form::number('nilai', null, ['class' => 'form-control number-only', 'id' => 'nilai']) !!}
     </div>
 </div>
 <div class="row mt-3">
