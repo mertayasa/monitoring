@@ -17,7 +17,7 @@
                 <div class="card mb-2">
                     <div class="card-header d-flex flex-column justify-content-between align-items-center">
                         <div class="col-12">
-                            @if (Auth::user()->isAdmin())
+                            @if (Auth::user()->isPenilai())
                                 <a href="{{ route('penilaian.create') }}" class="btn btn-primary add"
                                     data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah Penilaian"> <i
                                         class="fas fa-folder-plus"></i>
