@@ -38,12 +38,13 @@
                 </li>
             @endif
 
-            @if (Auth::user()->isAdmin())
-                <li class="sidebar-item {{ isActive('pengumuman') }}">
+                            <li class="sidebar-item {{ isActive('pengumuman') }}">
                     <a class="sidebar-link" href="{{ route('pengumuman.index') }}">
                         <i class="align-middle" data-feather="bell"></i> <span class="align-middle">Pengumuman</span>
                     </a>
                 </li>
+
+            @if (Auth::user()->isAdmin())
             @endif
 
             @if (Auth::user()->isPenilai())
