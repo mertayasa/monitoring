@@ -38,21 +38,21 @@
                 </li>
             @endif
 
-                            <li class="sidebar-item {{ isActive('pengumuman') }}">
+            @if (Auth::user()->isAdmin())
+                <li class="sidebar-item {{ isActive('pengumuman') }}">
                     <a class="sidebar-link" href="{{ route('pengumuman.index') }}">
                         <i class="align-middle" data-feather="bell"></i> <span class="align-middle">Pengumuman</span>
                     </a>
                 </li>
-
-            @if (Auth::user()->isAdmin())
             @endif
 
-            @if (Auth::user()->isPenilai())
                 <li class="sidebar-item {{ isActive('penilaian') }}">
                     <a class="sidebar-link" href="{{ route('penilaian.index') }}">
                         <i class="align-middle" data-feather="star"></i> <span class="align-middle">Penilaian SKP</span>
                     </a>
                 </li>
+
+            @if (Auth::user()->isPenilai())
             @endif
 
 
