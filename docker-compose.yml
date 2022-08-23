@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
     app:
@@ -15,18 +15,18 @@ services:
         networks:
             - mainapp
         ports:
-            - ${DOCKER_PORT}:8080
+            - 8090:8080
 
-    npm:
-        image: node:17-alpine
-        container_name: npm-monitor
-        restart: unless-stopped
-        working_dir: /var/www/html
-        entrypoint: ["npm"]
-        depends_on:
-        - app
-        volumes:
-        - ./:/var/www/html
+    # npm:
+    #     image: node:17-alpine
+    #     container_name: npm-monitor
+    #     restart: unless-stopped
+    #     working_dir: /var/www/html
+    #     entrypoint: ["npm"]
+    #     depends_on:
+    #     - app
+    #     volumes:
+    #     - ./:/var/www/html
             
 networks:
     mainapp:

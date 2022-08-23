@@ -48,7 +48,7 @@
                     <div class="row mt-3">
                         <div class="col-12">
                             <a href="{{ route('penilaian.edit', $nilai_skp->id) }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Edit Informasi Umum</a>
-                            <a href="{{ route('penilaian.edit_prilaku', $nilai_skp->id) }}" class="btn btn-primary ml-3" type="submit">Simpan & Edit Perilaku <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ route('penilaian.index', $nilai_skp->id) }}" class="btn btn-primary ml-3" type="submit">Simpan <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

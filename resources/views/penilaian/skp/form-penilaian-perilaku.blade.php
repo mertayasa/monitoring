@@ -55,27 +55,27 @@
         <tr>
             <td>1</td>
             <td>Orientasi Pelayanan</td>
-            <td>{{ $nilai_prilaku->orientasi_pelayanan }}</td>
+            <td>{{ $nilai_prilaku->orientasi_pelayanan ?? '-' }}</td>
         </tr>
         <tr>
             <td>2</td>
             <td>Integritas</td>
-            <td>{{ $nilai_prilaku->integritas }}</td>
+            <td>{{ $nilai_prilaku->integritas ?? '-' }}</td>
         </tr>
         <tr>
             <td>3</td>
             <td>Komitmen</td>
-            <td>{{ $nilai_prilaku->komitmen }}</td>
+            <td>{{ $nilai_prilaku->komitmen ?? '-' }}</td>
         </tr>
         <tr>
             <td>4</td>
             <td>Kerjasama</td>
-            <td>{{ $nilai_prilaku->kerjasama }}</td>
+            <td>{{ $nilai_prilaku->kerjasama ?? '-' }}</td>
         </tr>
         <tr>
             <td>5</td>
             <td>Kepemimpinan</td>
-            <td>{{ $nilai_prilaku->kepemimpinan }}</td>
+            <td>{{ $nilai_prilaku->kepemimpinan ?? '-' }}</td>
         </tr>
         <tr>
             <td colspan="2"><b> Nilai Akhir </b>

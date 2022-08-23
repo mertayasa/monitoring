@@ -4,7 +4,11 @@
             <td colspan="5" class="text-center" style=" font-size: 15px; font-weight:600; color:black">
                 {{-- <img src="{{ public_path('admin/img/pancasila.png') }}" style="width:100px;" width="100px"><br>PENILAIAN KINERJA <br> PEGAWAI
                 KONTRAK --}}
-                <img src="{{ public_path('admin/img/pancasila.png') }}" style="width:100px;" width="100px">
+                @if (Request::is('*show*'))
+                    <img src="{{ asset('admin/img/pancasila.png') }}" style="width:100px;" width="100px">
+                @else
+                    <img src="{{ public_path('admin/img/pancasila.png') }}" style="width:100px;" width="100px">
+                @endif
                 <br>PENILAIAN KINERJA <br> PEGAWAI
                 KONTRAK
             </td>

@@ -14,7 +14,11 @@
                     {!! Form::hidden('id_nilai_skp', $nilai_skp->id, ['id' => 'idNilaiSkp']) !!}
                     <div class="col-12 pb-3 pb-md-0 mb-2">
                         {!! Form::label('kegiatanSKP', 'Kegiatan SKP <span class="required">*</span>', ['class' => 'mb-1'], false) !!}
-                        {!! Form::text('kegiatan', null, ['class' => 'form-control', 'id' => 'kegiatanSKP']) !!}
+                        {{-- {!! Form::text('kegiatan', null, ['class' => 'form-control', 'id' => 'kegiatanSKP']) !!} --}}
+                        {!! Form::select('kegiatan', [
+                            'Melaksanakan monitoring di smk 1 denpasar' => 'Melaksanakan monitoring di smk 1 denpasar',
+                            'Melaksankan kegiatan pemberian sarana dan prasarana di smk 1 denpasar' => 'Melaksankan kegiatan pemberian sarana dan prasarana di smk 1 denpasar' 
+                        ], null, ['class' => 'form-control', 'id' => 'kegiatanSKP']) !!}
                         <div class="invalid-feedback" error-name="kegiatan">
                         </div>
                     </div>
@@ -100,6 +104,11 @@
             btnStoreKegiatan.setAttribute('data-url', `${baseUrl}/penilaian/store-kegiatan/${idNilaiSkp.value}`)
             btnStoreKegiatan.classList.remove('d-none')
             btnUpdateKegiatan.classList.add('d-none')
+            kegiatanSKP.value = 'Melaksanakan monitoring di smk 1 denpasar'
+            
+            $('#kegiatanSKP').select2({
+                theme: 'bootstrap4'
+            }).trigger('change')
         }
 
         function showEditKegiatanForm(element) {
@@ -112,6 +121,11 @@
 
             idNilaiSkp.value = kegiatan.id_nilai_skp
             kegiatanSKP.value = kegiatan.kegiatan
+            
+            $('#kegiatanSKP').select2({
+                theme: 'bootstrap4'
+            }).trigger('change')
+
             kuantitasSKP.value = kegiatan.kuantitas
             satuanKuantitasSKP.value = kegiatan.satuan_kuantitas
             waktuSKP.value = kegiatan.waktu

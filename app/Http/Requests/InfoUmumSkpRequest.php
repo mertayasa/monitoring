@@ -26,8 +26,9 @@ class InfoUmumSkpRequest extends FormRequest
         return [
             'id_pgw_kontrak' => ['required', 'exists:users,id'],
             'id_penilai' => ['required', 'exists:users,id'],
-            'tgl_mulai_penilaian' => ['required', 'date'],
-            'tgl_selesai_penilaian' => ['required', 'date', 'after:tgl_mulai_penilaian']
+            'durasi_penilaian' => ['required']
+            // 'tgl_mulai_penilaian' => ['required', 'date'],
+            // 'tgl_selesai_penilaian' => ['required', 'date', 'after:tgl_mulai_penilaian']
         ];
     }
 }

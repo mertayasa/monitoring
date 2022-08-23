@@ -17,7 +17,8 @@
                         @include('penilaian.form-prilaku')
                         <div class="row mt-3">
                             <div class="col-12">
-                                <a href="{{ route('penilaian.edit_kegiatan', $nilai_skp->id) }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Edit Kegiatan</a>
+                                {{-- <a href="{{ route('penilaian.edit_kegiatan', $nilai_skp->id) }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Edit Kegiatan</a> --}}
+                                <a href="{{ route('penilaian.index') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Kembali</a>
                                 <button class="btn btn-primary ml-3" type="submit">Simpan & Nilai SKP <i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>

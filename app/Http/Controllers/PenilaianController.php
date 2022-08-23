@@ -121,10 +121,14 @@ class PenilaianController extends Controller
     public function update(InfoUmumSkpRequest $request, NilaiSkp $nilai_skp)
     {
         try{
-            $nilai_skp->update($request->all());
+            $data = $request->validated();
+            $data['tgl_mulai_penilaian'] = Carbon::parse($data['durasi_penilaian'] == 1 ? '01-01-'.date('Y') : '01-07-'.date('Y'))->format('Y-m-d');
+            $data['tgl_selesai_penilaian'] = Carbon::parse($data['durasi_penilaian'] == 1 ? '30-06-'.date('Y') : '31-12-'.date('Y'))->format('Y-m-d');
+            $nilai_skp->update($data);
             $nilai_skp = $nilai_skp->refresh();
         }catch(Exception $e){
             Log::info($e->getMessage());
+            dd($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal mengubah data penilaian');
         }
 
@@ -248,8 +252,13 @@ class PenilaianController extends Controller
     public function updatePrilaku(NilaiPerilakuRequest $request, NilaiSkp $nilai_skp)
     {
         try{
-            $nilai_prilaku = NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->first();
-            $nilai_prilaku->update($request->validated());
+            // $nilai_prilaku = NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->first();
+            // $nilai_prilaku->updateOrCreate([
+            //     'id_nilai_skp' => $nilai_skp->id,
+            // ], $request->validated());
+            NilaiPrilaku::updateOrCreate([
+                'id_nilai_skp' => $nilai_skp->id,
+            ], $request->validated());
         }catch(Exception $e){
             Log::info($e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Gagal mengubah data prilaku');
@@ -289,7 +298,7 @@ class PenilaianController extends Controller
     public function show(NilaiSkp $nilai_skp)
     {
         $kegiatan_skp=KegiatanSkp:: where('id_nilai_skp', $nilai_skp->id)->get();
-        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->get()[0];
+        $nilai_prilaku=NilaiPrilaku::where('id_nilai_skp', $nilai_skp->id)->get()[0] ?? [];
         // $jumlah=$nilai_prilaku->total_nilai;
         // $nilai_rata = $nilai_prilaku->nilai_rata;
         // $nilai_prestasi_kerja = $nilai_prilaku->persen_prilaku + $nilai_skp->persen_skp;
